@@ -5,6 +5,8 @@ const {
 	registerBlockType,
 } = wp.blocks;
 
+import blockUI from './block-ui.js'
+
 const {
 	SelectControl,
 	PanelBody,
@@ -16,27 +18,13 @@ const {
 	RichText,
 } = wp.editor;
 
-// Available alert types for a dropdown setting.
-const all_types = [
-	{ value: 'primary', label: 'Primary' },
-	{ value: 'secondary', label: 'Secondary' },
-	{ value: 'success', label: 'Success' },
-	{ value: 'warning', label: 'Warning' },
-	{ value: 'danger', label: 'Danger' },
-	{ value: 'info', label: 'Info' },
-	{ value: 'light', label: 'Light' },
-	{ value: 'dark', label: 'Dark' },
-
-];
-
-registerBlockType ( 'simple-alerts-for-gutenberg/alert-boxes', {
-		title: __( 'Alert Box', 'simple-alerts-for-gutenberg'  ),
-		description: __( 'A simple block for alert boxes', 'simple-alerts-for-gutenberg' ),
+registerBlockType ( 'mediaron/alert-boxes', {
+		title: __( 'MR Alert Box', 'mr-alert-blocks'  ),
+		description: __( 'A block for alert boxes', 'mr-alert-blocks' ),
 		category: 'layout',
 		icon: {
-			src: 'smiley',
-			background: '#cce5ff',
-			foreground: '#004085',
+			src: <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none" style={{color: '#721c24'}} /><path style={{color: '#721c24'}} d="M10.01 21.01c0 1.1.89 1.99 1.99 1.99s1.99-.89 1.99-1.99h-3.98zm8.87-4.19V11c0-3.25-2.25-5.97-5.29-6.69v-.72C13.59 2.71 12.88 2 12 2s-1.59.71-1.59 1.59v.72C7.37 5.03 5.12 7.75 5.12 11v5.82L3 18.94V20h18v-1.06l-2.12-2.12zM16 13.01h-3v3h-2v-3H8V11h3V8h2v3h3v2.01z"/></svg>,
+			fill: '#721c24',
 		},
 		
 		attributes: {
@@ -48,55 +36,31 @@ registerBlockType ( 'simple-alerts-for-gutenberg/alert-boxes', {
 				type: 'string',
 			},
 			dismiss: {
-				type: 'Boolean',
+				type: 'boolean',
 				default: true
 			},
 		},
-
-        edit: props => {
-        	const { attributes: { alert_type, content, dismiss }, setAttributes } = props;
-    		return ([
-    			<InspectorControls>
-    				<PanelBody>
-    					<SelectControl
-    						label = 'Please select the type of alert you want to display.'
-    						options = { all_types } 
-  							value = { alert_type }
-  							onChange = { alert_type => { setAttributes( { alert_type } ) } }
-    					/>
-    				</PanelBody>
-					<PanelBody>
-						<CheckboxControl 
-							heading="Please select if the notice should be dismissible."
-							label="Dismissible notice?"
-							help="Show an 'x' and allow users to close this alert."
-							checked={ dismiss }
-							onChange={ dismiss => { setAttributes( { dismiss } ) } }
-						/>
-					</PanelBody>
-    				
-    			</InspectorControls>,
-	   			<div className = { "alert alert-" + alert_type } role="alert">
-	   			<RichText 
-	   					tagName = "p"
-	   					className = "content"
-	   					value = { content }
-	   					onChange = { ( content ) => setAttributes( { content } ) }
-	   					placeholder = 'Add text...'
-	   					format="string"
-	   				/>
-	   				{ dismiss === true ? <span className="close" aria-hidden="true" >&times;</span> : null }
-	   				</div>
-    		]);
-        },
-        save: props => {
-        	const { attributes: { alert_type, content, dismiss } } = props;
-       		return (
-       			<div className={ "alert alert-" + alert_type } role="alert">
-       				<RichText.Content tagname="p" value={content} />
-       				{ dismiss === true ? <button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> : null }
-	   			</div>
-       		);
-        },
+		keywords: [
+			__( 'alert', 'mr-alert-blocks' ),
+			__( 'mr', 'mr-alert-blocks' ),
+			__( 'notice', 'mr-alert-blocks' ),
+			__( 'banner', 'mr-alert-blocks' ),
+		],
+        supports: {
+			align: [ 'left', 'center', 'right', 'wide', 'full' ],
+			anchor: true,
+			className: false,
+		},
+		example: {
+			attributes: {
+				'preview' : true,
+			},
+		},
+		edit: blockUI,
+	
+		// Render via PHP
+		save() {
+			return null;
+		},
 	}
 );
