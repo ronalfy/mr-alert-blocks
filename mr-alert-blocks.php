@@ -78,6 +78,18 @@ function mrabg_register_files_for_gutenberg() {
 				'content' => array(
 					'type' => 'string',
 					'default' => '',
+				),
+				'containerWidth' => array(
+					'type' => 'string',
+					'default' => 'contained-width',
+				),
+				'containedWidth' => array(
+					'type' => 'int',
+					'default' => 1200,
+				),
+				'paddingTop' => array(
+					'type' => 'int',
+					'default' => 20
 				)
 			),
 			'render_callback' => 'mrabg_block_notice_output',
