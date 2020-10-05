@@ -67,6 +67,10 @@ function mrabg_register_files_for_gutenberg() {
 		'mediaron/alert-boxes',
 		array(
 			'attributes'      => array(
+				'uniqueId' => array(
+					'type' => 'string',
+					'default' => '',
+				),
 				'alertType' => array(
 					'type'    => 'string',
 					'default' => 'primary',
@@ -90,7 +94,23 @@ function mrabg_register_files_for_gutenberg() {
 				'paddingTop' => array(
 					'type' => 'int',
 					'default' => 20
-				)
+				),
+				'paddingBottom' => array(
+					'type' => 'int',
+					'default' => 20
+				),
+				'paddingLeft' => array(
+					'type' => 'int',
+					'default' => 20
+				),
+				'paddingRight' => array(
+					'type' => 'int',
+					'default' => 20
+				),
+				'paddingUnit' => array(
+					'type' => 'string',
+					'default' => 'px',
+				),
 			),
 			'render_callback' => 'mrabg_block_notice_output',
 			'editor_script'   => 'mrabg-gutenberg-js',

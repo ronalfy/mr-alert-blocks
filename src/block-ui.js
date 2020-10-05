@@ -1,6 +1,9 @@
 import MRIcon from './components/MRIcon';
 import MRPanelArea from './components/MRPanelArea';
 import Dimensions from './components/dimensions';
+import { uniqueId } from 'lodash';
+import classnames from 'classnames';
+import DesktopCSS from './css/desktop.js';
 
 const { Component, Fragment, cloneElement } = wp.element;
 
@@ -40,9 +43,20 @@ class SABAlerts extends Component {
 		//this.get_latest_data();
 	}
 
+	componentDidMount = () => {
+		const id = this.props.clientId.substr( 2, 9 ).replace( '-', '' );
+
+		if ( ! this.props.attributes.uniqueId ) {
+			this.props.setAttributes( {
+				uniqueId: id,
+			} );
+		}
+	}
+
 	render() {
 		const { attributes, setAttributes } = this.props;
 		const {
+			uniqueId,
 			alertType,
 			dismiss,
 			content,
@@ -82,6 +96,15 @@ class SABAlerts extends Component {
 			contentFont,
 			contentStyle,
 		} = attributes;
+
+		let htmlAttributes = {
+			className: classnames( {
+				'mr-alert': true,
+				[ `mr-alert-${ uniqueId }` ]: true,
+				'mr-alert-type': alertType
+			} ),
+			role: 'alert',
+		};
 
 		// Available alert types for a dropdown setting.
 		const allTypes = [
@@ -127,9 +150,21 @@ class SABAlerts extends Component {
 		const inspectorControls = (
 			<InspectorControls>
 				<MRPanelArea
+					icon={<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="exclamation-triangle" class="svg-inline--fa fa-exclamation-triangle fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><g class="fa-group"><path class="fa-secondary" fill="currentColor" d="M569.52 440L329.58 24c-18.44-32-64.69-32-83.16 0L6.48 440c-18.42 31.94 4.64 72 41.57 72h479.89c36.87 0 60.06-40 41.58-72zM288 448a32 32 0 1 1 32-32 32 32 0 0 1-32 32zm38.24-238.41l-12.8 128A16 16 0 0 1 297.52 352h-19a16 16 0 0 1-15.92-14.41l-12.8-128A16 16 0 0 1 265.68 192h44.64a16 16 0 0 1 15.92 17.59z" opacity="0.4"></path><path class="fa-primary" fill="currentColor" d="M310.32 192h-44.64a16 16 0 0 0-15.92 17.59l12.8 128A16 16 0 0 0 278.48 352h19a16 16 0 0 0 15.92-14.41l12.8-128A16 16 0 0 0 310.32 192zM288 384a32 32 0 1 0 32 32 32 32 0 0 0-32-32z"></path></g></svg>}
+					title={__('Alert Type', 'mr-alert-blocks')}
+					initialOpen={true}
+				>
+					<SelectControl
+						label = {__('Type of alert.', 'mr-alert-blocks')}
+						options = { allTypes } 
+						value = { alertType }
+						onChange = { alertType => { setAttributes( { alertType } ) } }
+					/>
+				</MRPanelArea>
+				<MRPanelArea
 					icon={<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="expand-arrows" class="svg-inline--fa fa-expand-arrows fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><g class="fa-group"><path class="fa-secondary" fill="currentColor" d="M0 200V64a32 32 0 0 1 32-32h136a23.94 23.94 0 0 1 24 24v15.3a24 24 0 0 1-24.7 24L101 93.4l123 123-39.6 39.6-123-123 1.9 66.3a24 24 0 0 1-24 24.7H24a23.94 23.94 0 0 1-24-24zm424 88h-15.3a24 24 0 0 0-24 24.7l1.9 66.3-123-123-39.6 39.6 123 123-66.3-1.9a24 24 0 0 0-24.7 24V456a23.94 23.94 0 0 0 24 24h136a32 32 0 0 0 32-32V312a23.94 23.94 0 0 0-24-24z" opacity="0.4"></path><path class="fa-primary" fill="currentColor" d="M101 418.6l66.3-1.9a24 24 0 0 1 24.7 24V456a23.94 23.94 0 0 1-24 24H32a32 32 0 0 1-32-32V312a23.94 23.94 0 0 1 24-24h15.3a24 24 0 0 1 24 24.7L61.4 379 347 93.4l-66.3 1.9a24 24 0 0 1-24.7-24V56a23.94 23.94 0 0 1 24-24h136a32 32 0 0 1 32 32v136a23.94 23.94 0 0 1-24 24h-15.3a24 24 0 0 1-24-24.7l1.9-66.3z"></path></g></svg>}
 					title={__('Container Settings', 'mr-alert-blocks')}
-					initialOpen={true}
+					initialOpen={false}
 
 				>
 					<Fragment>
@@ -167,7 +202,7 @@ class SABAlerts extends Component {
 				<MRPanelArea
 					icon={<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="arrows-h" class="svg-inline--fa fa-arrows-h fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g class="fa-group"><path class="fa-secondary" fill="currentColor" d="M405.66 288H106.34l-33.77-32 33.77-32h299.32l33.77 32z" opacity="0.4"></path><path class="fa-primary" fill="currentColor" d="M358.59 146.37a23.93 23.93 0 0 0 .94 33.92l79.9 75.71-79.9 75.71a23.93 23.93 0 0 0-.94 33.92L369.9 377a24.15 24.15 0 0 0 34.1 0l98.65-98.36a31.92 31.92 0 0 0 0-45.24L404 135a24.15 24.15 0 0 0-34.05 0zM153.41 365.63a23.93 23.93 0 0 0-.94-33.92L72.57 256l79.9-75.71a23.93 23.93 0 0 0 .94-33.92L142.1 135a24.15 24.15 0 0 0-34 0L9.4 233.38a31.92 31.92 0 0 0 0 45.24L108.05 377a24.15 24.15 0 0 0 34.05 0z"></path></g></svg>}
 					title={__('Spacing', 'mr-alert-blocks')}
-					initialOpen={true}
+					initialOpen={false}
 				>
 					<Dimensions { ...this.props }
 						type={ 'padding' }
@@ -180,22 +215,6 @@ class SABAlerts extends Component {
 						attrSyncUnits={ 'paddingSyncUnits' }
 					/>
 				</MRPanelArea>
-    				<PanelBody>
-    					<SelectControl
-    						label = {__('Please select the type of alert you want to display.', 'mr-alert-blocks')}
-    						options = { allTypes } 
-  							value = { alertType }
-  							onChange = { alertType => { setAttributes( { alertType } ) } }
-    					/>
-    				</PanelBody>
-					<PanelBody>
-						<ToggleControl
-							label={__('Dismissible notice?', 'mr-alert-blocks')}
-							help={__('Show an x and allow users to close this alert.', 'mr-alert-blocks')}
-							checked={ dismiss }
-							onChange={ dismiss => { setAttributes( { dismiss } ) } }
-						/>
-					</PanelBody>
 					<PanelBody>
 						<MRIcon icon={svgs.info} />
 					</PanelBody>
@@ -205,17 +224,10 @@ class SABAlerts extends Component {
 		return (
 				<Fragment>
 					{inspectorControls}
-					<div className = { "alert alert-" + alertType } role="alert">
-	   			<RichText 
-	   					tagName = "p"
-	   					className = "content"
-	   					value = { content }
-	   					onChange = { ( content ) => setAttributes( { content } ) }
-	   					placeholder = 'Add text...'
-	   					format="string"
-	   				/>
-	   				{ dismiss === true ? <span className="close" aria-hidden="true" >&times;</span> : null }
-	   				</div>
+					<DesktopCSS { ...this.props } />
+					<div { ...htmlAttributes }>
+						test
+					</div>
 				</Fragment>
 		);
 	}
