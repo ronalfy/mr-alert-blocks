@@ -179,9 +179,21 @@ function mrabg_register_files_for_gutenberg() {
 					'type'    => 'string',
 					'default' => 'inherit',
 				),
+				'iconShow' => array(
+					'type' => 'boolean',
+					'default' => false,
+				),
+				'hasIcon' => array(
+					'type' => 'boolean',
+					'default' => false,
+				),
+				'svgIcon' => array(
+					'type' => 'string',
+					'default' => '',
+				),
 				'icon'               => array(
 					'type'    => 'string',
-					'default' => 'infoCircle',
+					'default' => '',
 				),
 				'iconColor'          => array(
 					'type'    => 'string',

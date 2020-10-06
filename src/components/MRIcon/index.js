@@ -8,11 +8,10 @@ const { cloneElement } = wp.element;
  *
  * @return {JSX.Element}  Icon component
  */
-function MRIcon( { icon, size = 24, ...props } ) {
+function MRIcon( { icon, size = 24 } ) {
 	return cloneElement( icon, {
 		width: size,
 		height: size,
-		...props,
 	} );
 }
 

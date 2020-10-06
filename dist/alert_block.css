@@ -58,6 +58,92 @@
 .components-gblocks-dimensions-control__inputs + .components-gblocks-dimensions-control__header {
   margin-top: 25px; }
 
+.gblocks-icon-chooser {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-top: 0;
+  margin-left: -3px; }
+  .gblocks-icon-chooser li {
+    display: block;
+    margin: 0 0 3px 3px;
+    padding: 0; }
+    .gblocks-icon-chooser li button.components-button {
+      background: #fafafa;
+      color: #000;
+      height: 30px;
+      width: 30px;
+      border: 0;
+      border-radius: 0;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      padding: 8px;
+      line-height: normal;
+      font-size: 15px;
+      justify-content: center; }
+      .gblocks-icon-chooser li button.components-button span {
+        line-height: 0; }
+      .gblocks-icon-chooser li button.components-button:hover {
+        background: #fff;
+        box-shadow: none; }
+      .gblocks-icon-chooser li button.components-button svg {
+        width: 1em;
+        height: 1em; }
+
+.gb-icon {
+  display: inline-flex;
+  line-height: 0; }
+
+.gb-icon svg {
+  height: 1em;
+  width: 1em;
+  fill: currentColor; }
+
+button.components-icon-picker-item {
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  line-height: 50px;
+  background: #efefef;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  margin-bottom: 10px; }
+  button.components-icon-picker-item svg {
+    height: 1em;
+    width: 1em; }
+
+.components-icon-picker-item > span {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.components-icon-picker-item:hover, .components-icon-picker-item:focus {
+  background: #fafafa; }
+
+.gb-svg-html .components-base-control {
+  margin-bottom: 0; }
+
+.gb-icon-preview {
+  font-size: 25px;
+  display: flex;
+  align-items: center; }
+  .gb-icon-preview svg {
+    margin-right: 10px;
+    width: 1em;
+    height: 1em; }
+
+.block-editor-block-inspector .gb-icon-chooser .components-panel__body {
+  border-color: #ddd;
+  margin-top: 0; }
+  .block-editor-block-inspector .gb-icon-chooser .components-panel__body button {
+    background: #fafafa; }
+  .block-editor-block-inspector .gb-icon-chooser .components-panel__body.is-opened {
+    background: #fafafa; }
+  .block-editor-block-inspector .gb-icon-chooser .components-panel__body:last-child {
+    border-bottom: 1px solid #ddd; }
+
 .alert-primary {
   color: #004085;
   background-color: #cce5ff;
