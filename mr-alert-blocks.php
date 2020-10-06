@@ -75,6 +75,10 @@ function mrabg_register_files_for_gutenberg() {
 					'type'    => 'string',
 					'default' => 'primary',
 				),
+				'backgroundColor' => array(
+					'type' => 'string',
+					'default' => 'inherit',
+				),
 				'dismiss'            => array(
 					'type'    => 'boolean',
 					'default' => false,

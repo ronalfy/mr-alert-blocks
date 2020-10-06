@@ -5,7 +5,7 @@ import { uniqueId } from "lodash";
 import classnames from "classnames";
 import DesktopCSS from "./css/desktop.js";
 import IconPicker from "./components/icon-picker";
-import sanitizeSVG from './utils/sanitize-svg';
+import sanitizeSVG from "./utils/sanitize-svg";
 
 const { Component, Fragment, cloneElement } = wp.element;
 
@@ -60,6 +60,7 @@ class SABAlerts extends Component {
 		const {
 			uniqueId,
 			alertType,
+			backgroundColor,
 			dismiss,
 			content,
 			containerWidth,
@@ -166,12 +167,12 @@ class SABAlerts extends Component {
 						}}
 					/>
 					<ToggleControl
-						label={__('Show Icon?', 'mr-alert-blocks')}
-						checked={true === iconShow ? true : false }
+						label={__("Show Icon?", "mr-alert-blocks")}
+						checked={true === iconShow ? true : false}
 						onChange={(value) => {
-							setAttributes( {
+							setAttributes({
 								iconShow: value,
-							})
+							});
 						}}
 					/>
 				</MRPanelArea>
@@ -284,8 +285,81 @@ class SABAlerts extends Component {
 						attrUnit={"paddingUnit"}
 						attrSyncUnits={"paddingSyncUnits"}
 					/>
+					<Dimensions
+						{...this.props}
+						type={"border"}
+						label={__("Border Width", "generateblocks")}
+						attrTop={"borderTop"}
+						attrRight={"borderRight"}
+						attrBottom={"borderBottom"}
+						attrLeft={"borderLeft"}
+						attrUnit={"borderUnit"}
+						attrSyncUnits={"borderSyncUnits"}
+					/>
+					<Dimensions
+						{...this.props}
+						type={"borderradius"}
+						label={__("Border Radius", "generateblocks")}
+						attrTop={"borderRadiusTop"}
+						attrRight={"borderRadiusRight"}
+						attrBottom={"borderRadiusBottom"}
+						attrLeft={"borderRadiusLeft"}
+						attrUnit={"borderRadiusUnit"}
+						attrSyncUnits={"borderRadiusSyncUnits"}
+					/>
 				</MRPanelArea>
-				{ iconShow && 
+				<MRPanelArea
+					icon={
+						<svg
+							aria-hidden="true"
+							focusable="false"
+							data-prefix="fad"
+							data-icon="palette"
+							class="svg-inline--fa fa-palette fa-w-16"
+							role="img"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 512 512"
+						>
+							<g class="fa-group">
+								<path
+									class="fa-secondary"
+									fill="currentColor"
+									d="M204.29 5c-99.4 19.4-179.5 99.29-199.1 198.4-37 187 131.7 326.39 258.8 306.69 41.2-6.4 61.4-54.59 42.5-91.69-23.1-45.4 9.9-98.4 60.9-98.4h79.7c35.8 0 64.8-29.6 64.9-65.31C511.49 97.13 368.09-26.87 204.29 5zM96 320a32 32 0 1 1 32-32 32 32 0 0 1-32 32zm32-128a32 32 0 1 1 32-32 32 32 0 0 1-32 32zm128-64a32 32 0 1 1 32-32 32 32 0 0 1-32 32zm128 64a32 32 0 1 1 32-32 32 32 0 0 1-32 32z"
+									opacity="0.4"
+								></path>
+								<path
+									class="fa-primary"
+									fill="currentColor"
+									d="M96 256a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm32-128a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm128-64a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm128 64a32 32 0 1 0 32 32 32 32 0 0 0-32-32z"
+								></path>
+							</g>
+						</svg>
+					}
+					title={__("Colors", "mr-alert-blocks")}
+					initialOpen={false}
+				>
+					<PanelColorSettings
+						title={__("Color Settings", 'mr-alert-blocks')}
+						colorSettings={[
+							{
+								value: backgroundColor,
+								onChange: (colorValue) => setAttributes({ backgroundColor: colorValue }),
+								label: __("Background Color", 'mr-alert-blocks'),
+							},
+							{
+								value: iconColor,
+								onChange: (colorValue) => setAttributes({ iconColor: colorValue }),
+								label: __("Icon Color", 'mr-alert-blocks'),
+							},
+							{
+								value: borderColor,
+								onChange: (colorValue) => setAttributes({ borderColor: colorValue }),
+								label: __("Border Color", 'mr-alert-blocks'),
+							},
+						]}
+					></PanelColorSettings>
+				</MRPanelArea>
+				{iconShow && (
 					<MRPanelArea
 						icon={
 							<svg
@@ -316,11 +390,9 @@ class SABAlerts extends Component {
 						title={__("Icons", "mr-alert-blocks")}
 						initialOpen={false}
 					>
-						<IconPicker { ...this.props }
-							attrIcon={ 'svgIcon' }
-						/>
+						<IconPicker {...this.props} attrIcon={"svgIcon"} />
 					</MRPanelArea>
-				}
+				)}
 			</InspectorControls>
 		);
 		return (
@@ -328,15 +400,15 @@ class SABAlerts extends Component {
 				{inspectorControls}
 				<DesktopCSS {...this.props} />
 				<div {...htmlAttributes}>
-					{iconShow && hasIcon &&
-					<div className="mr-alert-icon">
-						<span
-							className="gb-icon"
-							dangerouslySetInnerHTML={ { __html: sanitizeSVG( svgIcon ) } }
-						/>
-					</div>
-					}
-				blah
+					{iconShow && hasIcon && (
+						<div className="mr-alert-icon">
+							<span
+								className="gb-icon"
+								dangerouslySetInnerHTML={{ __html: sanitizeSVG(svgIcon) }}
+							/>
+						</div>
+					)}
+					blah
 				</div>
 			</Fragment>
 		);
