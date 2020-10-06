@@ -57,7 +57,7 @@ function mrabg_register_files_for_gutenberg() {
 
 	wp_register_style(
 		'mrabg-gutenberg-css',
-		plugins_url( 'css/bootstrap-alerts.css', __FILE__ ),
+		plugins_url( 'dist/alert_block.css', __FILE__ ),
 		array(),
 		MR_ALERT_BLOCKS_VERSION,
 		'all'
@@ -67,49 +67,177 @@ function mrabg_register_files_for_gutenberg() {
 		'mediaron/alert-boxes',
 		array(
 			'attributes'      => array(
-				'uniqueId' => array(
-					'type' => 'string',
+				'uniqueId'           => array(
+					'type'    => 'string',
 					'default' => '',
 				),
-				'alertType' => array(
+				'alertType'          => array(
 					'type'    => 'string',
 					'default' => 'primary',
 				),
-				'dismiss'   => array(
+				'dismiss'            => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'content' => array(
-					'type' => 'string',
-					'default' => '',
-				),
-				'containerWidth' => array(
-					'type' => 'string',
+				'containerWidth'     => array(
+					'type'    => 'string',
 					'default' => 'contained-width',
 				),
-				'containedWidth' => array(
-					'type' => 'int',
+				'containedWidth'     => array(
+					'type'    => 'int',
 					'default' => 1200,
 				),
-				'paddingTop' => array(
-					'type' => 'int',
-					'default' => 20
+				'paddingTop'         => array(
+					'type'    => 'int',
+					'default' => 20,
 				),
-				'paddingBottom' => array(
-					'type' => 'int',
-					'default' => 20
+				'paddingBottom'      => array(
+					'type'    => 'int',
+					'default' => 20,
 				),
-				'paddingLeft' => array(
-					'type' => 'int',
-					'default' => 20
+				'paddingLeft'        => array(
+					'type'    => 'int',
+					'default' => 20,
 				),
-				'paddingRight' => array(
-					'type' => 'int',
-					'default' => 20
+				'paddingRight'       => array(
+					'type'    => 'int',
+					'default' => 20,
 				),
-				'paddingUnit' => array(
-					'type' => 'string',
+				'paddingUnit'        => array(
+					'type'    => 'string',
 					'default' => 'px',
+				),
+				'containerWidth'     => array(
+					'type'    => 'string',
+					'default' => 'full-width',
+				),
+				'containedWidth'     => array(
+					'type'    => 'int',
+					'default' => 800,
+				),
+				'marginTop'          => array(
+					'type'    => 'int',
+					'default' => 15,
+				),
+				'marginBottom'       => array(
+					'type'    => 'int',
+					'default' => 15,
+				),
+				'marginleft'         => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'marginRight'        => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'marginUnit'         => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
+				'borderTop'          => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'borderBottom'       => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'borderLeft'         => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'borderRight'        => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'borderUnit'         => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
+				'borderRadiusTop'    => array(
+					'type'    => 'int',
+					'default' => 10,
+				),
+				'borderRadiusBottom' => array(
+					'type'    => 'int',
+					'default' => 10,
+				),
+				'borderRadiusLeft'   => array(
+					'type'    => 'int',
+					'default' => 10,
+				),
+				'borderRadiusRight'  => array(
+					'type'    => 'int',
+					'default' => 10,
+				),
+				'borderRadiusUnit'   => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
+				'borderColor'        => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'icon'               => array(
+					'type'    => 'string',
+					'default' => 'infoCircle',
+				),
+				'iconColor'          => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'iconSize'           => array(
+					'type'    => 'int',
+					'default' => 30,
+				),
+				'iconUnit'           => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
+				'title'              => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'titleColor'         => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'titleSize'          => array(
+					'type'    => 'int',
+					'default' => 32,
+				),
+				'titleFont'          => array(
+					'type'    => 'int',
+					'default' => 32,
+				),
+				'titleTransform'     => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'content'            => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'contentColor'       => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'contentSize'        => array(
+					'type'    => 'int',
+					'default' => 18,
+				),
+				'contentUnit'        => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
+				'contentFont'        => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'contentTransform'   => array(
+					'type'    => 'string',
+					'default' => 'inherit',
 				),
 			),
 			'render_callback' => 'mrabg_block_notice_output',

@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
 	mode: process.env.NODE_ENV,
 	entry: {
-		alert_block: ["./src/index.js"],
+		alert_block: ["./src/index.js", "./src/alerts.scss"],
 	},
 	output: {
 		filename: "[name].js",

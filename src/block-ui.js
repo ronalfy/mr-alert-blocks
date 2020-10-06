@@ -90,18 +90,19 @@ class SABAlerts extends Component {
 			titleColor,
 			titleSize,
 			titleFont,
-			titleStyle,
+			titleTransform,
 			contentColor,
 			contentSize,
 			contentFont,
-			contentStyle,
+			contentTransform,
 		} = attributes;
 
 		let htmlAttributes = {
 			className: classnames( {
 				'mr-alert': true,
 				[ `mr-alert-${ uniqueId }` ]: true,
-				'mr-alert-type': alertType
+				[ `mr-alert-type-${alertType}`]: true,
+				[ `alert-${alertType}`]: true,
 			} ),
 			role: 'alert',
 		};
