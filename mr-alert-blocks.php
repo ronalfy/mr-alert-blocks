@@ -44,6 +44,13 @@ function mrabg_register_files_for_gutenberg() {
 		MR_ALERT_BLOCKS_VERSION,
 		true
 	);
+	wp_localize_script(
+		'mrabg-gutenberg-js',
+		'mrabg',
+		array(
+			'fonts' => mrabg_get_fonts(),
+		)
+	);
 
 	wp_set_script_translations( 'mrabg-gutenberg-js', 'mr-alert-blocks' );
 
@@ -75,8 +82,8 @@ function mrabg_register_files_for_gutenberg() {
 					'type'    => 'string',
 					'default' => 'primary',
 				),
-				'backgroundColor' => array(
-					'type' => 'string',
+				'backgroundColor'    => array(
+					'type'    => 'string',
 					'default' => 'inherit',
 				),
 				'dismiss'            => array(
@@ -183,16 +190,16 @@ function mrabg_register_files_for_gutenberg() {
 					'type'    => 'string',
 					'default' => 'inherit',
 				),
-				'iconShow' => array(
-					'type' => 'boolean',
+				'iconShow'           => array(
+					'type'    => 'boolean',
 					'default' => false,
 				),
-				'hasIcon' => array(
-					'type' => 'boolean',
+				'hasIcon'            => array(
+					'type'    => 'boolean',
 					'default' => false,
 				),
-				'svgIcon' => array(
-					'type' => 'string',
+				'svgIcon'            => array(
+					'type'    => 'string',
 					'default' => '',
 				),
 				'icon'               => array(
@@ -264,6 +271,52 @@ function mrabg_register_files_for_gutenberg() {
 }
 add_action( 'init', 'mrabg_register_files_for_gutenberg' );
 
+/**
+ * Get web safe fonts
+ *
+ * @return array $fonts Fonts to Use
+ */
+function mrabg_get_fonts() {
+	/**
+	 * Filter the fonts that are available.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array  associative array of key/value pairs of fonts.
+	 */
+	$fonts     = apply_filters(
+		'mrab_fonts',
+		array(
+			'inherit'         => 'Default',
+			'arial'           => 'Arial',
+			'helvetica'       => 'Helvetica',
+			'times new roman' => 'Times New Roman',
+			'times'           => 'Times',
+			'courier new'     => 'Courier New',
+			'courier'         => 'Courier',
+			'verdana'         => 'Verdana',
+			'georgia'         => 'Georgia',
+			'palatino'        => 'Palatino',
+			'garamond'        => 'Garamond',
+			'bookman'         => 'Bookman',
+			'trebuchet ms'    => 'Trebuchet MS',
+			'arial black'     => 'Arial Black',
+			'impact'          => 'Impact',
+		)
+	);
+	$pro_fonts = array();
+	// Add Typekit Fonts.
+	if ( defined( 'CUSTOM_TYPEKIT_FONTS_FILE' ) ) {
+		$adobe_fonts = get_option( 'custom-typekit-fonts', array() );
+		if ( isset( $adobe_fonts['custom-typekit-font-details'] ) ) {
+			foreach ( $adobe_fonts['custom-typekit-font-details'] as $font_name => $font_details ) {
+				$pro_fonts[ $font_details['slug'] ] = $font_details['family'];
+			}
+		}
+	}
+	$fonts = array_merge( $fonts, $pro_fonts );
+	return $fonts;
+}
 /**
  * Block output.
  *

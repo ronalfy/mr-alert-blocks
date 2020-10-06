@@ -415,12 +415,31 @@ class SABAlerts extends Component {
 				<DesktopCSS {...this.props} />
 				<div {...htmlAttributes}>
 					{iconShow && hasIcon && (
-						<div className="mr-alert-icon-wrapper">
-							<span
-								className="mr-alert-icon"
-								dangerouslySetInnerHTML={{ __html: sanitizeSVG(svgIcon) }}
-							/>
-						</div>
+						<Fragment>
+							<div className="mr-alert-icon-wrapper">
+								<span
+									className="mr-alert-icon"
+									dangerouslySetInnerHTML={{ __html: sanitizeSVG(svgIcon) }}
+								/>
+							</div>
+							<div className="mr-alert-content-wrapper">
+								<RichText 
+									value={content}
+									onChange={value => {
+										setAttributes(
+											{
+												content: value,
+											}
+										)
+									}}
+									tagName="div"
+									placeholder={__('Enter your alert text', 'mr-alert-blocks')}
+									allowedFormats={[
+										'core/link',
+									]}
+								/>
+							</div>
+						</Fragment>
 					)}
 					blah
 				</div>

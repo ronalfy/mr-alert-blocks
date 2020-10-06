@@ -21,6 +21,17 @@ export default class DesktopCSS extends Component {
 			paddingLeft,
 			paddingRight,
 			paddingUnit,
+			borderColor,
+			borderTop,
+			borderBottom,
+			borderLeft,
+			borderRight,
+			borderUnit,
+			borderRadiusTop,
+			borderRadiusBottom,
+			borderRadiusLeft,
+			borderRadiusRight,
+			borderRadiusUnit,
 			iconColor,
 			iconSize,
 		} = attributes;
@@ -28,6 +39,10 @@ export default class DesktopCSS extends Component {
 		let cssObj = [];
 		cssObj[ '.mr-alert-' + uniqueId ] = [ {
 			'padding': shorthandCSS( paddingTop, paddingRight, paddingBottom, paddingLeft, paddingUnit ),
+			'border-style': 'solid',
+			'border-width': shorthandCSS( borderTop, borderRight, borderBottom, borderLeft, borderUnit ),
+			'border-radius': shorthandCSS( borderRadiusTop, borderRadiusRight, borderRadiusBottom, borderRadiusLeft, borderRadiusUnit ),
+			'border-color': hexToRGBA( borderColor )
 		} ];
 		cssObj[ `.mr-alert-${uniqueId} .mr-alert-icon-wrapper .mr-alert-icon svg`] = [
 			{
