@@ -401,9 +401,9 @@ class SABAlerts extends Component {
 				<DesktopCSS {...this.props} />
 				<div {...htmlAttributes}>
 					{iconShow && hasIcon && (
-						<div className="mr-alert-icon">
+						<div className="mr-alert-icon-wrapper">
 							<span
-								className="gb-icon"
+								className="mr-alert-icon"
 								dangerouslySetInnerHTML={{ __html: sanitizeSVG(svgIcon) }}
 							/>
 						</div>

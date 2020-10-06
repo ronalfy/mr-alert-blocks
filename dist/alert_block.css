@@ -152,6 +152,7 @@ button.components-icon-picker-item {
 .alert-primary hr {
   border-top-color: #9fcdff; }
 
+.alert-primary .mr-alert-icon,
 .alert-primary .alert-link {
   color: #002752; }
 
@@ -163,6 +164,7 @@ button.components-icon-picker-item {
 .alert-secondary hr {
   border-top-color: #c8cbcf; }
 
+.alert-secondary .mr-alert-icon,
 .alert-secondary .alert-link {
   color: #202326; }
 
@@ -174,6 +176,7 @@ button.components-icon-picker-item {
 .alert-success hr {
   border-top-color: #b1dfbb; }
 
+.alert-success .mr-alert-icon,
 .alert-success .alert-link {
   color: #0b2e13; }
 
@@ -185,6 +188,7 @@ button.components-icon-picker-item {
 .alert-info hr {
   border-top-color: #abdde5; }
 
+.alert-info .mr-alert-icon,
 .alert-info .alert-link {
   color: #062c33; }
 
@@ -196,6 +200,7 @@ button.components-icon-picker-item {
 .alert-warning hr {
   border-top-color: #ffe8a1; }
 
+.alert-warning .mr-alert-icon,
 .alert-warning .alert-link {
   color: #533f03; }
 
@@ -207,6 +212,7 @@ button.components-icon-picker-item {
 .alert-danger hr {
   border-top-color: #f1b0b7; }
 
+.alert-danger .mr-alert-icon,
 .alert-danger .alert-link {
   color: #491217; }
 
@@ -221,6 +227,10 @@ button.components-icon-picker-item {
 .alert-light .alert-link {
   color: #686868; }
 
+.alert-light .mr-alert-icon,
+.alert-light .alert-link {
+  color: #686868; }
+
 .alert-dark {
   color: #1b1e21;
   background-color: #d6d8d9;
@@ -229,6 +239,14 @@ button.components-icon-picker-item {
 .alert-dark hr {
   border-top-color: #b9bbbe; }
 
+.alert-dark .mr-alert-icon,
 .alert-dark .alert-link {
   color: #040505; }
+
+.mr-alert-icon-wrapper {
+  text-align: center; }
+  .mr-alert-icon-wrapper .mr-alert-icon svg {
+    margin-bottom: 20px;
+    width: 48px;
+    height: 48px; }
 

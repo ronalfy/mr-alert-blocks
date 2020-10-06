@@ -21,12 +21,18 @@ export default class DesktopCSS extends Component {
 			paddingLeft,
 			paddingRight,
 			paddingUnit,
+			iconColor,
 		} = attributes;
 
 		let cssObj = [];
 		cssObj[ '.mr-alert-' + uniqueId ] = [ {
 			'padding': shorthandCSS( paddingTop, paddingRight, paddingBottom, paddingLeft, paddingUnit ),
 		} ];
+		cssObj[ `.mr-alert-${uniqueId} .mr-alert-icon-wrapper .mr-alert-icon`] = [
+			{
+				'color': hexToRGBA(iconColor),
+			}
+		];
 
 		return (
 			<style>{ buildCSS( cssObj ) }</style>
