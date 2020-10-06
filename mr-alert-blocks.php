@@ -98,6 +98,10 @@ function mrabg_register_files_for_gutenberg() {
 					'type'    => 'int',
 					'default' => 1200,
 				),
+				'innerContainerMaxWidth' => array(
+					'type' => 'int',
+					'default' => 800,
+				),
 				'paddingTop'         => array(
 					'type'    => 'int',
 					'default' => 20,

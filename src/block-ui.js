@@ -65,6 +65,7 @@ class SABAlerts extends Component {
 			content,
 			containerWidth,
 			containedWidth,
+			innerContainerMaxWidth,
 			paddingTop,
 			paddingBottom,
 			paddingLeft,
@@ -208,7 +209,7 @@ class SABAlerts extends Component {
 				>
 					<Fragment>
 						<SelectControl
-							label={__("Width", "mr-alert-blocks")}
+							label={__("Container Width", "mr-alert-blocks")}
 							options={[
 								{
 									value: "full-width",
@@ -242,6 +243,22 @@ class SABAlerts extends Component {
 								}}
 							/>
 						)}
+						<RangeControl
+							label={__("Inner Container Max-Width", "mr-alert-blocks")}
+							allowReset={true}
+							initialPosition={innerContainerMaxWidth}
+							min={100}
+							max={1200}
+							step={50}
+							value={innerContainerMaxWidth}
+							withInputField={true}
+							stepper={true}
+							onChange={(value) => {
+								setAttributes({
+									innerContainerMaxWidth: value,
+								});
+							}}
+						/>
 					</Fragment>
 				</MRPanelArea>
 				<MRPanelArea
@@ -416,32 +433,35 @@ class SABAlerts extends Component {
 				<div {...htmlAttributes}>
 					{iconShow && hasIcon && (
 						<Fragment>
-							<div className="mr-alert-icon-wrapper">
-								<span
-									className="mr-alert-icon"
-									dangerouslySetInnerHTML={{ __html: sanitizeSVG(svgIcon) }}
-								/>
-							</div>
-							<div className="mr-alert-content-wrapper">
-								<RichText 
-									value={content}
-									onChange={value => {
-										setAttributes(
-											{
-												content: value,
-											}
-										)
-									}}
-									tagName="div"
-									placeholder={__('Enter your alert text', 'mr-alert-blocks')}
-									allowedFormats={[
-										'core/link',
-									]}
-								/>
+							<div className="mr-alert-wrapper">
+								<Fragment>
+									<div className="mr-alert-icon-wrapper">
+									<span
+										className="mr-alert-icon"
+										dangerouslySetInnerHTML={{ __html: sanitizeSVG(svgIcon) }}
+									/>
+								</div>
+								<div className="mr-alert-content-wrapper">
+									<RichText 
+										value={content}
+										onChange={value => {
+											setAttributes(
+												{
+													content: value,
+												}
+											)
+										}}
+										tagName="div"
+										placeholder={__('Enter your alert text', 'mr-alert-blocks')}
+										allowedFormats={[
+											'core/link',
+										]}
+									/>
+								</div>
+								</Fragment>
 							</div>
 						</Fragment>
 					)}
-					blah
 				</div>
 			</Fragment>
 		);

@@ -34,6 +34,7 @@ export default class DesktopCSS extends Component {
 			borderRadiusUnit,
 			iconColor,
 			iconSize,
+			innerContainerMaxWidth,
 		} = attributes;
 
 		let cssObj = [];
@@ -51,6 +52,15 @@ export default class DesktopCSS extends Component {
 				'height': valueWithUnit( iconSize, 'px' ),
 			}
 		];
+		cssObj[ `.mr-alert-${uniqueId} .mr-alert-wrapper`] = [
+			{
+				'max-width': valueWithUnit(innerContainerMaxWidth, 'px'),
+				'text-align': 'center',
+				'margin': '0 auto',
+			}
+		];
+
+		
 
 		return (
 			<style>{ buildCSS( cssObj ) }</style>
