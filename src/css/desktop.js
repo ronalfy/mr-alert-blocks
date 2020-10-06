@@ -16,6 +16,7 @@ export default class DesktopCSS extends Component {
 
 		const {
 			uniqueId,
+			backgroundColor,
 			paddingTop,
 			paddingBottom,
 			paddingLeft,
@@ -32,9 +33,44 @@ export default class DesktopCSS extends Component {
 			borderRadiusLeft,
 			borderRadiusRight,
 			borderRadiusUnit,
+			titleTransform,
+			titleColor,
+			titleFont,
+			titleSize,
+			titleTag,
+			titlePaddingTop,
+			titlePaddingBottom,
+			titlePaddingLeft,
+			titlePaddingRight,
+			titlePaddingUnit,
+			titleMarginTop,
+			titleMarginBottom,
+			titleMarginLeft,
+			titleMarginRight,
+			titleMarginUnit,
+			titleLineHeight,
+			titleFontWeight,
+			contentPaddingTop,
+			contentPaddingBottom,
+			contentPaddingLeft,
+			contentPaddingRight,
+			contentPaddingUnit,
+			contentMarginTop,
+			contentMarginBottom,
+			contentMarginLeft,
+			contentMarginRight,
+			contentMarginUnit,
+			contentColor,
+			contentSize,
+			contentFont,
+			contentLineHeight,
+			contentFontWeight,
+			contentTransform,
 			iconColor,
 			iconSize,
 			innerContainerMaxWidth,
+			backgroundGradient,
+			enableBackgroundGradient,
 		} = attributes;
 
 		let cssObj = [];
@@ -43,7 +79,8 @@ export default class DesktopCSS extends Component {
 			'border-style': 'solid',
 			'border-width': shorthandCSS( borderTop, borderRight, borderBottom, borderLeft, borderUnit ),
 			'border-radius': shorthandCSS( borderRadiusTop, borderRadiusRight, borderRadiusBottom, borderRadiusLeft, borderRadiusUnit ),
-			'border-color': hexToRGBA( borderColor )
+			'border-color': hexToRGBA( borderColor ),
+			'background-color': hexToRGBA( backgroundColor ),
 		} ];
 		cssObj[ `.mr-alert-${uniqueId} .mr-alert-icon-wrapper .mr-alert-icon svg`] = [
 			{
@@ -59,6 +96,38 @@ export default class DesktopCSS extends Component {
 				'margin': '0 auto',
 			}
 		];
+		cssObj[ `.mr-alert-${uniqueId} .mr-alert-title-wrapper ${titleTag}`] = [
+			{
+				'padding': shorthandCSS( titlePaddingTop, titlePaddingRight, titlePaddingBottom, titlePaddingLeft, titlePaddingUnit ),
+				'margin': shorthandCSS( titleMarginTop, titleMarginRight, titleMarginBottom, titleMarginLeft, titleMarginUnit ),
+				'text-transform': titleTransform,
+				'color': hexToRGBA(titleColor),
+				'font-size': valueWithUnit(titleSize, 'px'),
+				'font-family': titleFont,
+				'line-height': valueWithUnit(titleLineHeight, 'em'),
+				'font-weight': titleFontWeight
+			}
+		];
+		cssObj[ `.mr-alert-${uniqueId} .mr-alert-content-wrapper div`] = [ 
+			{
+				'padding': shorthandCSS( contentPaddingTop, contentPaddingRight, contentPaddingBottom, contentPaddingLeft, contentPaddingUnit ),
+				'margin': shorthandCSS( contentMarginTop, contentMarginRight, contentMarginBottom, contentMarginLeft, contentMarginUnit ),
+				'text-transform': contentTransform,
+				'color': hexToRGBA(contentColor),
+				'font-size': valueWithUnit(contentSize, 'px'),
+				'font-family': contentFont,
+				'line-height': valueWithUnit(contentLineHeight, 'em'),
+				'font-weight': contentFontWeight,
+			}
+		];
+		
+
+
+		if ( enableBackgroundGradient ) {
+			cssObj[ '.mr-alert-' + uniqueId ].push( {
+				'background-image': backgroundGradient,
+			})
+		}
 
 		
 

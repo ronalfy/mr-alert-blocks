@@ -222,29 +222,105 @@ function mrabg_register_files_for_gutenberg() {
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'title'              => array(
+				'displayTitle' => array(
+					'type' => 'boolean',
+					'default' => true,
+				),
+				'title'            => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'titleColor'         => array(
+				'titleTag' => array(
+					'type' => 'string',
+					'default' => 'h2',
+				),
+				'titleColor'       => array(
 					'type'    => 'string',
 					'default' => 'inherit',
 				),
-				'titleSize'          => array(
-					'type'    => 'int',
-					'default' => 32,
+				'titleUnit'        => array(
+					'type'    => 'string',
+					'default' => 'px',
 				),
-				'titleFont'          => array(
-					'type'    => 'int',
-					'default' => 32,
-				),
-				'titleTransform'     => array(
+				'titleFont'        => array(
 					'type'    => 'string',
 					'default' => 'inherit',
+				),
+				'titleTransform'   => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'titlePaddingTop'         => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'titlePaddingBottom'      => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'titlePaddingLeft'        => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'titlePaddingRight'       => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'titlePaddingUnit'        => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
+				'titleMarginTop'          => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'titleMarginBottom'       => array(
+					'type'    => 'int',
+					'default' => 15,
+				),
+				'titleMarginLeft'         => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'titleMarginRight'        => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'titleMarginUnit'         => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
+				'titleLineHeight' => array(
+					'type' => 'float',
+					'default' => 1.4,
+				),
+				'titleFontWeight' => array(
+					'type' => 'int',
+					'default' => 700,
+				),
+				'displayButton' => array(
+					'type' => 'boolean',
+					'default' => false,
+				),
+				'displayStyles' => array(
+					'type' => 'boolean',
+					'default' => false,
+				),
+				'enableBackgroundGradient' => array(
+					'type' => 'boolean',
+					'default' => false,
+				),
+				'backgroundGradient' => array(
+					'type' => 'string',
+					'default' => '',
 				),
 				'content'            => array(
 					'type'    => 'string',
 					'default' => '',
+				),
+				'displayContent' => array(
+					'type' => 'boolean',
+					'default' => true,
 				),
 				'contentColor'       => array(
 					'type'    => 'string',
@@ -266,6 +342,51 @@ function mrabg_register_files_for_gutenberg() {
 					'type'    => 'string',
 					'default' => 'inherit',
 				),
+				'contentPaddingTop'         => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'contentPaddingBottom'      => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'contentPaddingLeft'        => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'contentPaddingRight'       => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'contentPaddingUnit'        => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
+				'contentMarginTop'         => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'contentMarginBottom'      => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'contentMarginLeft'        => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'contentMarginRight'       => array(
+					'type'    => 'int',
+					'default' => 0,
+				),
+				'contentMarginUnit'        => array(
+					'type'    => 'string',
+					'default' => 'px',
+				),
+				'contentLineHeight' => array(
+					'type' => 'float',
+					'default' => 1.1,
+				)
+
 			),
 			'render_callback' => 'mrabg_block_notice_output',
 			'editor_script'   => 'mrabg-gutenberg-js',
