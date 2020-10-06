@@ -74,319 +74,454 @@ function mrabg_register_files_for_gutenberg() {
 		'mediaron/alert-boxes',
 		array(
 			'attributes'      => array(
-				'uniqueId'           => array(
+				'uniqueId'                   => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'alertType'          => array(
+				'alertType'                  => array(
 					'type'    => 'string',
 					'default' => 'primary',
 				),
-				'backgroundColor'    => array(
+				'backgroundColor'            => array(
 					'type'    => 'string',
 					'default' => 'inherit',
 				),
-				'dismiss'            => array(
+				'dismiss'                    => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'containerWidth'     => array(
+				'containerWidth'             => array(
 					'type'    => 'string',
 					'default' => 'contained-width',
 				),
-				'containedWidth'     => array(
-					'type'    => 'int',
+				'containedWidth'             => array(
+					'type'    => 'integer',
 					'default' => 1200,
 				),
-				'innerContainerMaxWidth' => array(
-					'type' => 'int',
+				'innerContainerMaxWidth'     => array(
+					'type'    => 'integer',
 					'default' => 800,
 				),
-				'paddingTop'         => array(
-					'type'    => 'int',
+				'paddingTop'                 => array(
+					'type'    => 'integer',
 					'default' => 20,
 				),
-				'paddingBottom'      => array(
-					'type'    => 'int',
+				'paddingBottom'              => array(
+					'type'    => 'integer',
 					'default' => 20,
 				),
-				'paddingLeft'        => array(
-					'type'    => 'int',
+				'paddingLeft'                => array(
+					'type'    => 'integer',
 					'default' => 20,
 				),
-				'paddingRight'       => array(
-					'type'    => 'int',
+				'paddingRight'               => array(
+					'type'    => 'integer',
 					'default' => 20,
 				),
-				'paddingUnit'        => array(
+				'paddingUnit'                => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'containerWidth'     => array(
+				'containerWidth'             => array(
 					'type'    => 'string',
 					'default' => 'full-width',
 				),
-				'containedWidth'     => array(
-					'type'    => 'int',
+				'containedWidth'             => array(
+					'type'    => 'integer',
 					'default' => 800,
 				),
-				'marginTop'          => array(
-					'type'    => 'int',
+				'marginTop'                  => array(
+					'type'    => 'integer',
 					'default' => 15,
 				),
-				'marginBottom'       => array(
-					'type'    => 'int',
+				'marginBottom'               => array(
+					'type'    => 'integer',
 					'default' => 15,
 				),
-				'marginleft'         => array(
-					'type'    => 'int',
+				'marginleft'                 => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'marginRight'        => array(
-					'type'    => 'int',
+				'marginRight'                => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'marginUnit'         => array(
+				'marginUnit'                 => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'borderTop'          => array(
-					'type'    => 'int',
+				'borderTop'                  => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'borderBottom'       => array(
-					'type'    => 'int',
+				'borderBottom'               => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'borderLeft'         => array(
-					'type'    => 'int',
+				'borderLeft'                 => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'borderRight'        => array(
-					'type'    => 'int',
+				'borderRight'                => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'borderUnit'         => array(
+				'borderUnit'                 => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'borderRadiusTop'    => array(
-					'type'    => 'int',
+				'borderRadiusTop'            => array(
+					'type'    => 'integer',
 					'default' => 10,
 				),
-				'borderRadiusBottom' => array(
-					'type'    => 'int',
+				'borderRadiusBottom'         => array(
+					'type'    => 'integer',
 					'default' => 10,
 				),
-				'borderRadiusLeft'   => array(
-					'type'    => 'int',
+				'borderRadiusLeft'           => array(
+					'type'    => 'integer',
 					'default' => 10,
 				),
-				'borderRadiusRight'  => array(
-					'type'    => 'int',
+				'borderRadiusRight'          => array(
+					'type'    => 'integer',
 					'default' => 10,
 				),
-				'borderRadiusUnit'   => array(
+				'borderRadiusUnit'           => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'borderColor'        => array(
+				'borderColor'                => array(
 					'type'    => 'string',
 					'default' => 'inherit',
 				),
-				'iconShow'           => array(
+				'iconShow'                   => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'hasIcon'            => array(
+				'hasIcon'                    => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'svgIcon'            => array(
+				'svgIcon'                    => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'icon'               => array(
+				'icon'                       => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'iconColor'          => array(
+				'iconColor'                  => array(
 					'type'    => 'string',
 					'default' => 'inherit',
 				),
-				'iconSize'           => array(
-					'type'    => 'int',
+				'iconSize'                   => array(
+					'type'    => 'integer',
 					'default' => 30,
 				),
-				'iconUnit'           => array(
+				'iconUnit'                   => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'displayTitle' => array(
-					'type' => 'boolean',
+				'displayTitle'               => array(
+					'type'    => 'boolean',
 					'default' => true,
 				),
-				'title'            => array(
+				'title'                      => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'titleTag' => array(
-					'type' => 'string',
+				'titleTag'                   => array(
+					'type'    => 'string',
 					'default' => 'h2',
 				),
-				'titleColor'       => array(
+				'titleColor'                 => array(
 					'type'    => 'string',
 					'default' => 'inherit',
 				),
-				'titleUnit'        => array(
+				'titleUnit'                  => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'titleFont'        => array(
+				'titleFont'                  => array(
 					'type'    => 'string',
 					'default' => 'inherit',
 				),
-				'titleTransform'   => array(
+				'titleTransform'             => array(
 					'type'    => 'string',
 					'default' => 'inherit',
 				),
-				'titlePaddingTop'         => array(
-					'type'    => 'int',
+				'titlePaddingTop'            => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'titlePaddingBottom'      => array(
-					'type'    => 'int',
+				'titlePaddingBottom'         => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'titlePaddingLeft'        => array(
-					'type'    => 'int',
+				'titlePaddingLeft'           => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'titlePaddingRight'       => array(
-					'type'    => 'int',
+				'titlePaddingRight'          => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'titlePaddingUnit'        => array(
+				'titlePaddingUnit'           => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'titleMarginTop'          => array(
-					'type'    => 'int',
+				'titleMarginTop'             => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'titleMarginBottom'       => array(
-					'type'    => 'int',
+				'titleMarginBottom'          => array(
+					'type'    => 'integer',
 					'default' => 15,
 				),
-				'titleMarginLeft'         => array(
-					'type'    => 'int',
+				'titleMarginLeft'            => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'titleMarginRight'        => array(
-					'type'    => 'int',
+				'titleMarginRight'           => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'titleMarginUnit'         => array(
+				'titleMarginUnit'            => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'titleLineHeight' => array(
-					'type' => 'float',
+				'titleLineHeight'            => array(
+					'type'    => 'float',
 					'default' => 1.4,
 				),
-				'titleFontWeight' => array(
-					'type' => 'int',
+				'titleFontWeight'            => array(
+					'type'    => 'integer',
 					'default' => 700,
 				),
-				'displayButton' => array(
-					'type' => 'boolean',
+				'displayButton'              => array(
+					'type'    => 'boolean',
 					'default' => false,
 				),
-				'displayStyles' => array(
-					'type' => 'boolean',
+				'displayStyles'              => array(
+					'type'    => 'boolean',
 					'default' => false,
 				),
-				'enableBackgroundGradient' => array(
-					'type' => 'boolean',
+				'enableBackgroundGradient'   => array(
+					'type'    => 'boolean',
 					'default' => false,
 				),
-				'backgroundGradient' => array(
-					'type' => 'string',
-					'default' => '',
-				),
-				'content'            => array(
+				'backgroundGradient'         => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'displayContent' => array(
-					'type' => 'boolean',
+				'content'                    => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'displayContent'             => array(
+					'type'    => 'boolean',
 					'default' => true,
 				),
-				'contentColor'       => array(
+				'contentColor'               => array(
 					'type'    => 'string',
 					'default' => 'inherit',
 				),
-				'contentSize'        => array(
-					'type'    => 'int',
+				'contentSize'                => array(
+					'type'    => 'integer',
 					'default' => 18,
 				),
-				'contentUnit'        => array(
+				'contentUnit'                => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'contentFont'        => array(
+				'contentFont'                => array(
 					'type'    => 'string',
 					'default' => 'inherit',
 				),
-				'contentTransform'   => array(
+				'contentTransform'           => array(
 					'type'    => 'string',
 					'default' => 'inherit',
 				),
-				'contentPaddingTop'         => array(
-					'type'    => 'int',
+				'contentPaddingTop'          => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'contentPaddingBottom'      => array(
-					'type'    => 'int',
+				'contentPaddingBottom'       => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'contentPaddingLeft'        => array(
-					'type'    => 'int',
+				'contentPaddingLeft'         => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'contentPaddingRight'       => array(
-					'type'    => 'int',
+				'contentPaddingRight'        => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'contentPaddingUnit'        => array(
+				'contentPaddingUnit'         => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'contentMarginTop'         => array(
-					'type'    => 'int',
+				'contentMarginTop'           => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'contentMarginBottom'      => array(
-					'type'    => 'int',
+				'contentMarginBottom'        => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'contentMarginLeft'        => array(
-					'type'    => 'int',
+				'contentMarginLeft'          => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'contentMarginRight'       => array(
-					'type'    => 'int',
+				'contentMarginRight'         => array(
+					'type'    => 'integer',
 					'default' => 0,
 				),
-				'contentMarginUnit'        => array(
+				'contentMarginUnit'          => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'contentLineHeight' => array(
-					'type' => 'float',
+				'contentLineHeight'          => array(
+					'type'    => 'float',
 					'default' => 1.1,
-				)
-
+				),
+				'url'                        => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'target'                     => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'buttonText'                 => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'buttonPaddingTop'           => array(
+					'type'    => 'integer',
+					'default' => 15,
+				),
+				'buttonPaddingBottom'        => array(
+					'type'    => 'integer',
+					'default' => 15,
+				),
+				'buttonPaddingLeft'          => array(
+					'type'    => 'integer',
+					'default' => 20,
+				),
+				'buttonPaddingRight'         => array(
+					'type'    => 'integer',
+					'default' => 20,
+				),
+				'buttonMarginTop'            => array(
+					'type'    => 'integer',
+					'default' => 0,
+				),
+				'buttonMarginBottom'         => array(
+					'type'    => 'integer',
+					'default' => 0,
+				),
+				'buttonMarginLeft'           => array(
+					'type'    => 'integer',
+					'default' => 0,
+				),
+				'buttonMarginRight'          => array(
+					'type'    => 'integer',
+					'default' => 0,
+				),
+				'buttonBorderColor'          => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'buttonBorderColorHover'     => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'buttonBorderWidth'          => array(
+					'type'    => 'integer',
+					'default' => 2,
+				),
+				'buttonBorderRadiusTop'      => array(
+					'type'    => 'integer',
+					'default' => 10,
+				),
+				'buttonBorderRadiusBottom'   => array(
+					'type'    => 'integer',
+					'default' => 10,
+				),
+				'buttonBorderRadiusLeft'     => array(
+					'type'    => 'integer',
+					'default' => 10,
+				),
+				'buttonBorderRadiusRight'    => array(
+					'type'    => 'integer',
+					'default' => 10,
+				),
+				'buttonTextColor'            => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'buttonTextColorHover'       => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'buttonBackgroundColor'      => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'buttonBackgroundColorHover' => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'buttonIconLocation'         => array(
+					'type'    => 'string',
+					'default' => 'left',
+				),
+				'buttonIconEnabled'          => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'buttonIcon'                 => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'buttonIconHover'            => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'buttonIconColor'            => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'buttonIconColorHover'       => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'buttonIconAnimationHover'   => array(
+					'type'    => 'string',
+					'default' => 'pulse',
+				),
+				'buttonTextTransform' => array(
+					'type' => 'string',
+					'default' => 'inherit',
+				),
+				'buttonFont'                 => array(
+					'type'    => 'string',
+					'default' => 'inherit',
+				),
+				'buttonFontSize'             => array(
+					'type'    => 'integer',
+					'default' => 18,
+				),
+				'buttonLineHeight'           => array(
+					'type'    => 'float',
+					'default' => 1.3,
+				),
+				'buttonFontWeight'           => array(
+					'type'    => 'integer',
+					'default' => 700,
+				),
 			),
 			'render_callback' => 'mrabg_block_notice_output',
 			'editor_script'   => 'mrabg-gutenberg-js',

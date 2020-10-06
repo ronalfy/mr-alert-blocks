@@ -127,6 +127,40 @@ class SABAlerts extends Component {
 			disableStyles,
 			enableBackgroundGradient,
 			backgroundGradient,
+			url, 
+			target,
+			buttonText,
+			buttonTextTransform,
+			buttonPaddingTop,
+			buttonPaddingBottom,
+			buttonPaddingLeft,
+			buttonPaddingRight,
+			buttonMarginTop,
+			buttonMarginBottom,
+			buttonMarginLeft,
+			buttonMarginRight,
+			buttonBorderColor,
+			buttonBorderColorHover,
+			buttonBorderWidth,
+			buttonBorderRadiusTop,
+			buttonBorderRadiusBottom,
+			buttonBorderRadiusLeft,
+			buttonBorderRadiusRight,
+			buttonTextColor,
+			buttonTextColorHover,
+			buttonBackgroundColor,
+			buttonBackgroundColorHover,
+			buttonIconLocation,
+			buttonIconEnabled,
+			buttonIcon,
+			buttonIconHover,
+			buttonIconColor,
+			buttonIconColorHover,
+			buttonIconAnimationHover,
+			buttonFont,
+			buttonFontSize,
+			buttonLineHeight,
+			buttonFontWeight,
 		} = attributes;
 
 		let htmlAttributes = {
@@ -140,7 +174,6 @@ class SABAlerts extends Component {
 		};
 
 		let buttonHtmlAttributes = {
-			id: !! elementId ? elementId : undefined,
 			className: classnames( {
 				'mr-button': true,
 				[ `mr-button-${ uniqueId }` ]: true,
@@ -155,7 +188,6 @@ class SABAlerts extends Component {
 
 		// Available alert types for a dropdown setting.
 		const allTypes = [
-			{ value: "custom", label: "Custom" },
 			{ value: "primary", label: "Primary" },
 			{ value: "secondary", label: "Secondary" },
 			{ value: "success", label: "Success" },
@@ -318,17 +350,8 @@ class SABAlerts extends Component {
 							});
 						}}
 					/>
-					<ToggleControl
-						label={__("Disable Styles?", "post-type-archive-mapping")}
-						checked={disableStyles}
-						onChange={(value) => {
-							setAttributes({
-								disableStyles: value,
-							});
-						}}
-					/>
 				</MRPanelArea>
-				<MRPanelArea
+					<MRPanelArea
 					icon={
 						<svg
 							aria-hidden="true"
@@ -386,6 +409,8 @@ class SABAlerts extends Component {
 						colorSettings={backgroundColorOptions}
 					></PanelColorSettings>
 				</MRPanelArea>
+				
+				
 				<MRPanelArea
 					icon={
 						<svg
@@ -510,6 +535,17 @@ class SABAlerts extends Component {
 						attrLeft={"paddingLeft"}
 						attrUnit={"paddingUnit"}
 						attrSyncUnits={"paddingSyncUnits"}
+					/>
+					<Dimensions
+						{...this.props}
+						type={"margin"}
+						label={__("Alert Container Margin", "generateblocks")}
+						attrTop={"marginTop"}
+						attrRight={"marginRight"}
+						attrBottom={"marginBottom"}
+						attrLeft={"marginLeft"}
+						attrUnit={"marginUnit"}
+						attrSyncUnits={"marginSyncUnits"}
 					/>
 					<Dimensions
 						{...this.props}

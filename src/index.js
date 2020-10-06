@@ -1,5 +1,5 @@
 
-const { __, setLocaleData } = wp.i18n;
+const { __, setLocaleData, _x } = wp.i18n;
 
 const {
 	registerBlockType,

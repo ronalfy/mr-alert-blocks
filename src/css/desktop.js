@@ -1,18 +1,15 @@
 /* eslint-disable quotes */
-import buildCSS from '../utils/build-css';
-import shorthandCSS from '../utils/shorthand-css';
-import hexToRGBA from '../utils/hex-to-rgba';
-import valueWithUnit from '../utils/value-with-unit';
-import getBackgroundImageCSS from '../utils/get-background-image';
+import buildCSS from "../utils/build-css";
+import shorthandCSS from "../utils/shorthand-css";
+import hexToRGBA from "../utils/hex-to-rgba";
+import valueWithUnit from "../utils/value-with-unit";
+import getBackgroundImageCSS from "../utils/get-background-image";
 
 const { Component } = wp.element;
 
 export default class DesktopCSS extends Component {
 	render() {
-		const {
-			attributes,
-			clientId,
-		} = this.props;
+		const { attributes, clientId } = this.props;
 
 		const {
 			uniqueId,
@@ -22,6 +19,11 @@ export default class DesktopCSS extends Component {
 			paddingLeft,
 			paddingRight,
 			paddingUnit,
+			marginTop,
+			marginBottom,
+			marginLeft,
+			marginRight,
+			marginUnit,
 			borderColor,
 			borderTop,
 			borderBottom,
@@ -71,68 +73,222 @@ export default class DesktopCSS extends Component {
 			innerContainerMaxWidth,
 			backgroundGradient,
 			enableBackgroundGradient,
+			buttonTextTransform,
+			buttonPaddingTop,
+			buttonPaddingBottom,
+			buttonPaddingLeft,
+			buttonPaddingRight,
+			buttonMarginTop,
+			buttonMarginBottom,
+			buttonMarginLeft,
+			buttonMarginRight,
+			buttonBorderColor,
+			buttonBorderColorHover,
+			buttonBorderWidth,
+			buttonBorderRadiusTop,
+			buttonBorderRadiusBottom,
+			buttonBorderRadiusLeft,
+			buttonBorderRadiusRight,
+			buttonTextColor,
+			buttonTextColorHover,
+			buttonBackgroundColor,
+			buttonBackgroundColorHover,
+			buttonIconColor,
+			buttonIconColorHover,
+			buttonFont,
+			buttonFontSize,
+			buttonLineHeight,
+			buttonFontWeight,
 		} = attributes;
 
 		let cssObj = [];
-		cssObj[ '.mr-alert-' + uniqueId ] = [ {
-			'padding': shorthandCSS( paddingTop, paddingRight, paddingBottom, paddingLeft, paddingUnit ),
-			'border-style': 'solid',
-			'border-width': shorthandCSS( borderTop, borderRight, borderBottom, borderLeft, borderUnit ),
-			'border-radius': shorthandCSS( borderRadiusTop, borderRadiusRight, borderRadiusBottom, borderRadiusLeft, borderRadiusUnit ),
-			'border-color': hexToRGBA( borderColor ),
-			'background-color': hexToRGBA( backgroundColor ),
-		} ];
-		cssObj[ `.mr-alert-${uniqueId} .mr-alert-icon-wrapper .mr-alert-icon svg`] = [
+		cssObj[".mr-alert-" + uniqueId] = [
 			{
-				'color': hexToRGBA(iconColor),
-				'width': valueWithUnit( iconSize, 'px' ),
-				'height': valueWithUnit( iconSize, 'px' ),
-			}
+				padding: shorthandCSS(
+					paddingTop,
+					paddingRight,
+					paddingBottom,
+					paddingLeft,
+					paddingUnit
+				),
+				margin: shorthandCSS(
+					marginTop,
+					marginRight,
+					marginBottom,
+					marginLeft,
+					marginUnit
+				),
+				"border-style": "solid",
+				"border-width": shorthandCSS(
+					borderTop,
+					borderRight,
+					borderBottom,
+					borderLeft,
+					borderUnit
+				),
+				"border-radius": shorthandCSS(
+					borderRadiusTop,
+					borderRadiusRight,
+					borderRadiusBottom,
+					borderRadiusLeft,
+					borderRadiusUnit
+				),
+			},
 		];
-		cssObj[ `.mr-alert-${uniqueId} .mr-alert-wrapper`] = [
+		if ("inherit" !== borderColor) {
+			cssObj[".mr-alert-" + uniqueId].push({
+				"border-color": hexToRGBA(borderColor),
+			});
+		}
+		if ("inherit" !== backgroundColor) {
+			cssObj[".mr-alert-" + uniqueId].push({
+				"background-color": hexToRGBA(backgroundColor),
+			});
+		}
+		cssObj[
+			`.mr-alert-${uniqueId} .mr-alert-icon-wrapper .mr-alert-icon svg`
+		] = [
 			{
-				'max-width': valueWithUnit(innerContainerMaxWidth, 'px'),
-				'text-align': 'center',
-				'margin': '0 auto',
-			}
+				color: hexToRGBA(iconColor),
+				width: valueWithUnit(iconSize, "px"),
+				height: valueWithUnit(iconSize, "px"),
+			},
 		];
-		cssObj[ `.mr-alert-${uniqueId} .mr-alert-title-wrapper ${titleTag}`] = [
+		cssObj[`.mr-alert-${uniqueId} .mr-alert-wrapper`] = [
 			{
-				'padding': shorthandCSS( titlePaddingTop, titlePaddingRight, titlePaddingBottom, titlePaddingLeft, titlePaddingUnit ),
-				'margin': shorthandCSS( titleMarginTop, titleMarginRight, titleMarginBottom, titleMarginLeft, titleMarginUnit ),
-				'text-transform': titleTransform,
-				'color': hexToRGBA(titleColor),
-				'font-size': valueWithUnit(titleSize, 'px'),
-				'font-family': titleFont,
-				'line-height': valueWithUnit(titleLineHeight, 'em'),
-				'font-weight': titleFontWeight
-			}
+				"max-width": valueWithUnit(innerContainerMaxWidth, "px"),
+				"text-align": "center",
+				margin: "0 auto",
+			},
 		];
-		cssObj[ `.mr-alert-${uniqueId} .mr-alert-content-wrapper div`] = [ 
+		cssObj[`.mr-alert-${uniqueId} .mr-alert-title-wrapper ${titleTag}`] = [
 			{
-				'padding': shorthandCSS( contentPaddingTop, contentPaddingRight, contentPaddingBottom, contentPaddingLeft, contentPaddingUnit ),
-				'margin': shorthandCSS( contentMarginTop, contentMarginRight, contentMarginBottom, contentMarginLeft, contentMarginUnit ),
-				'text-transform': contentTransform,
-				'color': hexToRGBA(contentColor),
-				'font-size': valueWithUnit(contentSize, 'px'),
-				'font-family': contentFont,
-				'line-height': valueWithUnit(contentLineHeight, 'em'),
-				'font-weight': contentFontWeight,
-			}
+				padding: shorthandCSS(
+					titlePaddingTop,
+					titlePaddingRight,
+					titlePaddingBottom,
+					titlePaddingLeft,
+					titlePaddingUnit
+				),
+				margin: shorthandCSS(
+					titleMarginTop,
+					titleMarginRight,
+					titleMarginBottom,
+					titleMarginLeft,
+					titleMarginUnit
+				),
+				"text-transform": titleTransform,
+				color: hexToRGBA(titleColor),
+				"font-size": valueWithUnit(titleSize, "px"),
+				"font-family": titleFont,
+				"line-height": valueWithUnit(titleLineHeight, "em"),
+				"font-weight": titleFontWeight,
+			},
 		];
-		
-
-
-		if ( enableBackgroundGradient ) {
-			cssObj[ '.mr-alert-' + uniqueId ].push( {
-				'background-image': backgroundGradient,
-			})
+		cssObj[`.mr-alert-${uniqueId} .mr-alert-content-wrapper div`] = [
+			{
+				padding: shorthandCSS(
+					contentPaddingTop,
+					contentPaddingRight,
+					contentPaddingBottom,
+					contentPaddingLeft,
+					contentPaddingUnit
+				),
+				margin: shorthandCSS(
+					contentMarginTop,
+					contentMarginRight,
+					contentMarginBottom,
+					contentMarginLeft,
+					contentMarginUnit
+				),
+				"text-transform": contentTransform,
+				color: hexToRGBA(contentColor),
+				"font-size": valueWithUnit(contentSize, "px"),
+				"font-family": contentFont,
+				"line-height": valueWithUnit(contentLineHeight, "em"),
+				"font-weight": contentFontWeight,
+			},
+		];
+		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a`] = [
+			{
+				padding: shorthandCSS(
+					buttonPaddingTop,
+					buttonPaddingRight,
+					buttonPaddingBottom,
+					buttonPaddingLeft,
+					"px"
+				),
+				margin: shorthandCSS(
+					buttonMarginTop,
+					buttonMarginRight,
+					buttonMarginBottom,
+					buttonMarginLeft,
+					"px"
+				),
+				"border-width": valueWithUnit(buttonBorderWidth, "px"),
+				"border-radius": shorthandCSS(
+					buttonBorderRadiusTop,
+					buttonBorderRadiusRight,
+					buttonBorderRadiusBottom,
+					buttonBorderRadiusLeft,
+					"px"
+				),
+				"text-transform": buttonTextTransform,
+				"font-size": valueWithUnit(buttonFontSize, "px"),
+				"font-family": buttonFont,
+				"line-height": valueWithUnit(buttonLineHeight, "em"),
+				"font-weight": buttonFontWeight,
+			},
+		];
+		if ("inherit" !== buttonBorderColor) {
+			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a`].push({
+				"border-color": buttonBorderColor,
+			});
+		}
+		if ("inherit" !== buttonBorderColorHover) {
+			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover`].push({
+				"border-color": buttonBorderColorHover,
+			});
+		}
+		if ("inherit" !== buttonTextColor) {
+			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a`].push({
+				color: buttonTextColor,
+			});
+		}
+		if ("inherit" !== buttonTextColorHover) {
+			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover`].push({
+				color: buttonTextColorHover,
+			});
+		}
+		if ("inherit" !== buttonBackgroundColor) {
+			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a`].push({
+				"background-color": buttonBackgroundColor,
+			});
+		}
+		if ("inherit" !== buttonBackgroundColorHover) {
+			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover`].push({
+				"background-color": buttonBackgroundColorHover,
+			});
+		}
+		if ("inherit" !== buttonIconColor) {
+			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a svg`].push({
+				fill: buttonIconColor,
+			});
+		}
+		if ("inherit" !== buttonIconColorHover) {
+			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover svg`].push(
+				{
+					fill: buttonIconColorHover,
+				}
+			);
 		}
 
-		
+		if (enableBackgroundGradient) {
+			cssObj[".mr-alert-" + uniqueId].push({
+				"background-image": backgroundGradient,
+			});
+		}
 
-		return (
-			<style>{ buildCSS( cssObj ) }</style>
-		);
+		return <style>{buildCSS(cssObj)}</style>;
 	}
 }
