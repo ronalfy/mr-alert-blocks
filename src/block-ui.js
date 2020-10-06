@@ -391,6 +391,20 @@ class SABAlerts extends Component {
 						initialOpen={false}
 					>
 						<IconPicker {...this.props} attrIcon={"svgIcon"} />
+						<RangeControl
+							label={__('Icon Size', 'mr-alert-blocks')}
+							value={iconSize}
+							onChange={value => {
+								setAttributes({
+									iconSize: value,
+								})
+							}}
+							min={25}
+							max={500}
+							allowReset={true}
+							initialPosition={45}
+							step={1}
+						/>
 					</MRPanelArea>
 				)}
 			</InspectorControls>
