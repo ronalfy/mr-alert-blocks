@@ -243,18 +243,19 @@ export default class DesktopCSS extends Component {
 				"font-weight": buttonFontWeight,
 			},
 		];
-		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a svg`] = [];
+		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a .mr-alert-icon svg`] = [];
 		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover`] = [];
-		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover svg`] = [];
+		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover .mr-alert-icon svg`] = [];
 
-		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover svg`].push( {
-			"width": buttonIconSize,
-			"height": buttonIconSize,
+		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a .mr-alert-icon svg`].push( {
+			"width": valueWithUnit(buttonIconSize, "px"),
+			"height": valueWithUnit(buttonIconSize, "px"),
 		});
 		
 		if ("inherit" !== buttonBorderColor) {
 			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a`].push({
 				"border-color": buttonBorderColor,
+				"transition": "all 0.4s ease"
 			});
 		}
 		if ("inherit" !== buttonBorderColorHover) {
@@ -283,14 +284,14 @@ export default class DesktopCSS extends Component {
 			});
 		}
 		if ("inherit" !== buttonIconColor) {
-			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a svg`].push({
-				fill: buttonIconColor,
+			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a .mr-alert-icon svg`].push({
+				color: buttonIconColor,
 			});
 		}
 		if ("inherit" !== buttonIconColorHover) {
-			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover svg`].push(
+			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover .mr-alert-icon svg`].push(
 				{
-					fill: buttonIconColorHover,
+					color: buttonIconColorHover,
 				}
 			);
 		}

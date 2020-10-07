@@ -144,6 +144,68 @@ button.components-icon-picker-item {
   .block-editor-block-inspector .gb-icon-chooser .components-panel__body:last-child {
     border-bottom: 1px solid #ddd; }
 
+.gblocks-component-url-input {
+  width: 100%;
+  margin-top: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  background: #fff;
+  border: 1px solid #e2e4e7;
+  color: #000; }
+  .gblocks-component-url-input .gblocks-component-url-input-flex {
+    display: flex;
+    align-items: center; }
+    .gblocks-component-url-input .gblocks-component-url-input-flex .editor-url-input {
+      width: auto; }
+      .gblocks-component-url-input .gblocks-component-url-input-flex .editor-url-input input[type="text"] {
+        width: 100%; }
+    .gblocks-component-url-input .gblocks-component-url-input-flex .editor-url-input input[type="text"]::placeholder {
+      color: #222; }
+    .gblocks-component-url-input .gblocks-component-url-input-flex > .dashicon {
+      width: 20px;
+      color: #222; }
+    .gblocks-component-url-input .gblocks-component-url-input-flex .components-base-control__field {
+      margin-bottom: 0; }
+  .gblocks-component-url-input .gblocks-component-url-input-more-options {
+    padding: 10px;
+    border-top: 1px solid #e2e4e7; }
+    .gblocks-component-url-input .gblocks-component-url-input-more-options .components-base-control {
+      margin-bottom: 5px; }
+    .gblocks-component-url-input .gblocks-component-url-input-more-options .components-base-control .components-base-control__field {
+      margin-bottom: 0; }
+    .gblocks-component-url-input .gblocks-component-url-input-more-options .components-base-control:last-child {
+      margin-bottom: 0; }
+
+.gblocks-component-url-input-float {
+  position: absolute;
+  min-width: 260px;
+  max-width: 260px;
+  box-shadow: 0 3px 30px rgba(25, 30, 35, 0.1);
+  z-index: 150; }
+  .gblocks-component-url-input-float::after, .gblocks-component-url-input-float::before {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 20px;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    border: solid transparent; }
+  .gblocks-component-url-input-float::after {
+    border: 5px solid rgba(255, 255, 255, 0);
+    border-bottom-color: #fff; }
+  .gblocks-component-url-input-float::before {
+    margin-left: -1px;
+    border: 6px solid rgba(226, 228, 231, 0);
+    border-bottom-color: #e2e4e7; }
+  .gblocks-component-url-input-float .editor-url-input__suggestions {
+    max-width: 300px; }
+
+.block-editor-block-list__block .gblocks-component-url-input-flex input[type="text"] {
+  max-width: 100%;
+  width: 100%; }
+
 .alert-primary {
   color: #004085;
   background-color: #cce5ff;

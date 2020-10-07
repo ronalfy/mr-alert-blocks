@@ -5,6 +5,7 @@ import { uniqueId } from "lodash";
 import classnames from "classnames";
 import DesktopCSS from "./css/desktop.js";
 import IconPicker from "./components/icon-picker";
+import URLInput from './components/url-input';
 import sanitizeSVG from "./utils/sanitize-svg";
 
 const { Component, Fragment, cloneElement } = wp.element;
@@ -50,7 +51,7 @@ class SABAlerts extends Component {
 	};
 
 	render() {
-		const { attributes, setAttributes } = this.props;
+		const { attributes, setAttributes, isSelected } = this.props;
 		const {
 			uniqueId,
 			alertType,
@@ -138,6 +139,8 @@ class SABAlerts extends Component {
 			buttonMarginTop,
 			buttonMarginBottom,
 			buttonMarginLeft,
+			buttonIcon,
+			buttonIconHover,
 			buttonMarginRight,
 			buttonBorderColor,
 			buttonBorderColorHover,
@@ -153,8 +156,6 @@ class SABAlerts extends Component {
 			buttonIconSize,
 			buttonIconLocation,
 			buttonIconEnabled,
-			buttonIcon,
-			buttonIconHover,
 			buttonIconColor,
 			buttonIconColorHover,
 			buttonIconAnimationHover,
@@ -1157,60 +1158,23 @@ class SABAlerts extends Component {
 										setAttributes({ buttonIconLocation: value });
 									}}
 								/>
-								<TabPanel
-									className="mr-alert-control-tabs"
-									activeClass="active-tab"
-									tabs={[
-										{
-											name: "icon-normal",
-											title: __("Normal", "generateblocks"),
-											className: "button-icon-normal",
-										},
-										{
-											name: "icon-hover",
-											title: __("Hover", "generateblocks"),
-											className: "button-icon-hover",
-										},
-									]}
-								>
-									{(tab) => {
-										const isNormal = tab.name === "button-icon-normal";
-
-										return (
-											<div>
-												{isNormal ? (
-													<Fragment>
-														<IconPicker
-															{...this.props}
-															attrIcon={"buttonIcon"}
-														/>
-														<RangeControl
-															label={__("Icon Size", "mr-alert-blocks")}
-															value={buttonIconSize}
-															onChange={(value) => {
-																setAttributes({
-																	buttonIconSize: value,
-																});
-															}}
-															min={25}
-															max={500}
-															allowReset={true}
-															initialPosition={45}
-															step={1}
-														/>
-													</Fragment>
-												) : (
-													<Fragment>
-														<IconPicker
-															{...this.props}
-															attrIcon={"butttonIconHover"}
-														/>
-													</Fragment>
-												)}
-											</div>
-										);
+								<RangeControl
+									label={__("Icon Size", "mr-alert-blocks")}
+									value={buttonIconSize}
+									onChange={(value) => {
+										setAttributes({
+											buttonIconSize: value,
+										});
 									}}
-								</TabPanel>
+									min={1}
+									max={500}
+									allowReset={true}
+									initialPosition={25}
+									step={1}
+								/>
+								<Fragment>
+									<IconPicker {...this.props} attrIcon={"buttonIcon"} />
+								</Fragment>
 							</Fragment>
 						)}
 					</MRPanelArea>
@@ -1263,6 +1227,16 @@ class SABAlerts extends Component {
 						{displayButton && (
 							<div className="mr-alert-button-wrapper">
 								<a {...buttonHtmlAttributes}>
+									{buttonIconEnabled && (
+										<Fragment>
+											<span
+												className="mr-alert-icon"
+												dangerouslySetInnerHTML={{
+													__html: sanitizeSVG(buttonIcon),
+												}}
+											/>
+										</Fragment>
+									)}
 									<RichText
 										value={buttonText}
 										onChange={(value) => {
@@ -1272,9 +1246,21 @@ class SABAlerts extends Component {
 										}}
 										tagName="span"
 										placeholder={__("Button text...", "mr-alert-blocks")}
+										isSelected={isSelected}
 										allowedFormats={[]}
 									/>
 								</a>
+								{isSelected && (
+									<URLInput
+										url={url}
+										target={target}
+										onChange={(data) => {
+											setAttributes(data);
+										}}
+										autoFocus={false} // eslint-disable-line jsx-a11y/no-autofocus
+										className="gblocks-component-url-input-float"
+									/>
+								)}
 							</div>
 						)}
 					</div>
