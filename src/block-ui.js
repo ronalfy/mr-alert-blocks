@@ -1211,19 +1211,21 @@ class SABAlerts extends Component {
 								/>
 							</div>
 						)}
-						<div className="mr-alert-content-wrapper">
-							<RichText
-								value={content}
-								onChange={(value) => {
-									setAttributes({
-										content: value,
-									});
-								}}
-								tagName="div"
-								placeholder={__("Enter your alert text", "mr-alert-blocks")}
-								allowedFormats={["core/link"]}
-							/>
-						</div>
+						{displayContent &&
+							<div className="mr-alert-content-wrapper">
+								<RichText
+									value={content}
+									onChange={(value) => {
+										setAttributes({
+											content: value,
+										});
+									}}
+									tagName="div"
+									placeholder={__("Enter your alert text", "mr-alert-blocks")}
+									allowedFormats={["core/link", "core/bold"]}
+								/>
+							</div>
+						}
 						{displayButton && (
 							<div className="mr-alert-button-wrapper">
 								<a {...buttonHtmlAttributes}>

@@ -8,7 +8,6 @@ const {
 } = wp.blocks;
 
 import blockUI from './block-ui.js'
-import output from './output.js'
 
 const {
 	SelectControl,
@@ -20,7 +19,6 @@ const {
 	InspectorControls,
 	RichText,
 } = wp.editor;
-console.log(svgs);
 registerBlockType ( 'mediaron/alert-boxes', {
 		title: __( 'MR Alert Box', 'mr-alert-blocks'  ),
 		description: __( 'A block for alert boxes', 'mr-alert-blocks' ),
