@@ -1,11 +1,14 @@
 
 const { __, setLocaleData, _x } = wp.i18n;
+import svgs from './components/icon-picker/svgs-fa.js';
+import sanitizeSVG from "./utils/sanitize-svg";
 
 const {
 	registerBlockType,
 } = wp.blocks;
 
 import blockUI from './block-ui.js'
+import output from './output.js'
 
 const {
 	SelectControl,
@@ -17,7 +20,7 @@ const {
 	InspectorControls,
 	RichText,
 } = wp.editor;
-
+console.log(svgs);
 registerBlockType ( 'mediaron/alert-boxes', {
 		title: __( 'MR Alert Box', 'mr-alert-blocks'  ),
 		description: __( 'A block for alert boxes', 'mr-alert-blocks' ),
@@ -39,7 +42,10 @@ registerBlockType ( 'mediaron/alert-boxes', {
 		},
 		example: {
 			attributes: {
-				'preview' : true,
+				'alertType' : 'primary',
+				'content': 'This is content you should be alerted to.',
+				'title': 'Recent News!'
+
 			},
 		},
 		edit: blockUI,

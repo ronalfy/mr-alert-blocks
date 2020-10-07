@@ -589,7 +589,11 @@ function mrabg_get_fonts() {
  * @return string block output.
  */
 function mrabg_block_notice_output( $attributes ) {
-	return 'hi';
+	if ( is_admin() ) {
+		return;
+	}
+	$svg_icon = $attributes['svgIcon'];
+	die( $svg_icon );
 }
 /** Enqueue Script and Style if the post has a block only. */
 function mrabg_enqueue_styles_scripts() {

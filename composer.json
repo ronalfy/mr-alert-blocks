@@ -1,0 +1,15 @@
+{
+    "name": "mediarorn/mr-alert-blocks",
+    "description": "Dependencies for MR Alert Blocks",
+    "type": "project",
+    "require": {
+        "enshrined/svg-sanitize": "^0.13.3"
+    },
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Ronald Huereca a",
+            "email": "ronald@mediaron.com"
+        }
+    ]
+}
