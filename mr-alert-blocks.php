@@ -95,27 +95,27 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 'contained-width',
 				),
 				'containedWidth'             => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 1200,
 				),
 				'innerContainerMaxWidth'     => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 800,
 				),
 				'paddingTop'                 => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 20,
 				),
 				'paddingBottom'              => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 20,
 				),
 				'paddingLeft'                => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 20,
 				),
 				'paddingRight'               => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 20,
 				),
 				'paddingUnit'                => array(
@@ -127,23 +127,23 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 'full-width',
 				),
 				'containedWidth'             => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 800,
 				),
 				'marginTop'                  => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 15,
 				),
 				'marginBottom'               => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 15,
 				),
 				'marginleft'                 => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'marginRight'                => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'marginUnit'                 => array(
@@ -151,19 +151,19 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 'px',
 				),
 				'borderTop'                  => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'borderBottom'               => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'borderLeft'                 => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'borderRight'                => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'borderUnit'                 => array(
@@ -171,19 +171,19 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 'px',
 				),
 				'borderRadiusTop'            => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 10,
 				),
 				'borderRadiusBottom'         => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 10,
 				),
 				'borderRadiusLeft'           => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 10,
 				),
 				'borderRadiusRight'          => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 10,
 				),
 				'borderRadiusUnit'           => array(
@@ -215,7 +215,7 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 'inherit',
 				),
 				'iconSize'                   => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 30,
 				),
 				'iconUnit'                   => array(
@@ -251,19 +251,19 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 'inherit',
 				),
 				'titlePaddingTop'            => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'titlePaddingBottom'         => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'titlePaddingLeft'           => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'titlePaddingRight'          => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'titlePaddingUnit'           => array(
@@ -271,19 +271,19 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 'px',
 				),
 				'titleMarginTop'             => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'titleMarginBottom'          => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 15,
 				),
 				'titleMarginLeft'            => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'titleMarginRight'           => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'titleMarginUnit'            => array(
@@ -295,7 +295,7 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 1.4,
 				),
 				'titleFontWeight'            => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 700,
 				),
 				'displayButton'              => array(
@@ -327,7 +327,7 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 'inherit',
 				),
 				'contentSize'                => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 18,
 				),
 				'contentUnit'                => array(
@@ -343,19 +343,19 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 'inherit',
 				),
 				'contentPaddingTop'          => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'contentPaddingBottom'       => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'contentPaddingLeft'         => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'contentPaddingRight'        => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'contentPaddingUnit'         => array(
@@ -363,19 +363,19 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 'px',
 				),
 				'contentMarginTop'           => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'contentMarginBottom'        => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'contentMarginLeft'          => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'contentMarginRight'         => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'contentMarginUnit'          => array(
@@ -399,35 +399,35 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => '',
 				),
 				'buttonPaddingTop'           => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 15,
 				),
 				'buttonPaddingBottom'        => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 15,
 				),
 				'buttonPaddingLeft'          => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 20,
 				),
 				'buttonPaddingRight'         => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 20,
 				),
 				'buttonMarginTop'            => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'buttonMarginBottom'         => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'buttonMarginLeft'           => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'buttonMarginRight'          => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'buttonBorderColor'          => array(
@@ -439,23 +439,23 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 'inherit',
 				),
 				'buttonBorderWidth'          => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 2,
 				),
 				'buttonBorderRadiusTop'      => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 10,
 				),
 				'buttonBorderRadiusBottom'   => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 10,
 				),
 				'buttonBorderRadiusLeft'     => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 10,
 				),
 				'buttonBorderRadiusRight'    => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 10,
 				),
 				'buttonTextColor'            => array(
@@ -473,6 +473,10 @@ function mrabg_register_files_for_gutenberg() {
 				'buttonBackgroundColorHover' => array(
 					'type'    => 'string',
 					'default' => 'inherit',
+				),
+				'buttonIconSize' => array(
+					'type' => 'int',
+					'default' => 18,
 				),
 				'buttonIconLocation'         => array(
 					'type'    => 'string',
@@ -511,7 +515,7 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 'inherit',
 				),
 				'buttonFontSize'             => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 18,
 				),
 				'buttonLineHeight'           => array(
@@ -519,7 +523,7 @@ function mrabg_register_files_for_gutenberg() {
 					'default' => 1.3,
 				),
 				'buttonFontWeight'           => array(
-					'type'    => 'integer',
+					'type'    => 'int',
 					'default' => 700,
 				),
 			),

@@ -127,7 +127,7 @@ class SABAlerts extends Component {
 			disableStyles,
 			enableBackgroundGradient,
 			backgroundGradient,
-			url, 
+			url,
 			target,
 			buttonText,
 			buttonTextTransform,
@@ -150,6 +150,7 @@ class SABAlerts extends Component {
 			buttonTextColorHover,
 			buttonBackgroundColor,
 			buttonBackgroundColorHover,
+			buttonIconSize,
 			buttonIconLocation,
 			buttonIconEnabled,
 			buttonIcon,
@@ -174,13 +175,13 @@ class SABAlerts extends Component {
 		};
 
 		let buttonHtmlAttributes = {
-			className: classnames( {
-				'mr-button': true,
-				[ `mr-button-${ uniqueId }` ]: true,
+			className: classnames({
+				"mr-button": true,
+				[`mr-button-${uniqueId}`]: true,
 				[`mr-alert-type-${alertType}`]: true,
-			} ),
-			href: !! url ? url : undefined,
-			target: !! target ? '_blank' : undefined,
+			}),
+			href: !!url ? url : undefined,
+			target: !!target ? "_blank" : undefined,
 		};
 
 		// SVG Icon fill.
@@ -230,6 +231,12 @@ class SABAlerts extends Component {
 			{ value: "900", label: __("900", "post-type-archive-mapping") },
 		];
 
+		const buttonIconLocationOptions = [
+			{ value: "left", label: __("Left", "post-type-archive-mapping") },
+			{ value: "above", label: __("Above", "post-type-archive-mapping") },
+			{ value: "right", label: __("Right", "post-type-archive-mapping") },
+		];
+
 		let backgroundColorOptions = [];
 
 		if (!enableBackgroundGradient && __experimentalGradientPickerControl) {
@@ -263,6 +270,62 @@ class SABAlerts extends Component {
 			}
 		);
 
+		let buttonColorOptions = [];
+		buttonColorOptions.push(
+			{
+				value: buttonBackgroundColor,
+				onChange: (colorValue) =>
+					setAttributes({ buttonBackgroundColor: colorValue }),
+				label: __("Background Color", "mr-alert-blocks"),
+			},
+			{
+				value: buttonIconColor,
+				onChange: (colorValue) =>
+					setAttributes({ buttonIconColor: colorValue }),
+				label: __("Icon Color", "mr-alert-blocks"),
+			},
+			{
+				value: buttonBorderColor,
+				onChange: (colorValue) =>
+					setAttributes({ buttonBorderColor: colorValue }),
+				label: __("Border Color", "mr-alert-blocks"),
+			},
+			{
+				value: buttonTextColor,
+				onChange: (colorValue) =>
+					setAttributes({ buttonTextColor: colorValue }),
+				label: __("Text Color", "mr-alert-blocks"),
+			}
+		);
+
+		let buttonColorOptionsHover = [];
+		buttonColorOptionsHover.push(
+			{
+				value: buttonBackgroundColorHover,
+				onChange: (colorValue) =>
+					setAttributes({ buttonBackgroundColorHover: colorValue }),
+				label: __("Background Color", "mr-alert-blocks"),
+			},
+			{
+				value: buttonIconColorHover,
+				onChange: (colorValue) =>
+					setAttributes({ buttonIconColorHover: colorValue }),
+				label: __("Icon Color", "mr-alert-blocks"),
+			},
+			{
+				value: buttonBorderColorHover,
+				onChange: (colorValue) =>
+					setAttributes({ buttonBorderColorHover: colorValue }),
+				label: __("Border Color", "mr-alert-blocks"),
+			},
+			{
+				value: buttonTextColorHover,
+				onChange: (colorValue) =>
+					setAttributes({ buttonTextColorHover: colorValue }),
+				label: __("Text Color", "mr-alert-blocks"),
+			}
+		);
+
 		// Fonts
 		let fontOptions = [];
 		let fonts = mrabg.fonts;
@@ -289,12 +352,13 @@ class SABAlerts extends Component {
 									class="fa-secondary"
 									fill={svgFill}
 									d="M569.52 440L329.58 24c-18.44-32-64.69-32-83.16 0L6.48 440c-18.42 31.94 4.64 72 41.57 72h479.89c36.87 0 60.06-40 41.58-72zM288 448a32 32 0 1 1 32-32 32 32 0 0 1-32 32zm38.24-238.41l-12.8 128A16 16 0 0 1 297.52 352h-19a16 16 0 0 1-15.92-14.41l-12.8-128A16 16 0 0 1 265.68 192h44.64a16 16 0 0 1 15.92 17.59z"
-									opacity="0.4"
+									opacity="0.2"
 								></path>
 								<path
 									class="fa-primary"
 									fill={svgFill}
 									d="M310.32 192h-44.64a16 16 0 0 0-15.92 17.59l12.8 128A16 16 0 0 0 278.48 352h19a16 16 0 0 0 15.92-14.41l12.8-128A16 16 0 0 0 310.32 192zM288 384a32 32 0 1 0 32 32 32 32 0 0 0-32-32z"
+									opacity="0.6"
 								></path>
 							</g>
 						</svg>
@@ -351,7 +415,7 @@ class SABAlerts extends Component {
 						}}
 					/>
 				</MRPanelArea>
-					<MRPanelArea
+				<MRPanelArea
 					icon={
 						<svg
 							aria-hidden="true"
@@ -368,12 +432,13 @@ class SABAlerts extends Component {
 									class="fa-secondary"
 									fill={svgFill}
 									d="M204.29 5c-99.4 19.4-179.5 99.29-199.1 198.4-37 187 131.7 326.39 258.8 306.69 41.2-6.4 61.4-54.59 42.5-91.69-23.1-45.4 9.9-98.4 60.9-98.4h79.7c35.8 0 64.8-29.6 64.9-65.31C511.49 97.13 368.09-26.87 204.29 5zM96 320a32 32 0 1 1 32-32 32 32 0 0 1-32 32zm32-128a32 32 0 1 1 32-32 32 32 0 0 1-32 32zm128-64a32 32 0 1 1 32-32 32 32 0 0 1-32 32zm128 64a32 32 0 1 1 32-32 32 32 0 0 1-32 32z"
-									opacity="0.4"
+									opacity="0.2"
 								></path>
 								<path
 									class="fa-primary"
 									fill={svgFill}
 									d="M96 256a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm32-128a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm128-64a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm128 64a32 32 0 1 0 32 32 32 32 0 0 0-32-32z"
+									opacity="0.6"
 								></path>
 							</g>
 						</svg>
@@ -409,8 +474,7 @@ class SABAlerts extends Component {
 						colorSettings={backgroundColorOptions}
 					></PanelColorSettings>
 				</MRPanelArea>
-				
-				
+
 				<MRPanelArea
 					icon={
 						<svg
@@ -428,12 +492,13 @@ class SABAlerts extends Component {
 									class="fa-secondary"
 									fill={svgFill}
 									d="M0 200V64a32 32 0 0 1 32-32h136a23.94 23.94 0 0 1 24 24v15.3a24 24 0 0 1-24.7 24L101 93.4l123 123-39.6 39.6-123-123 1.9 66.3a24 24 0 0 1-24 24.7H24a23.94 23.94 0 0 1-24-24zm424 88h-15.3a24 24 0 0 0-24 24.7l1.9 66.3-123-123-39.6 39.6 123 123-66.3-1.9a24 24 0 0 0-24.7 24V456a23.94 23.94 0 0 0 24 24h136a32 32 0 0 0 32-32V312a23.94 23.94 0 0 0-24-24z"
-									opacity="0.4"
+									opacity="0.2"
 								></path>
 								<path
 									class="fa-primary"
 									fill={svgFill}
 									d="M101 418.6l66.3-1.9a24 24 0 0 1 24.7 24V456a23.94 23.94 0 0 1-24 24H32a32 32 0 0 1-32-32V312a23.94 23.94 0 0 1 24-24h15.3a24 24 0 0 1 24 24.7L61.4 379 347 93.4l-66.3 1.9a24 24 0 0 1-24.7-24V56a23.94 23.94 0 0 1 24-24h136a32 32 0 0 1 32 32v136a23.94 23.94 0 0 1-24 24h-15.3a24 24 0 0 1-24-24.7l1.9-66.3z"
+									opacity="0.6"
 								></path>
 							</g>
 						</svg>
@@ -512,12 +577,13 @@ class SABAlerts extends Component {
 									class="fa-secondary"
 									fill={svgFill}
 									d="M405.66 288H106.34l-33.77-32 33.77-32h299.32l33.77 32z"
-									opacity="0.4"
+									opacity="0.2"
 								></path>
 								<path
 									class="fa-primary"
 									fill={svgFill}
 									d="M358.59 146.37a23.93 23.93 0 0 0 .94 33.92l79.9 75.71-79.9 75.71a23.93 23.93 0 0 0-.94 33.92L369.9 377a24.15 24.15 0 0 0 34.1 0l98.65-98.36a31.92 31.92 0 0 0 0-45.24L404 135a24.15 24.15 0 0 0-34.05 0zM153.41 365.63a23.93 23.93 0 0 0-.94-33.92L72.57 256l79.9-75.71a23.93 23.93 0 0 0 .94-33.92L142.1 135a24.15 24.15 0 0 0-34 0L9.4 233.38a31.92 31.92 0 0 0 0 45.24L108.05 377a24.15 24.15 0 0 0 34.05 0z"
+									opacity="0.6"
 								></path>
 							</g>
 						</svg>
@@ -549,7 +615,7 @@ class SABAlerts extends Component {
 					/>
 					<Dimensions
 						{...this.props}
-						type={"border"}
+						type={"padding"}
 						label={__("Border Width", "generateblocks")}
 						attrTop={"borderTop"}
 						attrRight={"borderRight"}
@@ -560,7 +626,7 @@ class SABAlerts extends Component {
 					/>
 					<Dimensions
 						{...this.props}
-						type={"borderRadius"}
+						type={"padding"}
 						label={__("Border Radius", "generateblocks")}
 						attrTop={"borderRadiusTop"}
 						attrRight={"borderRadiusRight"}
@@ -588,12 +654,13 @@ class SABAlerts extends Component {
 										class="fa-secondary"
 										fill={svgFill}
 										d="M448 0H64A64.06 64.06 0 0 0 0 64v288a64.06 64.06 0 0 0 64 64h96v84a12 12 0 0 0 19.1 9.7L304 416h144a64.06 64.06 0 0 0 64-64V64a64.06 64.06 0 0 0-64-64zm-77.9 163.8l-131 130a11 11 0 0 1-15.6-.1l-75.7-76.3a11 11 0 0 1 .1-15.6l26-25.8a11 11 0 0 1 15.6.1l42.1 42.5 97.2-96.4a11 11 0 0 1 15.6.1l25.8 26a11 11 0 0 1-.1 15.5z"
-										opacity="0.4"
+										opacity="0.2"
 									></path>
 									<path
 										class="fa-primary"
 										fill={svgFill}
 										d="M370.1 163.8l-131 130a11 11 0 0 1-15.6-.1l-75.7-76.3a11 11 0 0 1 .1-15.6l26-25.8a11 11 0 0 1 15.6.1l42.1 42.5 97.2-96.4a11 11 0 0 1 15.6.1l25.8 26a11 11 0 0 1-.1 15.5z"
+										opacity="0.6"
 									></path>
 								</g>
 							</svg>
@@ -636,11 +703,12 @@ class SABAlerts extends Component {
 										class="fa-secondary"
 										fill={svgFill}
 										d="M480 32H320a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zm-288 0H32a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zm0 384H32a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm288 0H320a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z"
-										opacity="0.4"
+										opacity="0.2"
 									></path>
 									<path
 										class="fa-primary"
 										fill={svgFill}
+										opacity="0.6"
 										d="M352 96h96v320h-96V288H160v128H64V96h96v128h192z"
 									></path>
 								</g>
@@ -749,11 +817,12 @@ class SABAlerts extends Component {
 										class="fa-secondary"
 										fill={svgFill}
 										d="M368 96v368a16 16 0 0 1-16 16h-32a16 16 0 0 1-16-16V96z"
-										opacity="0.4"
+										opacity="0.2"
 									></path>
 									<path
 										class="fa-primary"
 										fill={svgFill}
+										opacity="0.6"
 										d="M432 48v32a16 16 0 0 1-16 16H272v368a16 16 0 0 1-16 16h-32a16 16 0 0 1-16-16V352h-32a160 160 0 0 1 0-320h240a16 16 0 0 1 16 16z"
 									></path>
 								</g>
@@ -854,12 +923,13 @@ class SABAlerts extends Component {
 										class="fa-secondary"
 										fill={svgFill}
 										d="M464 64H48a48 48 0 0 0-48 48v288a48 48 0 0 0 48 48h416a48 48 0 0 0 48-48V112a48 48 0 0 0-48-48zm-16 304a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16V144a16 16 0 0 1 16-16h352a16 16 0 0 1 16 16z"
-										opacity="0.4"
+										opacity="0.2"
 									></path>
 									<path
 										class="fa-primary"
 										fill={svgFill}
 										d="M64 368V144a16 16 0 0 1 16-16h352a16 16 0 0 1 16 16v224a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16z"
+										opacity="0.6"
 									></path>
 								</g>
 							</svg>
@@ -871,47 +941,68 @@ class SABAlerts extends Component {
 							<Dimensions
 								{...this.props}
 								type={"padding"}
-								label={__("Content Padding", "generateblocks")}
-								attrTop={"contentPaddingTop"}
-								attrRight={"contentPaddingRight"}
-								attrBottom={"contentPaddingBottom"}
-								attrLeft={"contentPaddingLeft"}
-								attrUnit={"contentPaddingUnit"}
-								attrSyncUnits={"contentPaddingSyncUnits"}
+								label={__("Button Padding", "generateblocks")}
+								attrTop={"buttonPaddingTop"}
+								attrRight={"buttonPaddingRight"}
+								attrBottom={"buttonPaddingBottom"}
+								attrLeft={"buttonPaddingLeft"}
+								attrUnit={"buttonPaddingUnit"}
+								attrSyncUnits={"buttonPaddingSyncUnits"}
 							/>
 							<Dimensions
 								{...this.props}
 								type={"margin"}
-								label={__("Content Margin", "generateblocks")}
-								attrTop={"contentMarginTop"}
-								attrRight={"contentMarginRight"}
-								attrBottom={"contentMarginBottom"}
-								attrLeft={"contentMarginLeft"}
-								attrUnit={"contentMarginUnit"}
-								attrSyncUnits={"contentMarginSyncUnits"}
+								label={__("Button Margin", "generateblocks")}
+								attrTop={"buttonMarginTop"}
+								attrRight={"buttonMarginRight"}
+								attrBottom={"buttonMarginBottom"}
+								attrLeft={"buttonMarginLeft"}
+								attrUnit={"buttonMarginUnit"}
+								attrSyncUnits={"buttonMarginSyncUnits"}
+							/>
+							<TextControl
+								label={__("Border Width", "mr-alert-blocks")}
+								onChange={(value) => {
+									setAttributes({
+										buttonBorderWidth: value,
+									});
+								}}
+								value={buttonBorderWidth}
+								type="number"
+							/>
+							<Dimensions
+								{...this.props}
+								type={"padding"}
+								label={__("Border Radius", "generateblocks")}
+								attrTop={"buttonBorderRadiusTop"}
+								attrRight={"buttonBorderRadiusRight"}
+								attrBottom={"buttonBorderRadiusBottom"}
+								attrLeft={"buttonBorderRadiusLeft"}
+								attrUnit={"buttonBorderRadiusUnit"}
+								attrSyncUnits={"buttonRadiusSyncUnits"}
 							/>
 							<SelectControl
-								label={__("Content Text Transform", "mr-alert-blocks")}
+								label={__("Button Text Transform", "mr-alert-blocks")}
 								options={textTransformOptions}
-								value={contentTransform}
+								value={buttonTextTransform}
 								onChange={(value) => {
-									setAttributes({ contentTransform: value });
+									setAttributes({ buttonTextTransform: value });
 								}}
 							/>
 							<SelectControl
-								label={__("Content Font", "post-type-archive-mapping")}
+								label={__("Button Font", "post-type-archive-mapping")}
 								options={fontOptions}
-								value={contentFont}
+								value={buttonFont}
 								onChange={(value) => {
-									this.props.setAttributes({ contentFont: value });
+									this.props.setAttributes({ buttonFont: value });
 								}}
 							/>
 							<RangeControl
-								label={__("Content Font Size", "mr-alert-blocks")}
-								value={contentSize}
+								label={__("Button Font Size", "mr-alert-blocks")}
+								value={buttonFontSize}
 								onChange={(value) => {
 									setAttributes({
-										contentSize: value,
+										buttonFontSize: value,
 									});
 								}}
 								min={1}
@@ -924,21 +1015,204 @@ class SABAlerts extends Component {
 								label={__("Line Height", "mr-alert-blocks")}
 								onChange={(value) => {
 									setAttributes({
-										contentLineHeight: value,
+										buttonLineHeight: value,
 									});
 								}}
-								value={contentLineHeight}
+								value={buttonLineHeight}
 								type="number"
 							/>
 							<SelectControl
 								label={__("Font Weight", "mr-alert-blocks")}
 								options={fontWeightOptions}
-								value={contentFontWeight}
+								value={buttonFontWeight}
 								onChange={(value) => {
-									setAttributes({ contentFontWeight: value });
+									setAttributes({ buttonFontWeight: value });
 								}}
 							/>
 						</Fragment>
+					</MRPanelArea>
+				)}
+				{displayButton && (
+					<MRPanelArea
+						icon={
+							<svg
+								aria-hidden="true"
+								focusable="false"
+								data-prefix="fad"
+								data-icon="rectangle-landscape"
+								class="svg-inline--fa fa-rectangle-landscape fa-w-16"
+								role="img"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 512 512"
+							>
+								<g class="fa-group">
+									<path
+										class="fa-secondary"
+										fill={svgFill}
+										d="M464 64H48a48 48 0 0 0-48 48v288a48 48 0 0 0 48 48h416a48 48 0 0 0 48-48V112a48 48 0 0 0-48-48zm-16 304a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16V144a16 16 0 0 1 16-16h352a16 16 0 0 1 16 16z"
+										opacity="0.2"
+									></path>
+									<path
+										class="fa-primary"
+										fill={svgFill}
+										d="M64 368V144a16 16 0 0 1 16-16h352a16 16 0 0 1 16 16v224a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16z"
+										opacity="0.6"
+									></path>
+								</g>
+							</svg>
+						}
+						title={__("Button Colors", "mr-alert-blocks")}
+						initialOpen={false}
+					>
+						<TabPanel
+							className="mr-alert-control-tabs"
+							activeClass="active-tab"
+							tabs={[
+								{
+									name: "button-colors",
+									title: __("Normal", "generateblocks"),
+									className: "button-colors",
+								},
+								{
+									name: "button-colors-hover",
+									title: __("Hover", "generateblocks"),
+									className: "button-colors-hover",
+								},
+							]}
+						>
+							{(tab) => {
+								const isNormal = tab.name === "button-colors";
+
+								return (
+									<div>
+										{isNormal ? (
+											<Fragment>
+												<PanelColorSettings
+													title={__("Color Settings", "mr-alert-blocks")}
+													colorSettings={buttonColorOptions}
+												></PanelColorSettings>
+											</Fragment>
+										) : (
+											<Fragment>
+												<PanelColorSettings
+													title={__("Color Settings", "mr-alert-blocks")}
+													colorSettings={buttonColorOptionsHover}
+												></PanelColorSettings>
+											</Fragment>
+										)}
+									</div>
+								);
+							}}
+						</TabPanel>
+					</MRPanelArea>
+				)}
+				{displayButton && (
+					<MRPanelArea
+						icon={
+							<svg
+								aria-hidden="true"
+								focusable="false"
+								data-prefix="fad"
+								data-icon="rectangle-landscape"
+								class="svg-inline--fa fa-rectangle-landscape fa-w-16"
+								role="img"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 512 512"
+							>
+								<g class="fa-group">
+									<path
+										class="fa-secondary"
+										fill={svgFill}
+										d="M464 64H48a48 48 0 0 0-48 48v288a48 48 0 0 0 48 48h416a48 48 0 0 0 48-48V112a48 48 0 0 0-48-48zm-16 304a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16V144a16 16 0 0 1 16-16h352a16 16 0 0 1 16 16z"
+										opacity="0.2"
+									></path>
+									<path
+										class="fa-primary"
+										fill={svgFill}
+										d="M64 368V144a16 16 0 0 1 16-16h352a16 16 0 0 1 16 16v224a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16z"
+										opacity="0.6"
+									></path>
+								</g>
+							</svg>
+						}
+						title={__("Button Icon", "mr-alert-blocks")}
+						initialOpen={false}
+					>
+						<ToggleControl
+							label={__("Enable Button Icon?", "mr-alert-blocks")}
+							checked={buttonIconEnabled}
+							onChange={(value) => {
+								setAttributes({
+									buttonIconEnabled: value,
+								});
+							}}
+						/>
+						{buttonIconEnabled && (
+							<Fragment>
+								<SelectControl
+									label={__("Icon Location", "mr-alert-blocks")}
+									options={buttonIconLocationOptions}
+									value={buttonIconLocation}
+									onChange={(value) => {
+										setAttributes({ buttonIconLocation: value });
+									}}
+								/>
+								<TabPanel
+									className="mr-alert-control-tabs"
+									activeClass="active-tab"
+									tabs={[
+										{
+											name: "icon-normal",
+											title: __("Normal", "generateblocks"),
+											className: "button-icon-normal",
+										},
+										{
+											name: "icon-hover",
+											title: __("Hover", "generateblocks"),
+											className: "button-icon-hover",
+										},
+									]}
+								>
+									{(tab) => {
+										const isNormal = tab.name === "button-icon-normal";
+
+										return (
+											<div>
+												{isNormal ? (
+													<Fragment>
+														<IconPicker
+															{...this.props}
+															attrIcon={"buttonIcon"}
+														/>
+														<RangeControl
+															label={__("Icon Size", "mr-alert-blocks")}
+															value={buttonIconSize}
+															onChange={(value) => {
+																setAttributes({
+																	buttonIconSize: value,
+																});
+															}}
+															min={25}
+															max={500}
+															allowReset={true}
+															initialPosition={45}
+															step={1}
+														/>
+													</Fragment>
+												) : (
+													<Fragment>
+														<IconPicker
+															{...this.props}
+															attrIcon={"butttonIconHover"}
+														/>
+													</Fragment>
+												)}
+											</div>
+										);
+									}}
+								</TabPanel>
+							</Fragment>
+						)}
 					</MRPanelArea>
 				)}
 			</InspectorControls>
@@ -986,6 +1260,23 @@ class SABAlerts extends Component {
 								allowedFormats={["core/link"]}
 							/>
 						</div>
+						{displayButton && (
+							<div className="mr-alert-button-wrapper">
+								<a {...buttonHtmlAttributes}>
+									<RichText
+										value={buttonText}
+										onChange={(value) => {
+											setAttributes({
+												buttonText: value,
+											});
+										}}
+										tagName="span"
+										placeholder={__("Button text...", "mr-alert-blocks")}
+										allowedFormats={[]}
+									/>
+								</a>
+							</div>
+						)}
 					</div>
 				</div>
 			</Fragment>

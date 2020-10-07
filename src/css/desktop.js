@@ -79,6 +79,7 @@ export default class DesktopCSS extends Component {
 			buttonPaddingLeft,
 			buttonPaddingRight,
 			buttonMarginTop,
+			buttonIconSize,
 			buttonMarginBottom,
 			buttonMarginLeft,
 			buttonMarginRight,
@@ -211,6 +212,7 @@ export default class DesktopCSS extends Component {
 		];
 		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a`] = [
 			{
+				display: "inline-block",
 				padding: shorthandCSS(
 					buttonPaddingTop,
 					buttonPaddingRight,
@@ -225,6 +227,7 @@ export default class DesktopCSS extends Component {
 					buttonMarginLeft,
 					"px"
 				),
+				"border-style": "solid",
 				"border-width": valueWithUnit(buttonBorderWidth, "px"),
 				"border-radius": shorthandCSS(
 					buttonBorderRadiusTop,
@@ -240,6 +243,15 @@ export default class DesktopCSS extends Component {
 				"font-weight": buttonFontWeight,
 			},
 		];
+		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a svg`] = [];
+		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover`] = [];
+		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover svg`] = [];
+
+		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover svg`].push( {
+			"width": buttonIconSize,
+			"height": buttonIconSize,
+		});
+		
 		if ("inherit" !== buttonBorderColor) {
 			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a`].push({
 				"border-color": buttonBorderColor,
