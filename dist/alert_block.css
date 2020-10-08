@@ -305,10 +305,18 @@ button.components-icon-picker-item {
 .alert-dark .alert-link {
   color: #040505; }
 
-.mr-alert-icon-wrapper {
-  text-align: center; }
-  .mr-alert-icon-wrapper .mr-alert-icon svg {
-    margin-bottom: 20px;
-    width: 48px;
-    height: 48px; }
+.mr-button {
+  text-decoration: none; }
+  .mr-button .mr-alert-icon {
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: center; }
+    .mr-button .mr-alert-icon svg {
+      margin-right: 15px;
+      display: inline-block;
+      vertical-align: middle;
+      text-decoration: none; }
+    .mr-button .mr-alert-icon span {
+      text-decoration: none;
+      display: inline-block; }
 

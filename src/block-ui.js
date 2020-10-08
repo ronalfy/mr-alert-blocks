@@ -7,8 +7,9 @@ import DesktopCSS from "./css/desktop.js";
 import IconPicker from "./components/icon-picker";
 import URLInput from './components/url-input';
 import sanitizeSVG from "./utils/sanitize-svg";
+import SVGs from './components/icon-picker/svgs-fa.js';
 
-const { Component, Fragment, cloneElement } = wp.element;
+const { Component, Fragment, cloneElement, renderToString} = wp.element;
 
 const { __, _n } = wp.i18n;
 
@@ -36,8 +37,6 @@ class SABAlerts extends Component {
 		this.state = {
 			alertType: "primary",
 		};
-
-		//this.get_latest_data();
 	}
 
 	componentDidMount = () => {
@@ -83,7 +82,10 @@ class SABAlerts extends Component {
 			borderRadiusRight,
 			borderRadiusUnit,
 			borderColor,
-			svgIcon,
+			mainDefaultSvgName,
+			useMainDefaultSvgName,
+			buttonDefaultSvgName,
+			useButtonDefaultSvgName,
 			icon,
 			iconShow,
 			hasIcon,
@@ -139,7 +141,6 @@ class SABAlerts extends Component {
 			buttonMarginTop,
 			buttonMarginBottom,
 			buttonMarginLeft,
-			buttonIcon,
 			buttonIconHover,
 			buttonMarginRight,
 			buttonBorderColor,
@@ -164,7 +165,7 @@ class SABAlerts extends Component {
 			buttonLineHeight,
 			buttonFontWeight,
 		} = attributes;
-
+		let { svgIcon, buttonIcon } = attributes;
 		let htmlAttributes = {
 			className: classnames({
 				"mr-alert": true,
@@ -332,6 +333,15 @@ class SABAlerts extends Component {
 		let fonts = mrabg.fonts;
 		for (var key in fonts) {
 			fontOptions.push({ value: key, label: fonts[key] });
+		}
+		
+		// Dynamically load SVG icon
+		if ( useMainDefaultSvgName ) {
+			svgIcon = renderToString(SVGs[mainDefaultSvgName]['icon']);
+		}
+		// Dynamically load SVG icon
+		if ( useButtonDefaultSvgName ) {
+			buttonIcon = renderToString(SVGs[buttonDefaultSvgName]['icon']);
 		}
 
 		const inspectorControls = (
@@ -683,6 +693,8 @@ class SABAlerts extends Component {
 							allowReset={true}
 							initialPosition={45}
 							step={1}
+							withInputField={true}
+							stepper={true}
 						/>
 					</MRPanelArea>
 				)}
@@ -1248,7 +1260,6 @@ class SABAlerts extends Component {
 										}}
 										tagName="span"
 										placeholder={__("Button text...", "mr-alert-blocks")}
-										isSelected={isSelected}
 										allowedFormats={[]}
 									/>
 								</a>

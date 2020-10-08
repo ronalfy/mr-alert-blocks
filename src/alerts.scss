@@ -136,14 +136,27 @@
 		color: #040505;
 	}
 }
-
-.mr-alert-icon-wrapper {
-	text-align: center;
+.mr-button {
+	text-decoration: none;
 	.mr-alert-icon {
+		text-decoration: none;
+		display: inline-block;
+		vertical-align: center;
+
 		svg {
-			margin-bottom: 20px;
-			width: 48px;
-			height: 48px;
+			margin-right: 15px;
+			display: inline-block;
+			vertical-align: middle;
+			text-decoration: none;
+		}
+		span {
+			text-decoration: none;
+			display: inline-block;
 		}
 	}
 }
+.mr-alert-icon {
+
+}
+
+

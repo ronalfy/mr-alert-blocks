@@ -44,6 +44,22 @@ function get_block_attributes() {
 			'type'    => 'string',
 			'default' => '',
 		),
+		'mainDefaultSvgName'         => array(
+			'type'    => 'string',
+			'default' => '',
+		),
+		'useMainDefaultSvgName'      => array(
+			'type'    => 'boolean',
+			'default' => false,
+		),
+		'buttonDefaultSvgName'       => array(
+			'type'    => 'string',
+			'default' => '',
+		),
+		'useButtonDefaultSvgName'    => array(
+			'type'    => 'boolean',
+			'default' => false,
+		),
 		'alertType'                  => array(
 			'type'    => 'string',
 			'default' => 'primary',
@@ -61,28 +77,28 @@ function get_block_attributes() {
 			'default' => 'contained-width',
 		),
 		'containedWidth'             => array(
-			'type'    => 'int',
-			'default' => 1200,
+			'type'    => 'string',
+			'default' => '1200',
 		),
 		'innerContainerMaxWidth'     => array(
-			'type'    => 'int',
-			'default' => 800,
+			'type'    => 'string',
+			'default' => '800',
 		),
 		'paddingTop'                 => array(
-			'type'    => 'int',
-			'default' => 20,
+			'type'    => 'string',
+			'default' => '20',
 		),
 		'paddingBottom'              => array(
-			'type'    => 'int',
-			'default' => 20,
+			'type'    => 'string',
+			'default' => '20',
 		),
 		'paddingLeft'                => array(
-			'type'    => 'int',
-			'default' => 20,
+			'type'    => 'string',
+			'default' => '20',
 		),
 		'paddingRight'               => array(
-			'type'    => 'int',
-			'default' => 20,
+			'type'    => 'string',
+			'default' => '20',
 		),
 		'paddingUnit'                => array(
 			'type'    => 'string',
@@ -93,64 +109,64 @@ function get_block_attributes() {
 			'default' => 'full-width',
 		),
 		'containedWidth'             => array(
-			'type'    => 'int',
-			'default' => 800,
+			'type'    => 'string',
+			'default' => '800',
 		),
 		'marginTop'                  => array(
-			'type'    => 'int',
-			'default' => 15,
+			'type'    => 'string',
+			'default' => '15',
 		),
 		'marginBottom'               => array(
-			'type'    => 'int',
-			'default' => 15,
+			'type'    => 'string',
+			'default' => '15',
 		),
 		'marginLeft'                 => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'marginRight'                => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'marginUnit'                 => array(
 			'type'    => 'string',
 			'default' => 'px',
 		),
 		'borderTop'                  => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'borderBottom'               => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'borderLeft'                 => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'borderRight'                => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'borderUnit'                 => array(
 			'type'    => 'string',
 			'default' => 'px',
 		),
 		'borderRadiusTop'            => array(
-			'type'    => 'int',
-			'default' => 10,
+			'type'    => 'string',
+			'default' => '10',
 		),
 		'borderRadiusBottom'         => array(
-			'type'    => 'int',
-			'default' => 10,
+			'type'    => 'string',
+			'default' => '10',
 		),
 		'borderRadiusLeft'           => array(
-			'type'    => 'int',
-			'default' => 10,
+			'type'    => 'string',
+			'default' => '10',
 		),
 		'borderRadiusRight'          => array(
-			'type'    => 'int',
-			'default' => 10,
+			'type'    => 'string',
+			'default' => '10',
 		),
 		'borderRadiusUnit'           => array(
 			'type'    => 'string',
@@ -182,7 +198,7 @@ function get_block_attributes() {
 			'default' => 'inherit',
 		),
 		'iconSize'                   => array(
-			'type'    => 'int',
+			'type'    => 'number',
 			'default' => 30,
 		),
 		'iconUnit'                   => array(
@@ -219,56 +235,56 @@ function get_block_attributes() {
 			'default' => 'inherit',
 		),
 		'titlePaddingTop'            => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'titleSize'                  => array(
-			'type'    => 'int',
+			'type'    => 'number',
 			'default' => 32,
 		),
 		'titlePaddingBottom'         => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'titlePaddingLeft'           => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'titlePaddingRight'          => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'titlePaddingUnit'           => array(
 			'type'    => 'string',
 			'default' => 'px',
 		),
 		'titleMarginTop'             => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'titleMarginBottom'          => array(
-			'type'    => 'int',
-			'default' => 15,
+			'type'    => 'string',
+			'default' => '15',
 		),
 		'titleMarginLeft'            => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'titleMarginRight'           => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'titleMarginUnit'            => array(
 			'type'    => 'string',
 			'default' => 'px',
 		),
 		'titleLineHeight'            => array(
-			'type'    => 'float',
-			'default' => 1.4,
+			'type'    => 'string',
+			'default' => '1.4',
 		),
 		'titleFontWeight'            => array(
-			'type'    => 'int',
-			'default' => 700,
+			'type'    => 'string',
+			'default' => '700',
 		),
 		'displayButton'              => array(
 			'type'    => 'boolean',
@@ -300,7 +316,7 @@ function get_block_attributes() {
 			'default' => 'inherit',
 		),
 		'contentSize'                => array(
-			'type'    => 'int',
+			'type'    => 'number',
 			'default' => 18,
 		),
 		'contentUnit'                => array(
@@ -311,57 +327,57 @@ function get_block_attributes() {
 			'type'    => 'string',
 			'default' => 'inherit',
 		),
-		'contentFontWeight' => array(
-			'type' => 'int',
-			'default' => 400,
+		'contentFontWeight'          => array(
+			'type'    => 'string',
+			'default' => '400',
 		),
 		'contentTransform'           => array(
 			'type'    => 'string',
 			'default' => 'inherit',
 		),
 		'contentPaddingTop'          => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'contentPaddingBottom'       => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'contentPaddingLeft'         => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'contentPaddingRight'        => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'contentPaddingUnit'         => array(
 			'type'    => 'string',
 			'default' => 'px',
 		),
 		'contentMarginTop'           => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'contentMarginBottom'        => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'contentMarginLeft'          => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'contentMarginRight'         => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'contentMarginUnit'          => array(
 			'type'    => 'string',
 			'default' => 'px',
 		),
 		'contentLineHeight'          => array(
-			'type'    => 'float',
-			'default' => 1.1,
+			'type'    => 'string',
+			'default' => '1.1',
 		),
 		'url'                        => array(
 			'type'     => 'string',
@@ -378,36 +394,36 @@ function get_block_attributes() {
 			'sanitize' => 'html',
 		),
 		'buttonPaddingTop'           => array(
-			'type'    => 'int',
-			'default' => 15,
+			'type'    => 'string',
+			'default' => '15',
 		),
 		'buttonPaddingBottom'        => array(
-			'type'    => 'int',
-			'default' => 15,
+			'type'    => 'string',
+			'default' => '15',
 		),
 		'buttonPaddingLeft'          => array(
-			'type'    => 'int',
-			'default' => 20,
+			'type'    => 'string',
+			'default' => '20',
 		),
 		'buttonPaddingRight'         => array(
-			'type'    => 'int',
-			'default' => 20,
+			'type'    => 'string',
+			'default' => '20',
 		),
 		'buttonMarginTop'            => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'buttonMarginBottom'         => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'buttonMarginLeft'           => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'buttonMarginRight'          => array(
-			'type'    => 'int',
-			'default' => 0,
+			'type'    => 'string',
+			'default' => '0',
 		),
 		'buttonBorderColor'          => array(
 			'type'    => 'string',
@@ -418,24 +434,24 @@ function get_block_attributes() {
 			'default' => 'inherit',
 		),
 		'buttonBorderWidth'          => array(
-			'type'    => 'int',
-			'default' => 2,
+			'type'    => 'string',
+			'default' => '2',
 		),
 		'buttonBorderRadiusTop'      => array(
-			'type'    => 'int',
-			'default' => 10,
+			'type'    => 'string',
+			'default' => '10',
 		),
 		'buttonBorderRadiusBottom'   => array(
-			'type'    => 'int',
-			'default' => 10,
+			'type'    => 'string',
+			'default' => '10',
 		),
 		'buttonBorderRadiusLeft'     => array(
-			'type'    => 'int',
-			'default' => 10,
+			'type'    => 'string',
+			'default' => '10',
 		),
 		'buttonBorderRadiusRight'    => array(
-			'type'    => 'int',
-			'default' => 10,
+			'type'    => 'string',
+			'default' => '10',
 		),
 		'buttonTextColor'            => array(
 			'type'    => 'string',
@@ -454,7 +470,7 @@ function get_block_attributes() {
 			'default' => 'inherit',
 		),
 		'buttonIconSize'             => array(
-			'type'    => 'int',
+			'type'    => 'number',
 			'default' => 18,
 		),
 		'buttonIconLocation'         => array(
@@ -495,16 +511,16 @@ function get_block_attributes() {
 			'default' => 'inherit',
 		),
 		'buttonFontSize'             => array(
-			'type'    => 'int',
+			'type'    => 'number',
 			'default' => 18,
 		),
 		'buttonLineHeight'           => array(
-			'type'    => 'float',
-			'default' => 1.3,
+			'type'    => 'string',
+			'default' => '1.3',
 		),
 		'buttonFontWeight'           => array(
-			'type'    => 'int',
-			'default' => 700,
+			'type'    => 'string',
+			'default' => '700',
 		),
 		'align'                      => array(
 			'type'    => 'string',
@@ -639,6 +655,9 @@ function mrabg_block_notice_output( $attributes ) {
 				case 'boolean':
 					$sanitize_for = 'bool';
 					break;
+				case 'number':
+					$sanitize_for = 'number';
+					break;
 				default:
 					$sanitize_for = $sanitize_type;
 					break;
@@ -679,15 +698,16 @@ function mrabg_block_notice_output( $attributes ) {
 	<?php echo esc_html( sprintf( 'align%1$s align-%1$s', $attributes['align'] ) ); ?>" role="alert">
 		<div class="mr-alert-wrapper">
 		<?php
-		// var_dump( $attributes );
-		// echo '<pre>' . print_r( $attributes, true ) . '</pre>';
 		if ( $attributes['iconShow'] && $attributes['hasIcon'] ) {
 			?>
 			<style>
+				.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-icon-wrapper {
+					text-align: center;
+				}
 				.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-icon-wrapper .mr-alert-icon svg{
 					color: <?php echo esc_html( hex2rgba( $attributes['iconColor'] ) ); ?>;
-					width: <?php echo esc_html( value_with_unit( $attributes['iconSize'], 'px' ) ); ?>;
-					height: <?php echo esc_html( value_with_unit( $attributes['iconSize'], 'px' ) ); ?>;
+					width: <?php echo esc_html( value_with_unit( absint( $attributes['iconSize'] ), 'px' ) ); ?>;
+					height: <?php echo esc_html( value_with_unit( absint( $attributes['iconSize'] ), 'px' ) ); ?>;
 				}
 			</style>
 			<div class="mr-alert-icon-wrapper" aria-hidden="true">
@@ -724,9 +744,9 @@ function mrabg_block_notice_output( $attributes ) {
 				<?php echo esc_html( dimension_shorthand( $attributes['contentMarginTop'], $attributes['contentMarginRight'], $attributes['contentMarginBottom'], $attributes['contentMarginLeft'], 'px', 'margin' ) ); ?>
 				text-transform: <?php echo esc_html( $attributes['contentTransform'] ); ?>;
 				color: <?php echo esc_html( hex2rgba( $attributes['contentColor'] ) ); ?>;
-				font-size: <?php echo esc_html( value_with_unit( $attributes['contentSize'], "px") ); ?>;
+				font-size: <?php echo esc_html( value_with_unit( $attributes['contentSize'], 'px' ) ); ?>;
 				font-family: <?php echo esc_html( $attributes['contentFont'] ); ?>;
-				line-height: <?php echo esc_html( value_with_unit( $attributes['contentLineHeight'], "em") ); ?>;
+				line-height: <?php echo esc_html( value_with_unit( $attributes['contentLineHeight'], 'em' ) ); ?>;
 				font-weight: <?php echo absint( $attributes['contentFontWeight'] ); ?>;
 				text-align: center;
 			}
@@ -738,6 +758,55 @@ function mrabg_block_notice_output( $attributes ) {
 			<div class="mr-alert-content-wrapper">
 				<?php echo wp_kses_post( $attributes['content'] ); ?>
 			</div><!-- .mr-alert-content-wrapper -->
+			<?php
+		}
+		?>
+		<?php
+		if ( $attributes['displayButton'] ) {
+			?>
+			<style>
+				.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper {
+					text-align: center;
+				}
+				.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper a {
+					display: inline-block;
+					<?php echo esc_html( dimension_shorthand( $attributes['buttonPaddingTop'], $attributes['buttonPaddingRight'], $attributes['buttonPaddingBottom'], $attributes['buttonPaddingLeft'], 'px', 'padding' ) ); ?>
+					<?php echo esc_html( dimension_shorthand( $attributes['buttonMarginTop'], $attributes['buttonMarginRight'], $attributes['buttonMarginBottom'], $attributes['buttonMarginLeft'], 'px', 'margin' ) ); ?>
+					border-style: solid;
+					border-width: <?php echo esc_html( value_with_unit( $attributes['buttonBorderWidth'], 'px' ) ); ?>;
+					<?php echo esc_html( dimension_shorthand( $attributes['buttonBorderRadiusTop'], $attributes['buttonBorderRadiusRight'], $attributes['buttonBorderRadiusBottom'], $attributes['buttonBorderRadiusLeft'], 'px', 'border-radius' ) ); ?> 
+					text-transform: <?php echo esc_html( $attributes['buttonTextTransform'] ); ?>;
+					<?php
+					if ( "inherit" !== $attributes['buttonBorderColor'] ) {
+						?>
+						border-color: <?php echo esc_html( hex2rgba( $attributes['buttonBorderColor'] ) ); ?>;
+						transition: all 0.4s ease;
+						<?php
+					}
+					if ("inherit" !== $attributes['buttonTextColor'] ) {
+						?>
+						color: <?php echo esc_html( hex2rgba( $attributes['buttonTextColor'] ) ); ?>;
+						<?php
+					}
+					if ("inherit" !== $attributes['buttonBackgroundColor'] ) {
+						?>
+						background-color: <?php echo esc_html( hex2rgba( $attributes['buttonBackgroundColor'] ) ); ?>;
+						<?php
+					}
+					?>
+					font-size: <?php echo esc_html( value_with_unit( $attributes['buttonFontSize'], 'px' ) ); ?>;
+					font-family: <?php echo esc_html( $attributes['buttonFont'] ); ?>;
+					line-height: <?php echo esc_html( value_with_unit( $attributes['buttonLineHeight'], 'em' ) ); ?>;
+					font-weight: <?php echo absint( $attributes['buttonFontWeight'] ); ?>;
+					text-align: center;
+				}
+			</style>
+			<div class="mr-alert-button-wrapper">
+				<a class="<?php echo esc_html( sprintf( 'mr-button mr-button-%1$s mr-alert-type-%2$s', $unique_id, $alert_type ) ); ?>" href="<?php echo esc_url( $attributes['url'] ); ?>" target="<?php echo esc_attr( $attributes['target'] ); ?>">
+					<span class="mr-alert-icon"><?php echo $attributes['buttonIcon']; // phpcs:ignore ?></span>
+					<span><?php echo wp_kses_post( $attributes['buttonText'] ); ?></span>
+				</a>
+			</div><!-- .mr-alert-button-wrapper -->
 			<?php
 		}
 		?>
@@ -760,7 +829,7 @@ add_action( 'wp_enqueue_scripts', 'MediaRon\AlertBlocks\mrabg_enqueue_styles_scr
  *
  * @param array  $attributes Array of attributes.
  * @param string $attribute  The attribute to sanitize.
- * @param string $type       The type of sanitization you need (values can be int, text, float, bool, url).
+ * @param string $type       The type of sanitization you need (values can be int, text, string, bool, url).
  *
  * @return mixed Sanitized attribute. wp_error on failure.
  */
@@ -768,13 +837,25 @@ function sanitize_attribute( $attributes, $attribute, $type = 'text' ) {
 	if ( isset( $attributes[ $attribute ] ) ) {
 		switch ( $type ) {
 			case 'text':
+				if ( is_int( $attributes[ $attribute ] ) ) {
+					return absint( $attributes[ $attribute ] );
+				}
+				if ( is_string( $attributes[ $attribute ] ) ) {
+					return $attributes[ $attribute ];
+				}
 				return sanitize_text_field( $attributes[ $attribute ] );
 			case 'bool':
 				return filter_var( $attributes[ $attribute ], FILTER_VALIDATE_BOOLEAN );
-			case 'int':
-				return absint( $attributes[ $attribute ] );
-			case 'float':
-				if ( is_float( $attributes[ $attribute ] ) ) {
+			case 'string':
+				if ( is_int( $attributes[ $attribute ] ) ) {
+					return absint( $attributes[ $attribute ] );
+				}
+				if ( is_string( $attributes[ $attribute ] ) ) {
+					return $attributes[ $attribute ];
+				}
+				return sanitize_text_field( $attributes[ $attribute ] );
+			case 'number':
+				if ( is_int( $attributes[ $attribute ] ) ) {
 					return $attributes[ $attribute ];
 				}
 				return 0;
