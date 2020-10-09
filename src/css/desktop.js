@@ -73,6 +73,8 @@ export default class DesktopCSS extends Component {
 			innerContainerMaxWidth,
 			backgroundGradient,
 			enableBackgroundGradient,
+			buttonWidth,
+			buttonWidthFixed,
 			buttonTextTransform,
 			buttonPaddingTop,
 			buttonPaddingBottom,
@@ -243,6 +245,21 @@ export default class DesktopCSS extends Component {
 				"font-weight": buttonFontWeight,
 			},
 		];
+		if ("full" === buttonWidth) {
+			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a`].push({
+				display: "block",
+				width: "100%",
+				"box-sizing": "border-box",
+			});
+		}
+		if ("fixed" === buttonWidth) {
+			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a`].push({
+				display: "inline-block",
+				width: "100%",
+				"max-width": valueWithUnit(buttonWidthFixed, "px"),
+				"box-sizing": "border-box",
+			});
+		}
 		cssObj[
 			`.mr-alert-${uniqueId} .mr-alert-button-wrapper a .mr-alert-icon svg`
 		] = [];

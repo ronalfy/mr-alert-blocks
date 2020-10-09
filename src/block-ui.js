@@ -435,6 +435,8 @@ class SABAlerts extends Component {
 			backgroundGradient,
 			url,
 			target,
+			buttonWidth,
+			buttonWidthFixed,
 			buttonText,
 			buttonTextTransform,
 			buttonPaddingTop,
@@ -482,6 +484,7 @@ class SABAlerts extends Component {
 		let buttonHtmlAttributes = {
 			className: classnames({
 				"mr-button": true,
+				"mr-alert-button": true,
 				[`mr-button-${uniqueId}`]: true,
 				[`mr-alert-type-${alertType}`]: true,
 			}),
@@ -502,6 +505,13 @@ class SABAlerts extends Component {
 			{ value: "info", label: "Info" },
 			{ value: "light", label: "Light" },
 			{ value: "dark", label: "Dark" },
+		];
+
+		// Available button width options.
+		const buttonWidthtOptions = [
+			{ value: "default", label: "Default Width" },
+			{ value: "fixed", label: "Fixed Width" },
+			{ value: "full", label: "Full Width" },
 		];
 
 		// Available alert types for a dropdown setting.
@@ -1900,6 +1910,34 @@ class SABAlerts extends Component {
 										attrUnit={"buttonMarginUnit"}
 										attrSyncUnits={"buttonMarginSyncUnits"}
 									/>
+									<SelectControl
+										label={__("Button Width", "mr-alert-blocks")}
+										options={buttonWidthtOptions}
+										value={buttonWidth}
+										onChange={(value) => {
+											setAttributes({ buttonWidth: value });
+										}}
+									/>
+									{ 'fixed' === buttonWidth &&
+										<Fragment>
+											<RangeControl
+												label={__("Button Max-Width", "mr-alert-blocks")}
+												allowReset={true}
+												initialPosition={buttonWidthFixed}
+												min={50}
+												max={1200}
+												step={10}
+												value={buttonWidthFixed}
+												withInputField={true}
+												stepper={true}
+												onChange={(value) => {
+													setAttributes({
+														buttonWidthFixed: value,
+													});
+												}}
+											/>
+										</Fragment>
+									}
 									<TextControl
 										label={__("Border Width", "mr-alert-blocks")}
 										onChange={(value) => {

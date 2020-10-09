@@ -11,7 +11,16 @@
 .alert-primary {
 	.mr-alert-icon,
 	.alert-link {
-		color: #002752;
+		color: #004085;
+	}
+	.mr-alert-button {
+		color: #004085;
+		background: #57a8fc;
+		border: 2px solid #b8daff;
+		&:hover {
+			color: #004085;
+			background: #78b9fc;
+		}
 	}
 }
 
@@ -29,6 +38,15 @@
 	.mr-alert-icon,
 	.alert-link {
 		color: #202326;
+	}
+	.mr-alert-button {
+		color: #383d41;
+		background: #b2b3b6;
+		border: 2px solid #d6d8db;
+		&:hover {
+			color: #383d41;
+			background: #a1a1a2;
+		}
 	}
 }
 

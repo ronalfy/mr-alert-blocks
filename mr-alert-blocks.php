@@ -393,6 +393,14 @@ function get_block_attributes() {
 			'default'  => '',
 			'sanitize' => 'html',
 		),
+		'buttonWidth' => array(
+			'type' => 'string',
+			'default' => __( 'Default', 'mr-alert-blocks' ),
+		),
+		'buttonWidthFixed' => array(
+			'type' => 'number',
+			'default' => 350,
+		),
 		'buttonPaddingTop'           => array(
 			'type'    => 'string',
 			'default' => '15',
@@ -411,11 +419,11 @@ function get_block_attributes() {
 		),
 		'buttonMarginTop'            => array(
 			'type'    => 'string',
-			'default' => '0',
+			'default' => '15',
 		),
 		'buttonMarginBottom'         => array(
 			'type'    => 'string',
-			'default' => '0',
+			'default' => '15',
 		),
 		'buttonMarginLeft'           => array(
 			'type'    => 'string',
@@ -802,7 +810,7 @@ function mrabg_block_notice_output( $attributes ) {
 				}
 			</style>
 			<div class="mr-alert-button-wrapper">
-				<a class="<?php echo esc_html( sprintf( 'mr-button mr-button-%1$s mr-alert-type-%2$s', $unique_id, $alert_type ) ); ?>" href="<?php echo esc_url( $attributes['url'] ); ?>" target="<?php echo esc_attr( $attributes['target'] ); ?>">
+				<a class="<?php echo esc_html( sprintf( 'mr-button mr-alert-button mr-button-%1$s mr-alert-type-%2$s', $unique_id, $alert_type ) ); ?>" href="<?php echo esc_url( $attributes['url'] ); ?>" target="<?php echo esc_attr( $attributes['target'] ); ?>">
 					<span class="mr-alert-icon"><?php echo $attributes['buttonIcon']; // phpcs:ignore ?></span>
 					<span><?php echo wp_kses_post( $attributes['buttonText'] ); ?></span>
 				</a>
