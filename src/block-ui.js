@@ -5,13 +5,13 @@ import { uniqueId } from "lodash";
 import classnames from "classnames";
 import DesktopCSS from "./css/desktop.js";
 import IconPicker from "./components/icon-picker";
-import URLInput from './components/url-input';
+import URLInput from "./components/url-input";
 import sanitizeSVG from "./utils/sanitize-svg";
-import SVGs from './components/icon-picker/svgs-fa.js';
+import SVGs from "./components/icon-picker/svgs-fa.js";
 
-const { Component, Fragment, cloneElement, renderToString} = wp.element;
+const { Component, Fragment, cloneElement, renderToString } = wp.element;
 
-const { __, _n } = wp.i18n;
+const { __, _n, _x } = wp.i18n;
 
 const { decodeEntities } = wp.htmlEntities;
 
@@ -21,6 +21,11 @@ const {
 	TextControl,
 	ToggleControl,
 	TabPanel,
+	DropdownMenu,
+	MenuItem,
+	Toolbar,
+	Card,
+	CardBody,
 } = wp.components;
 
 const {
@@ -28,7 +33,81 @@ const {
 	InspectorControls,
 	PanelColorSettings,
 	RichText,
+	BlockControls,
 } = wp.blockEditor;
+
+const desktopIcon = (
+	<svg
+		aria-hidden="true"
+		focusable="false"
+		data-prefix="far"
+		data-icon="desktop-alt"
+		class="svg-inline--fa fa-desktop-alt fa-w-18"
+		role="img"
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 576 512"
+	>
+		<path
+			fill="currentColor"
+			d="M528 0H48C21.5 0 0 21.5 0 48v288c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM48 54c0-3.3 2.7-6 6-6h468c3.3 0 6 2.7 6 6v234H48V54zm432 434c0 13.3-10.7 24-24 24H120c-13.3 0-24-10.7-24-24s10.7-24 24-24h98.7l18.6-55.8c1.6-4.9 6.2-8.2 11.4-8.2h78.7c5.2 0 9.8 3.3 11.4 8.2l18.6 55.8H456c13.3 0 24 10.7 24 24z"
+		></path>
+	</svg>
+);
+const mobileIcon = (
+	<svg
+		aria-hidden="true"
+		focusable="false"
+		data-prefix="far"
+		data-icon="mobile-alt"
+		class="svg-inline--fa fa-mobile-alt fa-w-10"
+		role="img"
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 320 512"
+	>
+		<path
+			fill="currentColor"
+			d="M192 416c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32zm48-60V92c0-6.6-5.4-12-12-12H92c-6.6 0-12 5.4-12 12v264c0 6.6 5.4 12 12 12h136c6.6 0 12-5.4 12-12zm80-308v416c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h224c26.5 0 48 21.5 48 48zm-48 410V54c0-3.3-2.7-6-6-6H54c-3.3 0-6 2.7-6 6v404c0 3.3 2.7 6 6 6h212c3.3 0 6-2.7 6-6z"
+		></path>
+	</svg>
+);
+const tabletIcon = (
+	<svg
+		aria-hidden="true"
+		focusable="false"
+		data-prefix="fas"
+		data-icon="tablet-alt"
+		class="svg-inline--fa fa-tablet-alt fa-w-14"
+		role="img"
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 448 512"
+	>
+		<path
+			fill="currentColor"
+			d="M400 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM224 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm176-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h328c6.6 0 12 5.4 12 12v312z"
+		></path>
+	</svg>
+);
+
+const desktopToolbarIcon = (
+	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" dataReactroot="">
+	<path fill="currentColor" d="M13 15H11V20H13V15Z" undefined="1"></path>
+	<path fill="currentColor" d="M7 20C7 19.4477 7.44772 19 8 19H16C16.5523 19 17 19.4477 17 20C17 20.5523 16.5523 21 16 21H8C7.44772 21 7 20.5523 7 20Z" clipRule="evenodd" fillRule="evenodd" undefined="1"></path>
+	<path fill="currentColor" d="M21.5 16H2.5C2.22 16 2 15.78 2 15.5V3.5C2 3.22 2.22 3 2.5 3H21.5C21.78 3 22 3.22 22 3.5V15.5C22 15.78 21.78 16 21.5 16Z" undefined="1"></path>
+	</svg>
+);
+const mobileToolbarIcon = (
+	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" dataReactroot="">
+<path strokeLinejoin="round" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="1" stroke="currentColor" fill="currentColor" d="M16 22H8C6.9 22 6 21.1 6 20V4C6 2.9 6.9 2 8 2H16C17.1 2 18 2.9 18 4V20C18 21.1 17.1 22 16 22Z" clipRule="evenodd" fillRule="evenodd"></path>
+<path strokeLinecap="round" strokeMiterlimit="10" strokeWidth="1" stroke="currentColor" d="M13.47 3H10.53C10.51 3 10.5 2.99 10.5 2.97V2H13.5V2.97C13.5 2.99 13.49 3 13.47 3Z"></path>
+</svg>
+);
+const tabletToolbarIcon = (
+	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" dataReactroot="">
+<path strokeLinejoin="round" strokeLinecap="round" strokeWidth="1" stroke="#000000" fill="currentColor" d="M4 2H20V22H4V2Z"></path>
+<path strokeWidth="1" stroke="currentColor" fill="currentColor" d="M6.6 4.6H17.4V16.4H6.6V4.6Z"></path>
+<circle strokeWidth="1" stroke="currentColor" fill="currentColor" r="0.5" cy="19" cx="12"></circle>
+</svg>
+);
 
 class SABAlerts extends Component {
 	constructor() {
@@ -36,6 +115,8 @@ class SABAlerts extends Component {
 
 		this.state = {
 			alertType: "primary",
+			device: "desktop",
+			selectedDeviceIcon: desktopIcon,
 		};
 	}
 
@@ -48,6 +129,138 @@ class SABAlerts extends Component {
 			});
 		}
 	};
+
+	responseOptionsToolbar = () => {
+		const layoutControls = [
+			{
+				icon: desktopToolbarIcon,
+				title: __("Desktop View and Options", "post-type-archive-mapping"),
+				onClick: () => {
+					this.setState({
+						device: "desktop",
+						selectedDeviceIcon: desktopIcon,
+					});
+				},
+				isActive: this.state.device === "desktop"
+			},
+			{
+				icon: tabletToolbarIcon,
+				title: __("Tablet View and Options", "post-type-archive-mapping"),
+				onClick: () => {
+					this.setState({
+						device: "tablet",
+						selectedDeviceIcon: tabletIcon,
+					});
+				},
+				isActive: this.state.device === "tablet"
+			},
+			{
+				icon: mobileToolbarIcon,
+				title: __("Mobile View and Options", "post-type-archive-mapping"),
+				onClick: () => {
+					this.setState({
+						device: "mobile",
+						selectedDeviceIcon: mobileIcon,
+					});
+				},
+				isActive: this.state.device === "mobile"
+			},
+		];
+		return (
+			<BlockControls><Toolbar controls={layoutControls} /></BlockControls>
+		)
+		
+	}
+
+	responsiveToolbar = () => {
+		return (
+			<BlockControls>
+				<DropdownMenu
+					label={__("Device Preview", "mr-alert-blocks")}
+					className="components-dropdown components-dropdown-menu components-toolbar-group"
+					icon={this.state.selectedDeviceIcon}
+				>
+					{({ onClose }) => (
+						<Fragment>
+							<MenuItem
+								icon={desktopIcon}
+								onClick={() => {
+									this.setState({
+										device: "desktop",
+										selectedDeviceIcon: desktopIcon,
+									});
+									onClose();
+								}}
+								className="is-active"
+							>
+								{__("Desktop", "mr-alert-blocks")}
+							</MenuItem>
+							<MenuItem
+								icon={tabletIcon}
+								onClick={() => {
+									this.setState({
+										device: "tablet",
+										selectedDeviceIcon: tabletIcon,
+									});
+									onClose();
+								}}
+							>
+								{__("Tablet", "mr-alert-blocks")}
+							</MenuItem>
+							<MenuItem
+								icon={mobileIcon}
+								onClick={() => {
+									this.setState({
+										device: "mobile",
+										selectedDeviceIcon: mobileIcon,
+									});
+									onClose();
+								}}
+							>
+								{__("Mobile", "mr-alert-blocks")}
+							</MenuItem>
+						</Fragment>
+					)}
+				</DropdownMenu>
+			</BlockControls>
+		);
+	};
+
+	getDevicePanel = () => {
+		let title = __('Desktop View and Base Options', 'mr-alert-blocks');
+		let description = __(
+			"You are viewing Desktop and Base options. Switch to a different device using the toolbar to view device-specific settings.",
+			"mr-alert-blocks"
+		);
+		if ( 'tablet' === this.state.device ) {
+			title = __('Tablet View and Options', 'mr-alert-blocks');
+			description = __(
+			"You are viewing Tablet options. Switch to a different device using the toolbar to view device-specific settings.",
+			"mr-alert-blocks"
+			);
+		}
+		if ( 'mobile' === this.state.device ) {
+			title = __('Mobile View and Options', 'mr-alert-blocks');
+			description = __(
+			"You are viewing Mobile options. Switch to a different device using the toolbar to view device-specific settings.",
+			"mr-alert-blocks"
+			);
+		}
+		return(
+			<Card
+				icon={<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="phone-laptop" class="svg-inline--fa fa-phone-laptop fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><g class="fa-group"><path class="fa-secondary" fill="currentColor" d="M128 64h320v32h64V48a48.1 48.1 0 0 0-47.91-48H111.91A48.1 48.1 0 0 0 64 48v240H16a16 16 0 0 0-16 16v16a64.14 64.14 0 0 0 63.91 64H352v-96H128z" opacity="0.4"></path><path class="fa-primary" fill="currentColor" d="M604 128H420a36 36 0 0 0-36 36v312a36 36 0 0 0 36 36h184a36 36 0 0 0 36-36V164a36 36 0 0 0-36-36zm-28 320H448V192h128z"></path></g></svg>}
+				title={__("Device Preview", "mr-alert-blocks")}
+				initialOpen={true}
+			>
+				<CardBody>
+					<h3>{title}</h3>
+					<p class="description">
+						{description}
+					</p>
+				</CardBody>
+			</Card>
+		);
+	}
 
 	render() {
 		const { attributes, setAttributes, isSelected } = this.props;
@@ -334,18 +547,19 @@ class SABAlerts extends Component {
 		for (var key in fonts) {
 			fontOptions.push({ value: key, label: fonts[key] });
 		}
-		
+
 		// Dynamically load SVG icon
-		if ( useMainDefaultSvgName ) {
-			svgIcon = renderToString(SVGs[mainDefaultSvgName]['icon']);
+		if (useMainDefaultSvgName) {
+			svgIcon = renderToString(SVGs[mainDefaultSvgName]["icon"]);
 		}
 		// Dynamically load SVG icon
-		if ( useButtonDefaultSvgName ) {
-			buttonIcon = renderToString(SVGs[buttonDefaultSvgName]['icon']);
+		if (useButtonDefaultSvgName) {
+			buttonIcon = renderToString(SVGs[buttonDefaultSvgName]["icon"]);
 		}
 
 		const inspectorControls = (
 			<InspectorControls>
+				{this.getDevicePanel()}
 				<MRPanelArea
 					icon={
 						<svg
@@ -1196,6 +1410,7 @@ class SABAlerts extends Component {
 		return (
 			<Fragment>
 				{inspectorControls}
+				{this.responseOptionsToolbar()}
 				{!disableStyles && <DesktopCSS {...this.props} />}
 				<div {...htmlAttributes}>
 					<div className="mr-alert-wrapper">
@@ -1223,7 +1438,7 @@ class SABAlerts extends Component {
 								/>
 							</div>
 						)}
-						{displayContent &&
+						{displayContent && (
 							<div className="mr-alert-content-wrapper">
 								<RichText
 									value={content}
@@ -1237,7 +1452,7 @@ class SABAlerts extends Component {
 									allowedFormats={["core/link", "core/bold"]}
 								/>
 							</div>
-						}
+						)}
 						{displayButton && (
 							<div className="mr-alert-button-wrapper">
 								<a {...buttonHtmlAttributes}>
