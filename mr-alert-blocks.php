@@ -776,6 +776,33 @@ function mrabg_block_notice_output( $attributes ) {
 				.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper {
 					text-align: center;
 				}
+				<?php
+				if ( 'full' === $attributes['buttonWidth'] ) {
+					?>
+					.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper {
+						display: block;
+
+					}
+					.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper a {
+						display: block;
+						width: 100%;
+						box-sizing: border-box;
+					}
+					<?php
+				}
+				?>
+				<?php
+				if ( 'fixed' === $attributes['buttonWidth'] ) {
+					?>
+					.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper a {
+						display: inline-block;
+						width: 100%;
+						max-width: <?php echo esc_html( value_with_unit( $attributes['buttonWidthFixed'], 'px' ) ); ?>;
+						box-sizing: border-box;
+					}
+					<?php
+				}
+				?>
 				.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper a {
 					display: inline-block;
 					<?php echo esc_html( dimension_shorthand( $attributes['buttonPaddingTop'], $attributes['buttonPaddingRight'], $attributes['buttonPaddingBottom'], $attributes['buttonPaddingLeft'], 'px', 'padding' ) ); ?>
@@ -807,6 +834,27 @@ function mrabg_block_notice_output( $attributes ) {
 					line-height: <?php echo esc_html( value_with_unit( $attributes['buttonLineHeight'], 'em' ) ); ?>;
 					font-weight: <?php echo absint( $attributes['buttonFontWeight'] ); ?>;
 					text-align: center;
+				}
+				.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper a:hover {
+					display: inline-block;
+					<?php
+					if ( "inherit" !== $attributes['buttonBorderColorHover'] ) {
+						?>
+						border-color: <?php echo esc_html( hex2rgba( $attributes['buttonBorderColorHover'] ) ); ?>;
+						<?php
+					}
+					if ("inherit" !== $attributes['buttonTextColorHover'] ) {
+						?>
+						color: <?php echo esc_html( hex2rgba( $attributes['buttonTextColorHover'] ) ); ?>;
+						<?php
+					}
+					if ("inherit" !== $attributes['buttonBackgroundColorHover'] ) {
+						?>
+						background-color: <?php echo esc_html( hex2rgba( $attributes['buttonBackgroundColorHover'] ) ); ?>;
+						<?php
+					}
+					?>
+					text-decoration: none;
 				}
 			</style>
 			<div class="mr-alert-button-wrapper">

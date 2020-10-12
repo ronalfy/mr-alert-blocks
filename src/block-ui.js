@@ -659,7 +659,6 @@ class SABAlerts extends Component {
 
 		const inspectorControls = (
 			<InspectorControls>
-				{this.getDevicePanel()}
 				{"desktop" === this.state.device && (
 					<MRPanelArea
 						icon={
@@ -2478,7 +2477,6 @@ class SABAlerts extends Component {
 		return (
 			<Fragment>
 				{inspectorControls}
-				{this.responseOptionsToolbar()}
 				{!disableStyles && <DesktopCSS {...this.props} />}
 				<div {...htmlAttributes}>
 					<div className="mr-alert-wrapper">

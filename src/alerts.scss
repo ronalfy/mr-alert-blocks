@@ -231,5 +231,15 @@
 	position: relative;
 	display: inline-block;
 }
+.mr-alert-wrapper {
+	text-align: center;
+}
 
-
+.mr-alert-control-tabs {
+	button.active-tab {
+		border-top: 0;
+		border-bottom: 2px solid;
+		font-weight: 700;
+		box-shadow: none;
+	}
+}

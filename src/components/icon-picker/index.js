@@ -62,7 +62,7 @@ class IconPicker extends Component {
 			<Fragment>
 				<BaseControl className="gb-svg-html">
 					<TextControl
-						label={ __( 'Icon SVG HTML', 'generateblocks' ) }
+						label={ __( 'Icon SVG HTML', 'mr-alert-blocks' ) }
 						value={ attributes[ attrIcon ] }
 						onChange={ ( value ) => {
 							setAttributes( {
@@ -95,14 +95,14 @@ class IconPicker extends Component {
 							} }
 						>
 							<span className="editor-block-types-list__item-icon">
-								{ __( 'Clear', 'generateblocks' ) }
+								{ __( 'Clear', 'mr-alert-blocks' ) }
 							</span>
 						</Button>
 					</div>
 				</BaseControl>
 
 				<BaseControl className="gb-icon-chooser">
-				<PanelBody title={ __( 'Alert Icons', 'generateblocks' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Alert Icons', 'mr-alert-blocks' ) } initialOpen={ true }>
 						<PanelRow>
 							<BaseControl>
 								<ul className="gblocks-icon-chooser">
@@ -134,7 +134,7 @@ class IconPicker extends Component {
 							</BaseControl>
 						</PanelRow>
 					</PanelBody>
-					<PanelBody title={ __( 'General Icons', 'generateblocks' ) } initialOpen={ false }>
+					<PanelBody title={ __( 'General Icons', 'mr-alert-blocks' ) } initialOpen={ false }>
 						<PanelRow>
 							<BaseControl>
 								<ul className="gblocks-icon-chooser">
@@ -167,7 +167,7 @@ class IconPicker extends Component {
 						</PanelRow>
 					</PanelBody>
 
-					<PanelBody title={ __( 'Social Icons', 'generateblocks' ) } initialOpen={ false }>
+					<PanelBody title={ __( 'Social Icons', 'mr-alert-blocks' ) } initialOpen={ false }>
 						<PanelRow>
 							<BaseControl>
 								<ul className="gblocks-icon-chooser">
@@ -203,7 +203,7 @@ class IconPicker extends Component {
 
 				{ ( typeof attributes[ attrIconLocation ] !== 'undefined' && ! attributes[ attrRemoveText ] && !! attributes[ attrIcon ] ) &&
 					<SelectControl
-						label={ __( 'Icon Location', 'generateblocks' ) }
+						label={ __( 'Icon Location', 'mr-alert-blocks' ) }
 						value={ attributes[ attrIconLocation ] }
 						options={ locationOptions }
 						onChange={ ( value ) => {

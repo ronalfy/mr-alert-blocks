@@ -15,20 +15,11 @@ registerBlockType("mediaron/alert-boxes", {
 	category: "layout",
 	icon: {
 		src: (
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				height="24"
-				viewBox="0 0 24 24"
-				width="24"
-			>
-				<path d="M0 0h24v24H0V0z" fill="none" style={{ color: "#721c24" }} />
-				<path
-					style={{ color: "#721c24" }}
-					d="M10.01 21.01c0 1.1.89 1.99 1.99 1.99s1.99-.89 1.99-1.99h-3.98zm8.87-4.19V11c0-3.25-2.25-5.97-5.29-6.69v-.72C13.59 2.71 12.88 2 12 2s-1.59.71-1.59 1.59v.72C7.37 5.03 5.12 7.75 5.12 11v5.82L3 18.94V20h18v-1.06l-2.12-2.12zM16 13.01h-3v3h-2v-3H8V11h3V8h2v3h3v2.01z"
-				/>
-			</svg>
+			
+<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="bell-exclamation" class="svg-inline--fa fa-bell-exclamation fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><g class="fa-group"><path class="fa-secondary" fill="#57a8fc" d="M439.39 362.29c-19.32-20.76-55.47-52-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32a32 32 0 1 0-64 0v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29A31.24 31.24 0 0 0 0 384c.11 16.4 13 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32a31.23 31.23 0 0 0-8.61-21.71zM224 352a32 32 0 1 1 32-32 32 32 0 0 1-32 32zm38.2-206.4l-12.8 96a16 16 0 0 1-15.9 14.4h-19a16 16 0 0 1-15.9-14.4l-12.8-96a16.06 16.06 0 0 1 15.9-17.6h44.6a16 16 0 0 1 15.89 17.6z" opacity="0.4"></path><path class="fa-primary" fill="#57a8fc" d="M160 448a64 64 0 1 0 128 0zm64-160a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm-9.5-32h19a16 16 0 0 0 15.9-14.4l12.8-96a16 16 0 0 0-15.9-17.6h-44.6a16.06 16.06 0 0 0-15.9 17.6l12.8 96a16 16 0 0 0 15.89 14.4z"></path></g></svg>
 		),
 		fill: "#721c24",
+		color: "#721c24"
 	},
 	keywords: [
 		__("alert", "mr-alert-blocks"),
