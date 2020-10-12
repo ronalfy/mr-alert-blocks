@@ -210,13 +210,13 @@
 }
 .mr-button {
 	text-decoration: none;
+	vertical-align: middle;
 	.mr-alert-icon {
 		text-decoration: none;
 		display: inline-block;
-		vertical-align: center;
+		vertical-align: middle;
 
 		svg {
-			margin-right: 15px;
 			display: inline-block;
 			vertical-align: middle;
 			text-decoration: none;
@@ -224,6 +224,7 @@
 		span {
 			text-decoration: none;
 			display: inline-block;
+			vertical-align: middle;;
 		}
 	}
 }

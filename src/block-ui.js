@@ -467,6 +467,7 @@ class SABAlerts extends Component {
 			buttonFontSize,
 			buttonLineHeight,
 			buttonFontWeight,
+			buttonIconSeparation,
 		} = attributes;
 		let { svgIcon, buttonIcon } = attributes;
 		let htmlAttributes = {
@@ -2359,6 +2360,22 @@ class SABAlerts extends Component {
 											initialPosition={25}
 											step={1}
 										/>
+										<RangeControl
+									label={__("Icon Separation", "mr-alert-blocks")}
+									allowReset={true}
+									initialPosition={buttonIconSeparation}
+									min={0}
+									max={150}
+									step={5}
+									value={buttonIconSeparation}
+									withInputField={true}
+									stepper={true}
+									onChange={(value) => {
+										setAttributes({
+											buttonIconSeparation: value,
+										});
+									}}
+								/>
 										<Fragment>
 											<IconPicker {...this.props} attrIcon={"buttonIcon"} />
 										</Fragment>
@@ -2527,7 +2544,7 @@ class SABAlerts extends Component {
 										e.preventDefault();
 									}}
 								>
-									{buttonIconEnabled && "left" === buttonIconLocation && (
+									{buttonIconEnabled && ( "left" === buttonIconLocation || "above" === buttonIconLocation ) && (
 										<Fragment>
 											<span
 												className="mr-alert-icon"

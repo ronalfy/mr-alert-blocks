@@ -1,4 +1,5 @@
-const { registerBlockType, registerBlockVariation } = wp.blocks;
+const { registerBlockType } = wp.blocks;
+const { __ } = wp.i18n;
 
 import blockUI from "./block-ui.js";
 registerBlockType("mediaron/alert-boxes", {

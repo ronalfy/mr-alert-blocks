@@ -393,12 +393,12 @@ function get_block_attributes() {
 			'default'  => '',
 			'sanitize' => 'html',
 		),
-		'buttonWidth' => array(
-			'type' => 'string',
+		'buttonWidth'                => array(
+			'type'    => 'string',
 			'default' => __( 'Default', 'mr-alert-blocks' ),
 		),
-		'buttonWidthFixed' => array(
-			'type' => 'number',
+		'buttonWidthFixed'           => array(
+			'type'    => 'number',
 			'default' => 350,
 		),
 		'buttonPaddingTop'           => array(
@@ -529,6 +529,10 @@ function get_block_attributes() {
 		'buttonFontWeight'           => array(
 			'type'    => 'string',
 			'default' => '700',
+		),
+		'buttonIconSeparation'       => array(
+			'type'    => 'number',
+			'default' => '20',
 		),
 		'align'                      => array(
 			'type'    => 'string',
@@ -676,28 +680,29 @@ function mrabg_block_notice_output( $attributes ) {
 	$alert_type = $attributes['alertType'];
 	$unique_id  = $attributes['uniqueId'];
 	?>
-	<style>
-		.mr-alert-<?php echo esc_html( $unique_id ); ?> {
-			<?php echo esc_html( dimension_shorthand( $attributes['paddingTop'], $attributes['paddingRight'], $attributes['paddingBottom'], $attributes['paddingLeft'], $attributes['paddingUnit'], 'padding' ) ); ?>
-			<?php echo esc_html( dimension_shorthand( $attributes['marginTop'], $attributes['marginRight'], $attributes['marginBottom'], $attributes['marginLeft'], $attributes['marginUnit'], 'margin' ) ); ?>
-			border-style: solid;
-			<?php echo esc_html( dimension_shorthand( $attributes['borderTop'], $attributes['borderRight'], $attributes['borderBottom'], $attributes['borderLeft'], 'px', 'border-width' ) ); ?>
-			<?php echo esc_html( dimension_shorthand( $attributes['borderRadiusTop'], $attributes['borderRadiusRight'], $attributes['borderRadiusBottom'], $attributes['borderRadiusLeft'], 'px', 'border-radius' ) ); ?>
-			<?php
-			if ( 'inherit' !== $attributes['borderColor'] ) {
-				echo 'border-color: ' . hex2rgba( $attributes['borderColor'] ) . ';';
+	<div class="mr-alert-boxes">
+		<style class="mr-alert-styles">
+			.mr-alert-<?php echo esc_html( $unique_id ); ?> {
+				<?php echo esc_html( dimension_shorthand( $attributes['paddingTop'], $attributes['paddingRight'], $attributes['paddingBottom'], $attributes['paddingLeft'], $attributes['paddingUnit'], 'padding' ) ); ?>
+				<?php echo esc_html( dimension_shorthand( $attributes['marginTop'], $attributes['marginRight'], $attributes['marginBottom'], $attributes['marginLeft'], $attributes['marginUnit'], 'margin' ) ); ?>
+				border-style: solid;
+				<?php echo esc_html( dimension_shorthand( $attributes['borderTop'], $attributes['borderRight'], $attributes['borderBottom'], $attributes['borderLeft'], 'px', 'border-width' ) ); ?>
+				<?php echo esc_html( dimension_shorthand( $attributes['borderRadiusTop'], $attributes['borderRadiusRight'], $attributes['borderRadiusBottom'], $attributes['borderRadiusLeft'], 'px', 'border-radius' ) ); ?>
+				<?php
+				if ( 'inherit' !== $attributes['borderColor'] ) {
+					echo 'border-color: ' . hex2rgba( $attributes['borderColor'] ) . ';';
+				}
+				?>
+				<?php
+				if ( 'inherit' !== $attributes['backgroundColor'] ) {
+					echo 'background-color: ' . hex2rgba( $attributes['backgroundColor'] ) . ';';
+				}
+				if ( $attributes['enableBackgroundGradient'] ) {
+					echo 'background-image: ' . esc_html( $attributes['backgroundGradient'] ) . ';';
+				}
+				?>
 			}
-			?>
-			<?php
-			if ( 'inherit' !== $attributes['backgroundColor'] ) {
-				echo 'background-color: ' . hex2rgba( $attributes['backgroundColor'] ) . ';';
-			}
-			if ( $attributes['enableBackgroundGradient'] ) {
-				echo 'background-image: ' . esc_html( $attributes['backgroundGradient'] ) . ';';
-			}
-			?>
-		}
-	</style>
+		</style>
 	<section class="mr-alert 
 	<?php
 	echo esc_html( sprintf( 'mr-alert-%1$s mr-alert-type-%2$s alert-%2$s', $unique_id, $alert_type ) );
@@ -708,7 +713,7 @@ function mrabg_block_notice_output( $attributes ) {
 		<?php
 		if ( $attributes['iconShow'] && $attributes['hasIcon'] ) {
 			?>
-			<style>
+			<style class="mr-alert-styles">
 				.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-icon-wrapper {
 					text-align: center;
 				}
@@ -727,7 +732,7 @@ function mrabg_block_notice_output( $attributes ) {
 		}
 		if ( $attributes['displayTitle'] ) {
 			?>
-			<style>
+			<style class="mr-alert-styles">
 				.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-title-wrapper <?php echo esc_html( $attributes['titleTag'] ); ?> {
 				<?php echo esc_html( dimension_shorthand( $attributes['titlePaddingTop'], $attributes['titlePaddingRight'], $attributes['titlePaddingBottom'], $attributes['titlePaddingLeft'], 'px', 'padding' ) ); ?>
 				<?php echo esc_html( dimension_shorthand( $attributes['titleMarginTop'], $attributes['titleMarginRight'], $attributes['titleMarginBottom'], $attributes['titleMarginLeft'], 'px', 'margin' ) ); ?>
@@ -746,7 +751,7 @@ function mrabg_block_notice_output( $attributes ) {
 			<?php
 		}
 		?>
-		<style>
+		<style class="mr-alert-styles">
 			.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-content-wrapper {
 				<?php echo esc_html( dimension_shorthand( $attributes['contentPaddingTop'], $attributes['contentPaddingRight'], $attributes['contentPaddingBottom'], $attributes['contentPaddingLeft'], 'px', 'padding' ) ); ?>
 				<?php echo esc_html( dimension_shorthand( $attributes['contentMarginTop'], $attributes['contentMarginRight'], $attributes['contentMarginBottom'], $attributes['contentMarginLeft'], 'px', 'margin' ) ); ?>
@@ -772,7 +777,7 @@ function mrabg_block_notice_output( $attributes ) {
 		<?php
 		if ( $attributes['displayButton'] ) {
 			?>
-			<style>
+			<style class="mr-alert-styles">
 				.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper {
 					text-align: center;
 				}
@@ -812,18 +817,18 @@ function mrabg_block_notice_output( $attributes ) {
 					<?php echo esc_html( dimension_shorthand( $attributes['buttonBorderRadiusTop'], $attributes['buttonBorderRadiusRight'], $attributes['buttonBorderRadiusBottom'], $attributes['buttonBorderRadiusLeft'], 'px', 'border-radius' ) ); ?> 
 					text-transform: <?php echo esc_html( $attributes['buttonTextTransform'] ); ?>;
 					<?php
-					if ( "inherit" !== $attributes['buttonBorderColor'] ) {
+					if ( 'inherit' !== $attributes['buttonBorderColor'] ) {
 						?>
 						border-color: <?php echo esc_html( hex2rgba( $attributes['buttonBorderColor'] ) ); ?>;
 						transition: all 0.4s ease;
 						<?php
 					}
-					if ("inherit" !== $attributes['buttonTextColor'] ) {
+					if ( 'inherit' !== $attributes['buttonTextColor'] ) {
 						?>
 						color: <?php echo esc_html( hex2rgba( $attributes['buttonTextColor'] ) ); ?>;
 						<?php
 					}
-					if ("inherit" !== $attributes['buttonBackgroundColor'] ) {
+					if ( 'inherit' !== $attributes['buttonBackgroundColor'] ) {
 						?>
 						background-color: <?php echo esc_html( hex2rgba( $attributes['buttonBackgroundColor'] ) ); ?>;
 						<?php
@@ -838,17 +843,17 @@ function mrabg_block_notice_output( $attributes ) {
 				.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper a:hover {
 					display: inline-block;
 					<?php
-					if ( "inherit" !== $attributes['buttonBorderColorHover'] ) {
+					if ( 'inherit' !== $attributes['buttonBorderColorHover'] ) {
 						?>
 						border-color: <?php echo esc_html( hex2rgba( $attributes['buttonBorderColorHover'] ) ); ?>;
 						<?php
 					}
-					if ("inherit" !== $attributes['buttonTextColorHover'] ) {
+					if ( 'inherit' !== $attributes['buttonTextColorHover'] ) {
 						?>
 						color: <?php echo esc_html( hex2rgba( $attributes['buttonTextColorHover'] ) ); ?>;
 						<?php
 					}
-					if ("inherit" !== $attributes['buttonBackgroundColorHover'] ) {
+					if ( 'inherit' !== $attributes['buttonBackgroundColorHover'] ) {
 						?>
 						background-color: <?php echo esc_html( hex2rgba( $attributes['buttonBackgroundColorHover'] ) ); ?>;
 						<?php
@@ -856,10 +861,74 @@ function mrabg_block_notice_output( $attributes ) {
 					?>
 					text-decoration: none;
 				}
-			</style>
+				</style>
+				<?php
+				// SVG Icon Styling.
+				if ( $attributes['buttonIconEnabled'] && 'left' === $attributes['buttonIconLocation'] ) {
+					?>
+					<style class="mr-alert-styles">
+					.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper a .mr-alert-icon {
+						margin-right: <?php echo esc_html( value_with_unit( $attributes['buttonIconSeparation'], 'px' ) ); ?>;
+					}
+					</style>
+					<?php
+				}
+				if ( $attributes['buttonIconEnabled'] && 'right' === $attributes['buttonIconLocation'] ) {
+					?>
+					<style class="mr-alert-styles">
+					.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper a .mr-alert-icon {
+						margin-left: <?php echo esc_html( value_with_unit( $attributes['buttonIconSeparation'], 'px' ) ); ?>;
+					}
+					</style>
+					<?php
+				}
+				if ( $attributes['buttonIconEnabled'] && 'above' === $attributes['buttonIconLocation'] ) {
+					?>
+					<style class="mr-alert-styles">
+					.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper a .mr-alert-icon {
+						display: block;
+						textt-align: center;
+						margin-bottom: <?php echo esc_html( value_with_unit( $attributes['buttonIconSeparation'], 'px' ) ); ?>;
+					}
+					</style>
+					<?php
+				}
+				if ( $attributes['buttonIconEnabled'] && ! empty( $attributes['buttonIcon'] ) ) {
+					?>
+					<style class="mr-alert-styles">
+					.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper a .mr-alert-icon svg {
+						width: <?php echo esc_html( value_with_unit( $attributes['buttonIconSize'], 'px' ) ); ?>;
+						height: <?php echo esc_html( value_with_unit( $attributes['buttonIconSize'], 'px' ) ); ?>;
+						color: <?php echo esc_html( hex2rgba( $attributes['buttonIconColor'] ) ); ?>;
+					}
+					.mr-alert-<?php echo esc_html( $unique_id ); ?> .mr-alert-button-wrapper a:hover .mr-alert-icon svg {
+						color: <?php echo esc_html( hex2rgba( $attributes['buttonIconColorHover'] ) ); ?>;
+					}
+					</style>
+					<?php
+				}
+				?>
 			<div class="mr-alert-button-wrapper">
 				<a class="<?php echo esc_html( sprintf( 'mr-button mr-alert-button mr-button-%1$s mr-alert-type-%2$s', $unique_id, $alert_type ) ); ?>" href="<?php echo esc_url( $attributes['url'] ); ?>" target="<?php echo esc_attr( $attributes['target'] ); ?>">
+					<?php
+					if ( $attributes['buttonIconEnabled'] && ! empty( $attributes['buttonIcon'] ) && ( 'left' === $attributes['buttonIconLocation'] || 'above' === $attributes['buttonIconLocation'] ) ) {
+						?>
+						<span class="mr-alert-icon">
+							<?php echo $attributes['buttonIcon']; // phpcs:ignore ?> 
+						</span>
+						<?php
+					}
+					?>
 					<span><?php echo wp_kses_post( $attributes['buttonText'] ); ?></span>
+					<?php
+					if ( $attributes['buttonIconEnabled'] && ! empty( $attributes['buttonIcon'] ) && 'right' === $attributes['buttonIconLocation'] ) {
+						?>
+						<span class="mr-alert-icon">
+							<?php echo $attributes['buttonIcon']; // phpcs:ignore ?> 
+						</span>
+						<?php
+					}
+					?>
 				</a>
 			</div><!-- .mr-alert-button-wrapper -->
 			<?php
@@ -867,6 +936,7 @@ function mrabg_block_notice_output( $attributes ) {
 		?>
 		</div><!-- .mr-alert-wrapper -->
 	</section>
+	</div>
 	<?php
 	return ob_get_clean();
 }

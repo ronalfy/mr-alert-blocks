@@ -101,6 +101,9 @@ export default class DesktopCSS extends Component {
 			buttonFontSize,
 			buttonLineHeight,
 			buttonFontWeight,
+			buttonIconLocation,
+			buttonIconSeparation,
+			buttonIconEnabled
 		} = attributes;
 
 		let cssObj = [];
@@ -264,6 +267,9 @@ export default class DesktopCSS extends Component {
 			});
 		}
 		cssObj[
+			`.mr-alert-${uniqueId} .mr-alert-button-wrapper a .mr-alert-icon`
+		] = [];
+		cssObj[
 			`.mr-alert-${uniqueId} .mr-alert-button-wrapper a .mr-alert-icon svg`
 		] = [];
 		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover`] = [];
@@ -321,6 +327,29 @@ export default class DesktopCSS extends Component {
 				`.mr-alert-${uniqueId} .mr-alert-button-wrapper a:hover .mr-alert-icon svg`
 			].push({
 				color: buttonIconColorHover,
+			});
+		}
+		if (buttonIconEnabled && 'left' === buttonIconLocation) {
+			cssObj[
+				`.mr-alert-${uniqueId} .mr-alert-button-wrapper a .mr-alert-icon`
+			].push({
+				'margin-right': valueWithUnit(buttonIconSeparation, 'px' ),
+			});
+		}
+		if (buttonIconEnabled && 'right' === buttonIconLocation) {
+			cssObj[
+				`.mr-alert-${uniqueId} .mr-alert-button-wrapper a .mr-alert-icon`
+			].push({
+				'margin-left': valueWithUnit(buttonIconSeparation, 'px' ),
+			});
+		}
+		if (buttonIconEnabled && 'above' === buttonIconLocation) {
+			cssObj[
+				`.mr-alert-${uniqueId} .mr-alert-button-wrapper a .mr-alert-icon`
+			].push({
+				display: 'block',
+				'text-align': 'center',
+				'margin-bottom': valueWithUnit(buttonIconSeparation, 'px' ),
 			});
 		}
 
