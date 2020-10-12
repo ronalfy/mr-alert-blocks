@@ -212,6 +212,7 @@ export default class DesktopCSS extends Component {
 				"font-weight": contentFontWeight,
 			},
 		];
+		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper`] = [];
 		cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a`] = [
 			{
 				display: "inline-block",
@@ -246,6 +247,9 @@ export default class DesktopCSS extends Component {
 			},
 		];
 		if ("full" === buttonWidth) {
+			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper`].push({
+				display: 'block',
+			});
 			cssObj[`.mr-alert-${uniqueId} .mr-alert-button-wrapper a`].push({
 				display: "block",
 				width: "100%",

@@ -1,5 +1,7 @@
 /**
  * Internal dependencies
+ * 
+ * Forked from GenerateBlocks
  */
 import './editor.scss';
 import faSvgs from './svgs-fa';

@@ -1,5 +1,7 @@
 /**
  * External dependencies
+ * 
+ * Forked from GenerateBlocks.
  */
 import classnames from 'classnames';
 import './editor.scss';
@@ -23,6 +25,9 @@ const {
 	Tooltip,
 	ButtonGroup,
 } = wp.components;
+
+const syncIcon = 
+<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="sync" class="svg-inline--fa fa-sync fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g class="fa-group"><path class="fa-secondary" fill="currentColor" d="M0 500V299.67a12 12 0 0 1 12-12h200.33a12 12 0 0 1 12 12v47.41a12 12 0 0 1-12.57 12l-101.87-4.88a176.07 176.07 0 0 0 317.25-56.94 12 12 0 0 1 11.67-9.26h49.09a12 12 0 0 1 11.8 14.18C478.07 417.08 377.19 504 256 504a247.43 247.43 0 0 1-188.76-87.17l4.13 82.57a12 12 0 0 1-12 12.6H12a12 12 0 0 1-12-12z" opacity="0.4"></path><path class="fa-primary" fill="currentColor" d="M12.3 209.82C33.93 94.92 134.81 8 256 8a247.4 247.4 0 0 1 188.9 87.34l-4-82.77A12 12 0 0 1 452.92 0h47.41a12 12 0 0 1 12 12v200.33a12 12 0 0 1-12 12H300a12 12 0 0 1-12-12v-47.41a12 12 0 0 1 12.57-12l101.53 4.88a176.07 176.07 0 0 0-317.24 56.94A12 12 0 0 1 73.19 224H24.1a12 12 0 0 1-11.8-14.18z"></path></g></svg>;
 
 class DimensionsControl extends Component {
 	constructor() {
@@ -71,7 +76,7 @@ class DimensionsControl extends Component {
 	render() {
 		const {
 			attributes,
-			label = __( 'Margin', 'generateblocks' ),
+			label = __( 'Margin', 'mr-alert-blocks' ),
 			type = 'margin',
 			attrTop,
 			attrRight,
@@ -79,10 +84,10 @@ class DimensionsControl extends Component {
 			attrLeft,
 			attrSyncUnits,
 			attrUnit,
-			labelTop = __( 'Top', 'generateblocks' ),
-			labelRight = __( 'Right', 'generateblocks' ),
-			labelBottom = __( 'Bottom', 'generateblocks' ),
-			labelLeft = __( 'Left', 'generateblocks' ),
+			labelTop = __( 'Top', 'mr-alert-blocks' ),
+			labelRight = __( 'Right', 'mr-alert-blocks' ),
+			labelBottom = __( 'Bottom', 'mr-alert-blocks' ),
+			labelLeft = __( 'Left', 'mr-alert-blocks' ),
 			displayUnit,
 			device,
 			block,
@@ -176,15 +181,15 @@ class DimensionsControl extends Component {
 
 		const unitSizes = [
 			{
-				name: _x( 'Pixel', 'A size unit for CSS markup', 'generateblocks' ),
+				name: _x( 'Pixel', 'A size unit for CSS markup', 'mr-alert-blocks' ),
 				unitValue: 'px',
 			},
 			{
-				name: _x( 'Em', 'A size unit for CSS markup', 'generateblocks' ),
+				name: _x( 'Em', 'A size unit for CSS markup', 'mr-alert-blocks' ),
 				unitValue: 'em',
 			},
 			{
-				name: _x( 'Percentage', 'A size unit for CSS markup', 'generateblocks' ),
+				name: _x( 'Percentage', 'A size unit for CSS markup', 'mr-alert-blocks' ),
 				unitValue: '%',
 			},
 		];
@@ -257,10 +262,10 @@ class DimensionsControl extends Component {
 
 						{ ( typeof attributes[ attrUnit ] !== 'undefined' ) ?
 							<div className="components-gblocks-control__units">
-								<ButtonGroup className="components-gblocks-dimensions-control__units" aria-label={ __( 'Select Units', 'generateblocks' ) }>
+								<ButtonGroup className="components-gblocks-dimensions-control__units" aria-label={ __( 'Select Units', 'mr-alert-blocks' ) }>
 									{ unitSizes.map( ( unit ) =>
 										/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
-										<Tooltip text={ sprintf( __( '%s Units', 'generateblocks' ), unit.name ) } key={ unit.unitValue }>
+										<Tooltip text={ sprintf( __( '%s Units', 'mr-alert-blocks' ), unit.name ) } key={ unit.unitValue }>
 											<Button
 												key={ unit.unitValue }
 												className={ 'components-gblocks-dimensions-control__units--' + unit.name }
@@ -268,7 +273,7 @@ class DimensionsControl extends Component {
 												isPrimary={ attributes[ attrUnit ] === unit.unitValue }
 												aria-pressed={ attributes[ attrUnit ] === unit.unitValue }
 												/* translators: %s: values associated with CSS syntax, 'Pixel', 'Em', 'Percentage' */
-												aria-label={ sprintf( __( '%s Units', 'generateblocks' ), unit.name ) }
+												aria-label={ sprintf( __( '%s Units', 'mr-alert-blocks' ), unit.name ) }
 												onClick={ () => this.onChangeUnits( unit.unitValue ) }
 											>
 												{ unit.unitValue }
@@ -281,12 +286,12 @@ class DimensionsControl extends Component {
 
 						{ ( typeof displayUnit !== 'undefined' ) &&
 							<div className="components-gblocks-control__units">
-								<Tooltip text={ __( 'Pixel Units', 'generateblocks' ) } key={ 'px-unit' }>
+								<Tooltip text={ __( 'Pixel Units', 'mr-alert-blocks' ) } key={ 'px-unit' }>
 									<Button
 										key={ 'px-unit' }
 										isSmall
 										isPrimary={ true }
-										aria-label={ __( 'Pixel Units', 'generateblocks' ) }
+										aria-label={ __( 'Pixel Units', 'mr-alert-blocks' ) }
 									>
 										{ displayUnit }
 									</Button>
@@ -315,7 +320,7 @@ class DimensionsControl extends Component {
 								// Make sure onBlur fires in Firefox.
 								e.currentTarget.focus();
 							} }
-							aria-label={ sprintf( __( '%s Top', 'generateblocks' ), label ) }
+							aria-label={ sprintf( __( '%s Top', 'mr-alert-blocks' ), label ) }
 							value={ attributes[ attrTop ] ? attributes[ attrTop ] : '' }
 							min={ type === 'padding' ? 0 : undefined }
 							data-attribute={ type }
@@ -339,7 +344,7 @@ class DimensionsControl extends Component {
 								// Make sure onBlur fires in Firefox.
 								e.currentTarget.focus();
 							} }
-							aria-label={ sprintf( __( '%s Right', 'generateblocks' ), label ) }
+							aria-label={ sprintf( __( '%s Right', 'mr-alert-blocks' ), label ) }
 							value={ attributes[ attrRight ] ? attributes[ attrRight ] : '' }
 							min={ type === 'padding' ? 0 : undefined }
 							data-attribute={ type }
@@ -363,7 +368,7 @@ class DimensionsControl extends Component {
 								// Make sure onBlur fires in Firefox.
 								e.currentTarget.focus();
 							} }
-							aria-label={ sprintf( __( '%s Bottom', 'generateblocks' ), label ) }
+							aria-label={ sprintf( __( '%s Bottom', 'mr-alert-blocks' ), label ) }
 							value={ attributes[ attrBottom ] ? attributes[ attrBottom ] : '' }
 							min={ type === 'padding' ? 0 : undefined }
 							data-attribute={ type }
@@ -387,21 +392,21 @@ class DimensionsControl extends Component {
 								// Make sure onBlur fires in Firefox.
 								e.currentTarget.focus();
 							} }
-							aria-label={ sprintf( __( '%s Left', 'generateblocks' ), label ) }
+							aria-label={ sprintf( __( '%s Left', 'mr-alert-blocks' ), label ) }
 							value={ attributes[ attrLeft ] ? attributes[ attrLeft ] : '' }
 							min={ type === 'padding' ? 0 : undefined }
 							data-attribute={ type }
 						/>
-						<Tooltip text={ !! attributes[ attrSyncUnits ] ? __( 'Unsync', 'generateblocks' ) : __( 'Sync', 'generateblocks' ) } >
+						<Tooltip text={ !! attributes[ attrSyncUnits ] ? __( 'Unsync', 'mr-alert-blocks' ) : __( 'Sync', 'mr-alert-blocks' ) } >
 							<Button
 								className="components-gblocks-dimensions-control_sync"
-								aria-label={ __( 'Sync Units', 'generateblocks' ) }
+								aria-label={ __( 'Sync Units', 'mr-alert-blocks' ) }
 								isPrimary={ attributes[ attrSyncUnits ] ? attributes[ attrSyncUnits ] : false }
 								aria-pressed={ attributes[ attrSyncUnits ] ? attributes[ attrSyncUnits ] : false }
 								onClick={ ( value ) => this.syncUnits( value, '' ) }
 								isSmall
 							>
-								sync
+								{syncIcon}
 							</Button>
 						</Tooltip>
 					</div>

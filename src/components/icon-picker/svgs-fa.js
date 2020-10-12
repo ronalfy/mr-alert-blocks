@@ -1,3 +1,6 @@
+/**
+ * Adding in some pro FA icons for alerts.
+ */
 const { _x } = wp.i18n;
 const svgs = {
 	exclamationRound: {

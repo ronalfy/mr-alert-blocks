@@ -84,7 +84,7 @@
     }
 
     .editor-url-input__suggestions {
-        max-width: 300px;
+        max-width: $blocks-button__link-input-width - 100px;
     }
 }
 
