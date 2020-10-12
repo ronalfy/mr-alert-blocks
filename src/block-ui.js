@@ -1,7 +1,5 @@
-import MRIcon from "./components/MRIcon";
 import MRPanelArea from "./components/MRPanelArea";
 import Dimensions from "./components/dimensions";
-import { uniqueId } from "lodash";
 import classnames from "classnames";
 import DesktopCSS from "./css/desktop.js";
 import IconPicker from "./components/icon-picker";
@@ -9,7 +7,7 @@ import URLInput from "./components/url-input";
 import sanitizeSVG from "./utils/sanitize-svg";
 import SVGs from "./components/icon-picker/svgs-fa.js";
 
-const { Component, Fragment, cloneElement, renderToString } = wp.element;
+const { Component, Fragment, renderToString } = wp.element;
 
 const { __, _n, _x } = wp.i18n;
 
@@ -200,7 +198,7 @@ class SABAlerts extends Component {
 		const layoutControls = [
 			{
 				icon: desktopToolbarIcon,
-				title: __("Desktop View and Options", "post-type-archive-mapping"),
+				title: __("Desktop View and Options", "mr-alert-blocks"),
 				onClick: () => {
 					this.setState({
 						device: "desktop",
@@ -211,7 +209,7 @@ class SABAlerts extends Component {
 			},
 			{
 				icon: tabletToolbarIcon,
-				title: __("Tablet View and Options", "post-type-archive-mapping"),
+				title: __("Tablet View and Options", "mr-alert-blocks"),
 				onClick: () => {
 					this.setState({
 						device: "tablet",
@@ -222,7 +220,7 @@ class SABAlerts extends Component {
 			},
 			{
 				icon: mobileToolbarIcon,
-				title: __("Mobile View and Options", "post-type-archive-mapping"),
+				title: __("Mobile View and Options", "mr-alert-blocks"),
 				onClick: () => {
 					this.setState({
 						device: "mobile",
@@ -497,59 +495,59 @@ class SABAlerts extends Component {
 
 		// Available alert types for a dropdown setting.
 		const allTypes = [
-			{ value: "primary", label: "Primary" },
-			{ value: "secondary", label: "Secondary" },
-			{ value: "success", label: "Success" },
-			{ value: "warning", label: "Warning" },
-			{ value: "danger", label: "Danger" },
-			{ value: "info", label: "Info" },
-			{ value: "light", label: "Light" },
-			{ value: "dark", label: "Dark" },
+			{ value: "primary", label: __("Primary", 'mr-alert-blocks') },
+			{ value: "secondary", label: __("Secondary", 'mr-alert-blocks') },
+			{ value: "success", label: __("Success", 'mr-alert-blocks' )},
+			{ value: "warning", label: __("Warning", 'mr-alert-blocks' ) },
+			{ value: "danger", label: __("Danger", 'mr-alert-blocks' )},
+			{ value: "info", label: __("Info", 'mr-alert-blocks') },
+			{ value: "light", label: __("Light", 'mr-alert-blocks') },
+			{ value: "dark", label: __("Dark", 'mr-alert-blocks') },
 		];
 
 		// Available button width options.
 		const buttonWidthtOptions = [
-			{ value: "default", label: "Default Width" },
-			{ value: "fixed", label: "Fixed Width" },
-			{ value: "full", label: "Full Width" },
+			{ value: "default", label: __("Default Width", 'mr-alert-blocks')},
+			{ value: "fixed", label: __("Fixed Width", 'mr-alert-blocks') },
+			{ value: "full", label: __("Full Width", 'mr-alert-blocks') },
 		];
 
 		// Available alert types for a dropdown setting.
 		const textTransformOptions = [
-			{ value: "none", label: "None" },
-			{ value: "inherit", label: "inherit" },
-			{ value: "capitalize", label: "Capitalize" },
-			{ value: "uppercase", label: "Uppercase" },
-			{ value: "lowercase", label: "Lowercase" },
+			{ value: "none", label: __("None", 'mr-alert-blocks') },
+			{ value: "inherit", label: __("Inherit", 'mr-alert-blocks' )},
+			{ value: "capitalize", label: __("Capitalize", 'mr-alert-blocks') },
+			{ value: "uppercase", label: __("Uppercase", 'mr-alert-blocks' )},
+			{ value: "lowercase", label: __("Lowercase", 'mr-alert-blocks') },
 		];
 
 		const tagOptions = [
-			{ value: "div", label: __("Div", "post-type-archive-mapping") },
-			{ value: "p", label: __("Paragraph", "post-type-archive-mapping") },
-			{ value: "h1", label: __("H1", "post-type-archive-mapping") },
-			{ value: "h2", label: __("H2", "post-type-archive-mapping") },
-			{ value: "h3", label: __("H3", "post-type-archive-mapping") },
-			{ value: "h4", label: __("H4", "post-type-archive-mapping") },
-			{ value: "h5", label: __("H5", "post-type-archive-mapping") },
-			{ value: "H6", label: __("H6", "post-type-archive-mapping") },
+			{ value: "div", label: __("Div", "mr-alert-blocks") },
+			{ value: "p", label: __("Paragraph", "mr-alert-blocks") },
+			{ value: "h1", label: __("H1", "mr-alert-blocks") },
+			{ value: "h2", label: __("H2", "mr-alert-blocks") },
+			{ value: "h3", label: __("H3", "mr-alert-blocks") },
+			{ value: "h4", label: __("H4", "mr-alert-blocks") },
+			{ value: "h5", label: __("H5", "mr-alert-blocks") },
+			{ value: "H6", label: __("H6", "mr-alert-blocks") },
 		];
 
 		const fontWeightOptions = [
-			{ value: "100", label: __("100", "post-type-archive-mapping") },
-			{ value: "200", label: __("200", "post-type-archive-mapping") },
-			{ value: "300", label: __("300", "post-type-archive-mapping") },
-			{ value: "400", label: __("400", "post-type-archive-mapping") },
-			{ value: "500", label: __("500", "post-type-archive-mapping") },
-			{ value: "600", label: __("600", "post-type-archive-mapping") },
-			{ value: "700", label: __("700", "post-type-archive-mapping") },
-			{ value: "800", label: __("800", "post-type-archive-mapping") },
-			{ value: "900", label: __("900", "post-type-archive-mapping") },
+			{ value: "100", label: __("100", "mr-alert-blocks") },
+			{ value: "200", label: __("200", "mr-alert-blocks") },
+			{ value: "300", label: __("300", "mr-alert-blocks") },
+			{ value: "400", label: __("400", "mr-alert-blocks") },
+			{ value: "500", label: __("500", "mr-alert-blocks") },
+			{ value: "600", label: __("600", "mr-alert-blocks") },
+			{ value: "700", label: __("700", "mr-alert-blocks") },
+			{ value: "800", label: __("800", "mr-alert-blocks") },
+			{ value: "900", label: __("900", "mr-alert-blocks") },
 		];
 
 		const buttonIconLocationOptions = [
-			{ value: "left", label: __("Left", "post-type-archive-mapping") },
-			{ value: "above", label: __("Above", "post-type-archive-mapping") },
-			{ value: "right", label: __("Right", "post-type-archive-mapping") },
+			{ value: "left", label: __("Left", "mr-alert-blocks") },
+			{ value: "above", label: __("Above", "mr-alert-blocks") },
+			{ value: "right", label: __("Right", "mr-alert-blocks") },
 		];
 
 		let backgroundColorOptions = [];
@@ -714,7 +712,7 @@ class SABAlerts extends Component {
 							}}
 						/>
 						<ToggleControl
-							label={__("Show Title?", "post-type-archive-mapping")}
+							label={__("Show Title?", "mr-alert-blocks")}
 							checked={displayTitle}
 							onChange={(value) => {
 								setAttributes({
@@ -723,7 +721,7 @@ class SABAlerts extends Component {
 							}}
 						/>
 						<ToggleControl
-							label={__("Show Content?", "post-type-archive-mapping")}
+							label={__("Show Content?", "mr-alert-blocks")}
 							checked={displayContent}
 							onChange={(value) => {
 								setAttributes({
@@ -732,7 +730,7 @@ class SABAlerts extends Component {
 							}}
 						/>
 						<ToggleControl
-							label={__("Show Button?", "post-type-archive-mapping")}
+							label={__("Show Button?", "mr-alert-blocks")}
 							checked={displayButton}
 							onChange={(value) => {
 								setAttributes({
@@ -777,7 +775,7 @@ class SABAlerts extends Component {
 						<ToggleControl
 							label={__(
 								"Enable Background Gradient?",
-								"post-type-archive-mapping"
+								"mr-alert-blocks"
 							)}
 							checked={enableBackgroundGradient}
 							onChange={(value) => {
@@ -926,7 +924,7 @@ class SABAlerts extends Component {
 						<Dimensions
 							{...this.props}
 							type={"padding"}
-							label={__("Alert Container Padding", "generateblocks")}
+							label={__("Alert Container Padding", "mr-alert-blocks")}
 							attrTop={"paddingTop"}
 							attrRight={"paddingRight"}
 							attrBottom={"paddingBottom"}
@@ -937,7 +935,7 @@ class SABAlerts extends Component {
 						<Dimensions
 							{...this.props}
 							type={"margin"}
-							label={__("Alert Container Margin", "generateblocks")}
+							label={__("Alert Container Margin", "mr-alert-blocks")}
 							attrTop={"marginTop"}
 							attrRight={"marginRight"}
 							attrBottom={"marginBottom"}
@@ -948,7 +946,7 @@ class SABAlerts extends Component {
 						<Dimensions
 							{...this.props}
 							type={"padding"}
-							label={__("Border Width", "generateblocks")}
+							label={__("Border Width", "mr-alert-blocks")}
 							attrTop={"borderTop"}
 							attrRight={"borderRight"}
 							attrBottom={"borderBottom"}
@@ -959,7 +957,7 @@ class SABAlerts extends Component {
 						<Dimensions
 							{...this.props}
 							type={"padding"}
-							label={__("Border Radius", "generateblocks")}
+							label={__("Border Radius", "mr-alert-blocks")}
 							attrTop={"borderRadiusTop"}
 							attrRight={"borderRadiusRight"}
 							attrBottom={"borderRadiusBottom"}
@@ -1004,7 +1002,7 @@ class SABAlerts extends Component {
 						<Dimensions
 							{...this.props}
 							type={"padding"}
-							label={__("Alert Container Padding", "generateblocks")}
+							label={__("Alert Container Padding", "mr-alert-blocks")}
 							attrTop={"paddingTop"}
 							attrRight={"paddingRight"}
 							attrBottom={"paddingBottom"}
@@ -1015,7 +1013,7 @@ class SABAlerts extends Component {
 						<Dimensions
 							{...this.props}
 							type={"margin"}
-							label={__("Alert Container Margin", "generateblocks")}
+							label={__("Alert Container Margin", "mr-alert-blocks")}
 							attrTop={"marginTop"}
 							attrRight={"marginRight"}
 							attrBottom={"marginBottom"}
@@ -1026,7 +1024,7 @@ class SABAlerts extends Component {
 						<Dimensions
 							{...this.props}
 							type={"padding"}
-							label={__("Border Width", "generateblocks")}
+							label={__("Border Width", "mr-alert-blocks")}
 							attrTop={"borderTop"}
 							attrRight={"borderRight"}
 							attrBottom={"borderBottom"}
@@ -1037,7 +1035,7 @@ class SABAlerts extends Component {
 						<Dimensions
 							{...this.props}
 							type={"padding"}
-							label={__("Border Radius", "generateblocks")}
+							label={__("Border Radius", "mr-alert-blocks")}
 							attrTop={"borderRadiusTop"}
 							attrRight={"borderRadiusRight"}
 							attrBottom={"borderRadiusBottom"}
@@ -1082,7 +1080,7 @@ class SABAlerts extends Component {
 						<Dimensions
 							{...this.props}
 							type={"padding"}
-							label={__("Alert Container Padding", "generateblocks")}
+							label={__("Alert Container Padding", "mr-alert-blocks")}
 							attrTop={"paddingTop"}
 							attrRight={"paddingRight"}
 							attrBottom={"paddingBottom"}
@@ -1093,7 +1091,7 @@ class SABAlerts extends Component {
 						<Dimensions
 							{...this.props}
 							type={"margin"}
-							label={__("Alert Container Margin", "generateblocks")}
+							label={__("Alert Container Margin", "mr-alert-blocks")}
 							attrTop={"marginTop"}
 							attrRight={"marginRight"}
 							attrBottom={"marginBottom"}
@@ -1104,7 +1102,7 @@ class SABAlerts extends Component {
 						<Dimensions
 							{...this.props}
 							type={"padding"}
-							label={__("Border Width", "generateblocks")}
+							label={__("Border Width", "mr-alert-blocks")}
 							attrTop={"borderTop"}
 							attrRight={"borderRight"}
 							attrBottom={"borderBottom"}
@@ -1115,7 +1113,7 @@ class SABAlerts extends Component {
 						<Dimensions
 							{...this.props}
 							type={"padding"}
-							label={__("Border Radius", "generateblocks")}
+							label={__("Border Radius", "mr-alert-blocks")}
 							attrTop={"borderRadiusTop"}
 							attrRight={"borderRadiusRight"}
 							attrBottom={"borderRadiusBottom"}
@@ -1319,7 +1317,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"padding"}
-										label={__("Title Padding", "generateblocks")}
+										label={__("Title Padding", "mr-alert-blocks")}
 										attrTop={"titlePaddingTop"}
 										attrRight={"titlePaddingRight"}
 										attrBottom={"titlePaddingBottom"}
@@ -1330,7 +1328,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"margin"}
-										label={__("Title Margin", "generateblocks")}
+										label={__("Title Margin", "mr-alert-blocks")}
 										attrTop={"titleMarginTop"}
 										attrRight={"titleMarginRight"}
 										attrBottom={"titleMarginBottom"}
@@ -1355,7 +1353,7 @@ class SABAlerts extends Component {
 										}}
 									/>
 									<SelectControl
-										label={__("Title Font", "post-type-archive-mapping")}
+										label={__("Title Font", "mr-alert-blocks")}
 										options={fontOptions}
 										value={titleFont}
 										onChange={(value) => {
@@ -1433,7 +1431,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"padding"}
-										label={__("Title Padding", "generateblocks")}
+										label={__("Title Padding", "mr-alert-blocks")}
 										attrTop={"titlePaddingTop"}
 										attrRight={"titlePaddingRight"}
 										attrBottom={"titlePaddingBottom"}
@@ -1444,7 +1442,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"margin"}
-										label={__("Title Margin", "generateblocks")}
+										label={__("Title Margin", "mr-alert-blocks")}
 										attrTop={"titleMarginTop"}
 										attrRight={"titleMarginRight"}
 										attrBottom={"titleMarginBottom"}
@@ -1523,7 +1521,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"padding"}
-										label={__("Title Padding", "generateblocks")}
+										label={__("Title Padding", "mr-alert-blocks")}
 										attrTop={"titlePaddingTop"}
 										attrRight={"titlePaddingRight"}
 										attrBottom={"titlePaddingBottom"}
@@ -1534,7 +1532,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"margin"}
-										label={__("Title Margin", "generateblocks")}
+										label={__("Title Margin", "mr-alert-blocks")}
 										attrTop={"titleMarginTop"}
 										attrRight={"titleMarginRight"}
 										attrBottom={"titleMarginBottom"}
@@ -1617,7 +1615,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"padding"}
-										label={__("Content Padding", "generateblocks")}
+										label={__("Content Padding", "mr-alert-blocks")}
 										attrTop={"contentPaddingTop"}
 										attrRight={"contentPaddingRight"}
 										attrBottom={"contentPaddingBottom"}
@@ -1628,7 +1626,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"margin"}
-										label={__("Content Margin", "generateblocks")}
+										label={__("Content Margin", "mr-alert-blocks")}
 										attrTop={"contentMarginTop"}
 										attrRight={"contentMarginRight"}
 										attrBottom={"contentMarginBottom"}
@@ -1645,7 +1643,7 @@ class SABAlerts extends Component {
 										}}
 									/>
 									<SelectControl
-										label={__("Content Font", "post-type-archive-mapping")}
+										label={__("Content Font", "mr-alert-blocks")}
 										options={fontOptions}
 										value={contentFont}
 										onChange={(value) => {
@@ -1723,7 +1721,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"padding"}
-										label={__("Content Padding", "generateblocks")}
+										label={__("Content Padding", "mr-alert-blocks")}
 										attrTop={"contentPaddingTop"}
 										attrRight={"contentPaddingRight"}
 										attrBottom={"contentPaddingBottom"}
@@ -1734,7 +1732,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"margin"}
-										label={__("Content Margin", "generateblocks")}
+										label={__("Content Margin", "mr-alert-blocks")}
 										attrTop={"contentMarginTop"}
 										attrRight={"contentMarginRight"}
 										attrBottom={"contentMarginBottom"}
@@ -1805,7 +1803,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"padding"}
-										label={__("Content Padding", "generateblocks")}
+										label={__("Content Padding", "mr-alert-blocks")}
 										attrTop={"contentPaddingTop"}
 										attrRight={"contentPaddingRight"}
 										attrBottom={"contentPaddingBottom"}
@@ -1816,7 +1814,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"margin"}
-										label={__("Content Margin", "generateblocks")}
+										label={__("Content Margin", "mr-alert-blocks")}
 										attrTop={"contentMarginTop"}
 										attrRight={"contentMarginRight"}
 										attrBottom={"contentMarginBottom"}
@@ -1891,7 +1889,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"padding"}
-										label={__("Button Padding", "generateblocks")}
+										label={__("Button Padding", "mr-alert-blocks")}
 										attrTop={"buttonPaddingTop"}
 										attrRight={"buttonPaddingRight"}
 										attrBottom={"buttonPaddingBottom"}
@@ -1902,7 +1900,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"margin"}
-										label={__("Button Margin", "generateblocks")}
+										label={__("Button Margin", "mr-alert-blocks")}
 										attrTop={"buttonMarginTop"}
 										attrRight={"buttonMarginRight"}
 										attrBottom={"buttonMarginBottom"}
@@ -1951,7 +1949,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"padding"}
-										label={__("Border Radius", "generateblocks")}
+										label={__("Border Radius", "mr-alert-blocks")}
 										attrTop={"buttonBorderRadiusTop"}
 										attrRight={"buttonBorderRadiusRight"}
 										attrBottom={"buttonBorderRadiusBottom"}
@@ -1968,7 +1966,7 @@ class SABAlerts extends Component {
 										}}
 									/>
 									<SelectControl
-										label={__("Button Font", "post-type-archive-mapping")}
+										label={__("Button Font", "mr-alert-blocks")}
 										options={fontOptions}
 										value={buttonFont}
 										onChange={(value) => {
@@ -2046,7 +2044,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"padding"}
-										label={__("Button Padding", "generateblocks")}
+										label={__("Button Padding", "mr-alert-blocks")}
 										attrTop={"buttonPaddingTop"}
 										attrRight={"buttonPaddingRight"}
 										attrBottom={"buttonPaddingBottom"}
@@ -2057,7 +2055,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"margin"}
-										label={__("Button Margin", "generateblocks")}
+										label={__("Button Margin", "mr-alert-blocks")}
 										attrTop={"buttonMarginTop"}
 										attrRight={"buttonMarginRight"}
 										attrBottom={"buttonMarginBottom"}
@@ -2078,7 +2076,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"padding"}
-										label={__("Border Radius", "generateblocks")}
+										label={__("Border Radius", "mr-alert-blocks")}
 										attrTop={"buttonBorderRadiusTop"}
 										attrRight={"buttonBorderRadiusRight"}
 										attrBottom={"buttonBorderRadiusBottom"}
@@ -2149,7 +2147,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"padding"}
-										label={__("Button Padding", "generateblocks")}
+										label={__("Button Padding", "mr-alert-blocks")}
 										attrTop={"buttonPaddingTop"}
 										attrRight={"buttonPaddingRight"}
 										attrBottom={"buttonPaddingBottom"}
@@ -2160,7 +2158,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"margin"}
-										label={__("Button Margin", "generateblocks")}
+										label={__("Button Margin", "mr-alert-blocks")}
 										attrTop={"buttonMarginTop"}
 										attrRight={"buttonMarginRight"}
 										attrBottom={"buttonMarginBottom"}
@@ -2181,7 +2179,7 @@ class SABAlerts extends Component {
 									<Dimensions
 										{...this.props}
 										type={"padding"}
-										label={__("Border Radius", "generateblocks")}
+										label={__("Border Radius", "mr-alert-blocks")}
 										attrTop={"buttonBorderRadiusTop"}
 										attrRight={"buttonBorderRadiusRight"}
 										attrBottom={"buttonBorderRadiusBottom"}
@@ -2258,12 +2256,12 @@ class SABAlerts extends Component {
 									tabs={[
 										{
 											name: "button-colors",
-											title: __("Normal", "generateblocks"),
+											title: __("Normal", "mr-alert-blocks"),
 											className: "button-colors",
 										},
 										{
 											name: "button-colors-hover",
-											title: __("Hover", "generateblocks"),
+											title: __("Hover", "mr-alert-blocks"),
 											className: "button-colors-hover",
 										},
 									]}

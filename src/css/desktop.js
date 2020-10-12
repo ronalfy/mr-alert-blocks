@@ -3,7 +3,6 @@ import buildCSS from "../utils/build-css";
 import shorthandCSS from "../utils/shorthand-css";
 import hexToRGBA from "../utils/hex-to-rgba";
 import valueWithUnit from "../utils/value-with-unit";
-import getBackgroundImageCSS from "../utils/get-background-image";
 
 const { Component } = wp.element;
 
