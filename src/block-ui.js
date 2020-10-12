@@ -483,6 +483,8 @@ class SABAlerts extends Component {
 			className: classnames({
 				"mr-button": true,
 				"mr-alert-button": true,
+				"mr-alert-button-location":
+					"left" === buttonIconLocation ? "left" : "right",
 				[`mr-button-${uniqueId}`]: true,
 				[`mr-alert-type-${alertType}`]: true,
 			}),
@@ -495,30 +497,30 @@ class SABAlerts extends Component {
 
 		// Available alert types for a dropdown setting.
 		const allTypes = [
-			{ value: "primary", label: __("Primary", 'mr-alert-blocks') },
-			{ value: "secondary", label: __("Secondary", 'mr-alert-blocks') },
-			{ value: "success", label: __("Success", 'mr-alert-blocks' )},
-			{ value: "warning", label: __("Warning", 'mr-alert-blocks' ) },
-			{ value: "danger", label: __("Danger", 'mr-alert-blocks' )},
-			{ value: "info", label: __("Info", 'mr-alert-blocks') },
-			{ value: "light", label: __("Light", 'mr-alert-blocks') },
-			{ value: "dark", label: __("Dark", 'mr-alert-blocks') },
+			{ value: "primary", label: __("Primary", "mr-alert-blocks") },
+			{ value: "secondary", label: __("Secondary", "mr-alert-blocks") },
+			{ value: "success", label: __("Success", "mr-alert-blocks") },
+			{ value: "warning", label: __("Warning", "mr-alert-blocks") },
+			{ value: "danger", label: __("Danger", "mr-alert-blocks") },
+			{ value: "info", label: __("Info", "mr-alert-blocks") },
+			{ value: "light", label: __("Light", "mr-alert-blocks") },
+			{ value: "dark", label: __("Dark", "mr-alert-blocks") },
 		];
 
 		// Available button width options.
 		const buttonWidthtOptions = [
-			{ value: "default", label: __("Default Width", 'mr-alert-blocks')},
-			{ value: "fixed", label: __("Fixed Width", 'mr-alert-blocks') },
-			{ value: "full", label: __("Full Width", 'mr-alert-blocks') },
+			{ value: "default", label: __("Default Width", "mr-alert-blocks") },
+			{ value: "fixed", label: __("Fixed Width", "mr-alert-blocks") },
+			{ value: "full", label: __("Full Width", "mr-alert-blocks") },
 		];
 
 		// Available alert types for a dropdown setting.
 		const textTransformOptions = [
-			{ value: "none", label: __("None", 'mr-alert-blocks') },
-			{ value: "inherit", label: __("Inherit", 'mr-alert-blocks' )},
-			{ value: "capitalize", label: __("Capitalize", 'mr-alert-blocks') },
-			{ value: "uppercase", label: __("Uppercase", 'mr-alert-blocks' )},
-			{ value: "lowercase", label: __("Lowercase", 'mr-alert-blocks') },
+			{ value: "none", label: __("None", "mr-alert-blocks") },
+			{ value: "inherit", label: __("Inherit", "mr-alert-blocks") },
+			{ value: "capitalize", label: __("Capitalize", "mr-alert-blocks") },
+			{ value: "uppercase", label: __("Uppercase", "mr-alert-blocks") },
+			{ value: "lowercase", label: __("Lowercase", "mr-alert-blocks") },
 		];
 
 		const tagOptions = [
@@ -773,10 +775,7 @@ class SABAlerts extends Component {
 						initialOpen={false}
 					>
 						<ToggleControl
-							label={__(
-								"Enable Background Gradient?",
-								"mr-alert-blocks"
-							)}
+							label={__("Enable Background Gradient?", "mr-alert-blocks")}
 							checked={enableBackgroundGradient}
 							onChange={(value) => {
 								setAttributes({
@@ -1916,7 +1915,7 @@ class SABAlerts extends Component {
 											setAttributes({ buttonWidth: value });
 										}}
 									/>
-									{ 'fixed' === buttonWidth &&
+									{"fixed" === buttonWidth && (
 										<Fragment>
 											<RangeControl
 												label={__("Button Max-Width", "mr-alert-blocks")}
@@ -1935,7 +1934,7 @@ class SABAlerts extends Component {
 												}}
 											/>
 										</Fragment>
-									}
+									)}
 									<TextControl
 										label={__("Border Width", "mr-alert-blocks")}
 										onChange={(value) => {
@@ -2524,8 +2523,13 @@ class SABAlerts extends Component {
 						)}
 						{displayButton && (
 							<div className="mr-alert-button-wrapper">
-								<a {...buttonHtmlAttributes}>
-									{buttonIconEnabled && (
+								<a
+									{...buttonHtmlAttributes}
+									onClick={(e) => {
+										e.preventDefault();
+									}}
+								>
+									{buttonIconEnabled && "left" === buttonIconLocation && (
 										<Fragment>
 											<span
 												className="mr-alert-icon"
@@ -2546,6 +2550,16 @@ class SABAlerts extends Component {
 										placeholder={__("Button text...", "mr-alert-blocks")}
 										allowedFormats={[]}
 									/>
+									{buttonIconEnabled && "right" === buttonIconLocation && (
+										<Fragment>
+											<span
+												className="mr-alert-icon"
+												dangerouslySetInnerHTML={{
+													__html: sanitizeSVG(buttonIcon),
+												}}
+											/>
+										</Fragment>
+									)}
 								</a>
 								{isSelected && (
 									<URLInput
